@@ -11,7 +11,8 @@
     "serve": "vue-cli-service serve src/demo/index.js",
     "build": "vue-cli-service build --target lib src/index.js",
     "test": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lint:fix": "vue-cli-service lint --fix"
   },
   "repository": {
     "type": "git",
