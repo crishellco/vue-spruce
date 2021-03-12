@@ -1,12 +1,29 @@
 {
-  "name": "renderless-party",
+  "name": "@crishellco/vue-renderless-party",
   "version": "0.1.0",
-  "private": true,
+  "author": "Chris Mitchell (@crishellco)",
+  "description": "A collection of useful Vue renderless components",
+  "main": "dist/renderless-party.umd.js",
+  "files": [
+    "dist/"
+  ],
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
+    "serve": "vue-cli-service serve src/demo/index.js",
+    "build": "vue-cli-service build --target lib src/index.js",
+    "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crishellco/vue-renderless-party.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crishellco/vue-renderless-party/issues"
+  },
+  "homepage": "https://crishellco.github.io/vue-renderless-party/",
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "core-js": "^3.6.5",
