@@ -22,7 +22,7 @@ export default {
 
   methods: {
     handleEvent(e) {
-      const slot = this.$slots?.default?.[0];
+      const slot = this.$slots.default?.[0];
 
       if (!slot) {
         return this.$emit(this.event);
