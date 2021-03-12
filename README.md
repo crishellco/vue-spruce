@@ -22,14 +22,15 @@ import VueHubble from '@crishellco/vue-renderless-party';
 ```
 
 ## Usage
-### Vue Plugin
+### Import Components
+#### Vue Plugin
 ```javascript
 import Vue from 'vue';
 import VueRenderlessParty from '@crishellco/vue-renderless-party';
 
 Vue.use(VueRenderlessParty);
 ```
-### Single Components
+#### Single Components
 ```javascript
 import { RenderlessEvent, RenderlessState, RenderlessToggle } from '@crishellco/vue-renderless-party';
 
@@ -41,6 +42,9 @@ export default {
   }
 };
 ```
+
+### Components
+Coming soon...
 ## Lint
 
 ```bash
