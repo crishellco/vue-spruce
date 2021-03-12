@@ -1,3 +1,19 @@
+<script>
+import { RenderlessEvent, RenderlessSearch, RenderlessSort, RenderlessState, RenderlessToggle } from '../components';
+
+import { people, states } from './fixtures';
+
+export default {
+  components: { RenderlessEvent, RenderlessSearch, RenderlessSort, RenderlessState, RenderlessToggle },
+
+  data() {
+    return { people, states };
+  },
+};
+</script>
+
+<style></style>
+
 <template>
   <div class="p-4">
     <h3 class="text-2xl font-bold">
@@ -211,19 +227,3 @@
     </renderless-toggle>
   </div>
 </template>
-
-<script>
-import { RenderlessEvent, RenderlessSearch, RenderlessSort, RenderlessState, RenderlessToggle } from '../components';
-
-import { people, states } from './fixtures';
-
-export default {
-  components: { RenderlessEvent, RenderlessSearch, RenderlessSort, RenderlessState, RenderlessToggle },
-
-  data() {
-    return { people, states };
-  },
-};
-</script>
-
-<style></style>

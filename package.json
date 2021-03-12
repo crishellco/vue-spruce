@@ -10,7 +10,7 @@
   "scripts": {
     "serve": "vue-cli-service serve src/demo/index.js",
     "build": "vue-cli-service build --target lib src/index.js",
-    "test": "vue-cli-service test:unit",
+    "test": "vue-cli-service test:unit && jest-coverage-badges output badges",
     "lint": "vue-cli-service lint",
     "lint:fix": "vue-cli-service lint --fix"
   },
@@ -43,6 +43,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
+    "jest-coverage-badges": "^1.1.2",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "vue-template-compiler": "^2.6.11"
