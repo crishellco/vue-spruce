@@ -9,27 +9,27 @@ export default {
 
   data() {
     return {
-      localValue: this.value,
+      localValue: null,
     };
   },
 
   watch: {
-    localValue(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.$emit('input', newVal);
-      }
+    localValue(newVal) {
+      this.$emit('input', newVal);
     },
 
-    value(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.localValue = newVal;
-      }
+    value(newVal) {
+      this.$set(this, 'localValue', newVal);
     },
+  },
+
+  beforeMount() {
+    this.$set(this, 'localValue', this.value);
   },
 
   methods: {
     update(newVal) {
-      this.$set(this, 'localValue', newVal);
+      this.$set(this, 'localValue', { ...this.localValue, ...newVal });
     },
   },
 

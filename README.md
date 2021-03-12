@@ -1,11 +1,11 @@
 # Vue Renderless Party
 
-<!-- ![Build](https://github.com/crishellco/vue-renderless-party/workflows/Build/badge.svg)
+![Build](https://github.com/crishellco/vue-renderless-party/workflows/Build/badge.svg)
 ![](badges/badge-branches.svg)
 ![](badges/badge-functionss.svg)
 ![](badges/badge-lines.svg)
 ![](badges/badge-statements.svg)
-[![Maintainability](https://api.codeclimate.com/v1/badges/e1f2536b9be3c32e6fef/maintainability)](https://codeclimate.com/github/crishellco/vue-renderless-party/maintainability) -->
+[![Maintainability](https://api.codeclimate.com/v1/badges/e1f2536b9be3c32e6fef/maintainability)](https://codeclimate.com/github/crishellco/vue-renderless-party/maintainability)
 
 A collection of useful Vue renderless components.
 
@@ -32,11 +32,12 @@ Vue.use(VueRenderlessParty);
 ```
 #### Single Components
 ```javascript
-import { RenderlessEvent, RenderlessState, RenderlessToggle } from '@crishellco/vue-renderless-party';
+import { RenderlessEvent, RenderlessSearch, RenderlessState, RenderlessToggle } from '@crishellco/vue-renderless-party';
 
 export default {
   components: {
     RenderlessEvent,
+    RenderlessSearch,
     RenderlessState,
     RenderlessToggle
   }

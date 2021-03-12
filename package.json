@@ -29,6 +29,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "fuse.js": "^6.4.6",
+    "sort-array": "^4.1.4",
     "vue": "^2.6.11"
   },
   "devDependencies": {

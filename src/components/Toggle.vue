@@ -14,16 +14,12 @@ export default {
   },
 
   watch: {
-    localValue(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.$emit('input', newVal);
-      }
+    localValue(newVal) {
+      this.$emit('input', newVal);
     },
 
-    value(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        this.localValue = newVal;
-      }
+    value(newVal) {
+      this.localValue = newVal;
     },
   },
 
