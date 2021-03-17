@@ -32,7 +32,8 @@
     "core-js": "^3.6.5",
     "fuse.js": "^6.4.6",
     "sort-array": "^4.1.4",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-code-highlight": "^0.7.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
