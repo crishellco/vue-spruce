@@ -189,6 +189,13 @@ export default {
 | `input` | Fired when `isOn` updates | `isOn`  |
 
 
+
+
+
+
+### Examples
+See the [demo source code](src/demo) for real-world examples.
+
 ## Lint
 
 ```bash
