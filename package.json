@@ -10,7 +10,8 @@
   "scripts": {
     "serve": "vue-cli-service serve src/demo/index.js",
     "build": "vue-cli-service build --target lib src/index.js",
-    "test": "vue-cli-service test:unit && jest-coverage-badges output badges",
+    "test": "yarn test:unit && jest-coverage-badges output badges",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "lint:fix": "vue-cli-service lint --fix"
   },
@@ -49,7 +50,8 @@
     "vue-template-compiler": "^2.6.11"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "pre-push": "yarn test:unit --changedSince=origin/master --coverage=false"
   },
   "lint-staged": {
     "*.{js,jsx,vue}": [
