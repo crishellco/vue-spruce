@@ -22,15 +22,17 @@ import VueHubble from '@crishellco/vue-renderless-party';
 ```
 
 ## Usage
-### Import Components
+### Importing
 #### Vue Plugin
+
 ```javascript
 import Vue from 'vue';
 import VueRenderlessParty from '@crishellco/vue-renderless-party';
 
 Vue.use(VueRenderlessParty);
 ```
-#### Individual Component Imports
+#### Named Imports
+
 ```javascript
 import { RenderlessEvent, RenderlessSearch, RenderlessSort, RenderlessState, RenderlessToggle } from '@crishellco/vue-renderless-party';
 
@@ -48,6 +50,7 @@ export default {
 ### The Components
 
 #### `RenderlessEvent`
+
 ```javascript
 <renderless-event
   event="mouseover"
@@ -57,6 +60,7 @@ export default {
 </renderless-event>
 ```
 ##### Props
+
 | Name      | Description                                                   | Type    | Required | Default |
 |-----------|---------------------------------------------------------------|---------|----------|---------|
 | `event`   | The event to listen to                                        | String  | Yes      |         |
@@ -70,6 +74,7 @@ export default {
 | _Same as the `event` prop_ | Fired when the event happens. | --      |
 
 #### `RenderlessSearch`
+
 ```javascript
 <renderless-search :list="states" :term="term" :keys="['name', 'email']">
   <div slot-scope="{ results }">
@@ -80,6 +85,7 @@ export default {
 </renderless-search>
 ```
 ##### Props
+
 | Name   | Description             | Type                  | Required | Default                                                                       |
 |--------|-------------------------|-----------------------|----------|-------------------------------------------------------------------------------|
 | `keys` | The keys to search in   | Array<String>         | No       | If `list` is Array<Object> then all of the first object's keys. Otherwise []. |
@@ -87,11 +93,13 @@ export default {
 | `term` | The terms to search for | String                | No       | ''                                                                            |
 
 ##### Slot Scope
+
 | Name      | Description       | Type                  |
 |-----------|-------------------|-----------------------|
 | `results` | The searched list | Array<String, Object> |
 
 #### `RenderlessSort`
+
 ```javascript
 <renderless-sort :list="people" :by="by" :direction="direction" >
   <div slot-scope="{ results }">
@@ -102,6 +110,7 @@ export default {
 </renderless-sort>
 ```
 ##### Props
+
 | Name        | Description                               | Type                  | Required | Default |
 |-------------|-------------------------------------------|-----------------------|----------|---------|
 | `list`      | The list to search                        | Array<String, Object> | Yes      |         |
@@ -109,6 +118,7 @@ export default {
 | `by`        | The object property to sort by            | String                | No       | ''      |
 
 #### `RenderlessState`
+
 ```javascript
 <renderless-state :value="{ count: 0 }">
   <div slot-scope="{ state, update }">
@@ -119,11 +129,13 @@ export default {
 </renderless-state>
 ```
 ##### Props
+
 | Name    | Description      | Type        | Required | Default |
 |---------|------------------|-------------|----------|---------|
 | `value` | The state object | Object<any> | Yes      |         |
 
 ##### Slot Scope
+
 | Name               | Description                                | Type     |
 |--------------------|--------------------------------------------|----------|
 | `state`            | The state                                  | Object   |
@@ -131,11 +143,13 @@ export default {
 
 ##### Events
 
+
 | Name    | Description              | Payload |
 |---------|--------------------------|---------|
 | `input` | Fired when state updates | `state` |
 
 #### `RenderlessToggle`
+
 ```javascript
 <renderless-toggle :value="true">
   <div slot-scope="{ isOn, on, off, toggle }">
@@ -154,11 +168,13 @@ export default {
 </renderless-toggle>
 ```
 ##### Props
+
 | Name    | Description             | Type    | Required | Default |
 |---------|-------------------------|---------|----------|---------|
 | `value` | The state of the toggle | Boolean | No       | `False` |
 
 ##### Slot Scope
+
 | Name       | Description             | Type     |
 |------------|-------------------------|----------|
 | `isOn`     | The state of the toggle | Boolean  |
