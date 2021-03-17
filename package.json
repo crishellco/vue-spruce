@@ -10,7 +10,7 @@
   "scripts": {
     "serve": "vue-cli-service serve src/demo/index.js",
     "build": "vue-cli-service build --target lib src/index.js",
-    "build:demo": "vue-cli-service build --target lib src/demo/index.js --dest dist-demo",
+    "build:demo": "vue-cli-service build src/demo/index.js --dest dist-demo",
     "test": "yarn test:unit && jest-coverage-badges output badges",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
