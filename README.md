@@ -86,11 +86,11 @@ export default {
 ```
 ##### Props
 
-| Name   | Description             | Type                  | Required | Default                                                                       |
-|--------|-------------------------|-----------------------|----------|-------------------------------------------------------------------------------|
-| `keys` | The keys to search in   | Array<String>         | No       | If `list` is Array<Object> then all of the first object's keys. Otherwise []. |
-| `list` | The list to search      | Array<String, Object> | Yes      |                                                                               |
-| `term` | The terms to search for | String                | No       | ''                                                                            |
+| Name   | Description             | Type                  | Required | Default                                                                         |
+|--------|-------------------------|-----------------------|----------|---------------------------------------------------------------------------------|
+| `keys` | The keys to search in   | Array<String>         | No       | If `list` is Array<Object> then all of the first object's keys. Otherwise `[]`. |
+| `list` | The list to search      | Array<String, Object> | Yes      |                                                                                 |
+| `term` | The terms to search for | String                | No       | ''                                                                              |
 
 ##### Slot Scope
 
