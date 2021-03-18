@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       code: `
-<renderless-state :value="{ term: '' }" class=" border-b pb-4">
+<renderless-state :value="{ term: '' }">
   <div slot-scope="{ state, update }">
     <input
       :value="state.term"
@@ -59,11 +59,20 @@ export default {
       class="border-2 bg-white py-2 px-4 w-1/2"
       placeholder="search"
       @input="update({ term: $event.target.value })"
-    />
-    <renderless-search :list="states" :term="state.term">
-      <div slot-scope="{ results }" class="h-64 w-full">
+    >
+    <renderless-search
+      :list="states"
+      :term="state.term"
+    >
+      <div
+        slot-scope="{ results }"
+        class="h-64 w-full"
+      >
         <div class="overflow-y-scroll h-full w-full my-4">
-          <div v-for="(item, index) in results" :key="index">
+          <div
+            v-for="(item, index) in results"
+            :key="index"
+          >
             {{ item }}
           </div>
         </div>

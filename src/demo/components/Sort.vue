@@ -112,7 +112,7 @@ export default {
   data() {
     return {
       code: `
-<renderless-state :value="{ direction: 'asc', by: 'first_name' }" class=" border-b pb-4">
+<renderless-state :value="{ direction: 'asc', by: 'first_name' }">
   <div slot-scope="{ state, update }">
     <div class="flex items-center">
       <button
@@ -131,52 +131,65 @@ export default {
       </button>
       <renderless-toggle>
         <div slot-scope="{ isOn, off, toggle }">
-          <renderless-event event="click" outside @click="off">
+          <renderless-event
+            event="click"
+            outside
+            @click="off"
+          >
             <button
               class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 relative w-48"
               :class="{ 'hover:bg-gray-500': !isOn }"
               @click="toggle"
             >
               {{ state.by }}
-              <div v-if="isOn" class="absolute w-full left-0 border shadow bg-white top-100 mt-4 rounded py-2">
+              <div
+                v-if="isOn"
+                class="absolute w-full left-0 border shadow bg-white top-100 mt-4 rounded py-2"
+              >
                 <a
                   href="#"
                   class="block px-4 py-2 text-left hover:bg-gray-100 bg-white text-blue-600 hover:text-blue-700 hover:underline"
                   :class="{ 'bg-gray-200': state.by === 'id' }"
                   @click="update({ by: 'id' })"
-                  >id</a
-                >
+                >id</a>
                 <a
                   href="#"
                   class="block px-4 py-2 text-left hover:bg-gray-100 bg-white text-blue-600 hover:text-blue-700 hover:underline"
                   :class="{ 'bg-gray-200': state.by === 'first_name' }"
                   @click="update({ by: 'first_name' })"
-                  >first_name</a
-                >
+                >first_name</a>
                 <a
                   href="#"
                   class="block px-4 py-2 text-left hover:bg-gray-100 bg-white text-blue-600 hover:text-blue-700 hover:underline"
                   :class="{ 'bg-gray-200': state.by === 'last_name' }"
                   @click="update({ by: 'last_name' })"
-                  >last_name</a
-                >
+                >last_name</a>
                 <a
                   href="#"
                   class="block px-4 py-2 text-left hover:bg-gray-100 bg-white text-blue-600 hover:text-blue-700 hover:underline"
                   :class="{ 'bg-gray-200': state.by === 'gender' }"
                   @click="update({ by: 'gender' })"
-                  >gender</a
-                >
+                >gender</a>
               </div>
             </button>
           </renderless-event>
         </div>
       </renderless-toggle>
     </div>
-    <renderless-sort :list="people" :by="state.by" :direction="state.direction">
-      <div slot-scope="{ results }" class="h-64 w-full">
+    <renderless-sort
+      :list="people"
+      :by="state.by"
+      :direction="state.direction"
+    >
+      <div
+        slot-scope="{ results }"
+        class="h-64 w-full"
+      >
         <div class="overflow-y-scroll h-full w-full my-4">
-          <div v-for="(item, index) in results" :key="index">
+          <div
+            v-for="(item, index) in results"
+            :key="index"
+          >
             {{ item }}
           </div>
         </div>
