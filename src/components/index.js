@@ -1,3 +1,4 @@
+export { default as SpruceCrud } from './Crud.vue';
 export { default as SpruceEvent } from './Event.vue';
 export { default as SpruceFunction } from './Function.vue';
 export { default as SprucePaginate } from './Paginate.vue';

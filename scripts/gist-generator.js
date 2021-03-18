@@ -14,9 +14,5 @@ files.forEach(file => {
   const root = parse(template.content).querySelector('[root]');
   const newName = file.substr(0, file.lastIndexOf('.')) + '.gist';
 
-  if (!root) {
-    return console.log({ file });
-  }
-
   fs.writeFileSync(newName, html(root.toString(), { indent_size: 2, wrap_line_length: 60, max_preserve_newlines: 2 }));
 });
