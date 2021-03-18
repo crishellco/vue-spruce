@@ -1,23 +1,11 @@
 <template>
-  <div class="p-4">
-    <h3 class="text-2xl font-bold mb-4">
-      Renderless Event
-    </h3>
+  <div>
     <event />
 
-    <h3 class="text-2xl font-bold mt-6 mb-4">
-      Renderless Search
-    </h3>
     <search />
 
-    <h3 class="text-2xl font-bold mt-6 mb-4">
-      Renderless Sort
-    </h3>
     <sort />
 
-    <h3 class="text-2xl font-bold mt-6 mb-4">
-      Renderless Toggle
-    </h3>
     <toggle />
   </div>
 </template>
