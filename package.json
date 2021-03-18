@@ -44,6 +44,7 @@
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
+    "eslint-plugin-jest": "^24.3.2",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "^6.2.2",
     "jest-coverage-badges": "^1.1.2",
