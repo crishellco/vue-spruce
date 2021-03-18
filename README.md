@@ -9,6 +9,8 @@
 
 A collection of useful Vue renderless components.
 
+Check out the [demo](https://vue-renderless-party.netlify.app/)
+
 ## Install
 
 ```bash
