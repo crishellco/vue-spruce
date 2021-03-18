@@ -8,7 +8,7 @@
     "dist/"
   ],
   "scripts": {
-    "serve": "vue-cli-service serve src/demo/index.js",
+    "serve": "vue-cli-service serve src/demo/index.js --open",
     "build": "vue-cli-service build --target lib src/index.js",
     "build:demo": "vue-cli-service build src/demo/index.js --dest dist-demo",
     "test": "yarn test:unit && jest-coverage-badges output badges",
