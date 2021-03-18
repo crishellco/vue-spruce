@@ -5,18 +5,10 @@
         Spruce Sort
       </h3>
       <div>
-        <spruce-state :value="{ direction: 'asc', by: columns[0] }">
+        <spruce-state :value="{ direction: 'asc', by: columns[0] }" root>
           <template slot-scope="{ state, update }">
-            <spruce-sort
-              :list="people"
-              :by="state.by"
-              :direction="state.direction"
-            >
-              <div
-                slot-scope="{ results }"
-                class="w-full overflow-auto text-xs"
-                style="height: 54rem"
-              >
+            <spruce-sort :list="people" :by="state.by" :direction="state.direction">
+              <div slot-scope="{ results }" class="w-full overflow-auto text-xs" style="height: 46rem">
                 <table class="w-full mt-4">
                   <thead>
                     <tr class="text-bold text-left">
@@ -24,31 +16,26 @@
                         v-for="col in columns"
                         :key="col"
                         class="cursor-pointer"
-                        @click="() => {
-                          if(state.by === col) {
-                            update({direction: state.direction === 'desc' ? 'asc' : 'desc'})
-                          } else {
-                            update({by: col})
+                        @click="
+                          () => {
+                            if (state.by === col) {
+                              update({ direction: state.direction === 'desc' ? 'asc' : 'desc' });
+                            } else {
+                              update({ by: col });
+                            }
                           }
-                        }"
+                        "
                       >
                         <span>{{ col }}</span>
-                        <span
-                          class="ml-2"
-                          :class="{'opacity-0': state.by !== col}"
-                        >{{ state.direction === 'asc' ? '▲' : '▼' }}</span>
+                        <span class="ml-2" :class="{ 'opacity-0': state.by !== col }">{{
+                          state.direction === 'asc' ? '▲' : '▼'
+                        }}</span>
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr
-                      v-for="(result, index) in results"
-                      :key="index"
-                    >
-                      <td
-                        v-for="col in columns"
-                        :key="col"
-                      >
+                    <tr v-for="(result, index) in results" :key="index">
+                      <td v-for="col in columns" :key="col">
                         {{ result[col] }}
                       </td>
                     </tr>
@@ -62,7 +49,7 @@
     </div>
     <div class="flex-1 w-1/2 overflow-hidden border-b border-gray-600">
       <pre class="whitespace-pre flex-1 flex flex-col w-full overflow-auto bg-gray-700 p-4">
-        <code class="block text-xs font-mono text-white flex flex-1">{{ code }}</code>
+        <code class="block text-sm font-mono text-white flex flex-1">{{ code }}</code>
       </pre>
     </div>
   </div>
@@ -71,6 +58,7 @@
 <script>
 import { SpruceSort, SpruceState } from '../../components';
 import { people } from '../fixtures';
+import code from './Sort.gist';
 
 export default {
   components: {
@@ -81,61 +69,7 @@ export default {
   data() {
     return {
       columns: Object.keys(people[0]),
-      code: `
-<spruce-state :value="{ direction: 'asc', by: columns[0] }">
-  <template slot-scope="{ state, update }">
-    <spruce-sort
-      :list="people"
-      :by="state.by"
-      :direction="state.direction"
-    >
-      <div
-        slot-scope="{ results }"
-        class="w-full overflow-auto text-xs"
-        style="height: 54rem"
-      >
-        <table class="w-full mt-4">
-          <thead>
-            <tr class="text-bold text-left">
-              <th
-                v-for="col in columns"
-                :key="col"
-                class="cursor-pointer"
-                @click="() => {
-                  if(state.by === col) {
-                    update({direction: state.direction === 'desc' ? 'asc' : 'desc'})
-                  } else {
-                    update({by: col})
-                  }
-                }"
-              >
-                <span>{{ col }}</span>
-                <span
-                  class="ml-2"
-                  :class="{'opacity-0': state.by !== col}"
-                >{{ state.direction === 'asc' ? '▲' : '▼' }}</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr
-              v-for="(result, index) in results"
-              :key="index"
-            >
-              <td
-                v-for="col in columns"
-                :key="col"
-              >
-                {{ result[col] }}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </spruce-sort>
-  </template>
-</spruce-state>
-    `.trim(),
+      code,
       people,
     };
   },

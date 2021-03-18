@@ -4,22 +4,17 @@
       <h3 class="text-2xl font-bold mb-4">
         Spruce Toggle
       </h3>
-      <spruce-toggle>
-        <div
-          slot-scope="{ isOn, toggle }"
-          class="w-1/2"
-        >
+      <spruce-toggle root>
+        <div slot-scope="{ isOn, toggle }" class="w-1/2">
           <div class="bg-gray-400 rounded-t flex items-center">
             <span class="flex-1 p-4">Accordion</span>
             <span
               class="flex-none cursor-pointer mr-2 w-8 h-8 text-lg  hover:bg-gray-500  leading-none rounded flex items-center justify-center"
               @click="toggle"
-            >{{ isOn ? '▲' : '▼' }}</span>
+              >{{ isOn ? '▲' : '▼' }}</span
+            >
           </div>
-          <div
-            v-if="isOn"
-            class="border rounded-b p-4"
-          >
+          <div v-if="isOn" class="border rounded-b p-4">
             content
           </div>
         </div>
@@ -27,7 +22,7 @@
     </div>
     <div class="flex-1 w-1/2 overflow-hidden border-b border-gray-600">
       <pre class="whitespace-pre flex-1 flex flex-col w-full overflow-auto bg-gray-700 p-4">
-        <code class="block text-xs font-mono text-white flex flex-1">{{ code }}</code>
+        <code class="block text-sm font-mono text-white flex flex-1">{{ code }}</code>
       </pre>
     </div>
   </div>
@@ -35,6 +30,7 @@
 
 <script>
 import { SpruceToggle } from '../../components';
+import code from './Toggle.gist';
 
 export default {
   components: {
@@ -43,28 +39,7 @@ export default {
 
   data() {
     return {
-      code: `
-<spruce-toggle>
-  <div
-    slot-scope="{ isOn, toggle }"
-    class="w-1/2"
-  >
-    <div class="bg-gray-400 rounded-t flex items-center">
-      <span class="flex-1 p-4">Accordion</span>
-      <span
-        class="flex-none cursor-pointer mr-2 w-8 h-8 text-lg  hover:bg-gray-500  leading-none rounded flex items-center justify-center"
-        @click="toggle"
-      >{{ isOn ? '▲' : '▼' }}</span>
-    </div>
-    <div
-      v-if="isOn"
-      class="border rounded-b p-4"
-    >
-      content
-    </div>
-  </div>
-</spruce-toggle>
-  `.trim(),
+      code,
     };
   },
 };

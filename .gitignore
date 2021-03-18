@@ -2,7 +2,8 @@
 node_modules
 /dist
 /dist-demo
-
+coverage
+*.gist
 
 # local env files
 .env.local

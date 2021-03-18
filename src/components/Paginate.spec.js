@@ -39,6 +39,9 @@ describe('Paginate', () => {
     expect(wrapper.vm.rangeStart).toBe(49);
     expect(wrapper.vm.rangeEnd).toBe(50);
 
+    wrapper.vm.first();
+    expect(wrapper.vm.pageNum).toBe(1);
+
     await wrapper.setProps({
       list: [],
     });
@@ -49,10 +52,7 @@ describe('Paginate', () => {
       list: people,
     });
 
-    wrapper.vm.next();
-    wrapper.vm.next();
-    wrapper.vm.next();
-    wrapper.vm.next();
+    wrapper.vm.last();
     wrapper.vm.next();
 
     expect(wrapper.vm.pageIndex).toBe(4);
@@ -70,5 +70,8 @@ describe('Paginate', () => {
     wrapper.vm.prev();
 
     expect(wrapper.vm.pageIndex).toBe(0);
+
+    wrapper.vm.go(Math.round(wrapper.vm.pages.length / 2));
+    expect(wrapper.vm.links).toEqual([1, '...', 3, 4, 5, 6, 7, '...', 10]);
   });
 });

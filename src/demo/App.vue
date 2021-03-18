@@ -13,6 +13,8 @@
     <state />
 
     <toggle />
+
+    <template src="./components/Event.vue" />
   </div>
 </template>
 
@@ -29,11 +31,3 @@ export default {
   components: { Event, Function, Paginate, Toggle, Sort, State, Search },
 };
 </script>
-
-<style>
-pre[class*='language-'] {
-  margin-top: 0;
-  height: 30rem;
-  width: 100%;
-}
-</style>

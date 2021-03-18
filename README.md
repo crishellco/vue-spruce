@@ -160,18 +160,23 @@ Paginate an array and navigate through it's chunks.
 
 #### Slot Scope
 
-| Name         | Description                   | Type     |
-|--------------|-------------------------------|----------|
-| `isFirst`    | If currently on first page    | Boolean  |
-| `isLast`     | If currently on last page     | Boolean  |
-| `next`       | Go to next page               | Function |
-| `page`       | The current page              | any      |
-| `pageNum`    | The current page number       | Number   |
-| `prev`       | Go to previous page           | Function |
-| `rangeEnd`   | The end of the current page   | Number   |
-| `rangeStart` | The start of the current page | Number   |
-| `reset`      | Reset the state of pagination | Function |
-| `totalPages` | Total number of pages         | Number   |
+| Name         | Description                                                                                   | Type     |
+|--------------|-----------------------------------------------------------------------------------------------|----------|
+| `first`      | Go to first page                                                                              | Function |
+| `go`         | Go to specific page                                                                           | Function |
+| `isFirst`    | If currently on first page                                                                    | Boolean  |
+| `isLast`     | If currently on last page                                                                     | Boolean  |
+| `last`       | Go to last page                                                                               | Function |
+| `next`       | Go to next page                                                                               | Function |
+| `page`       | The current page                                                                              | any      |
+| `pages`      | The chunked pages                                                                             | Array    |
+| `links`      | A calculated array of specific page numbers that can be used for links `[1, 2, 3, '...', 40]` | Array    |
+| `pageNum`    | The current page number                                                                       | Number   |
+| `prev`       | Go to previous page                                                                           | Function |
+| `rangeEnd`   | The end of the current page                                                                   | Number   |
+| `rangeStart` | The start of the current page                                                                 | Number   |
+| `reset`      | Reset the state of pagination                                                                 | Function |
+| `totalPages` | Total number of pages                                                                         | Number   |
 
 
 ### `SpruceSearch`

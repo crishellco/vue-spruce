@@ -10,7 +10,7 @@ export default {
 
   render() {
     return this.$scopedSlots.default({
-      fn: this.fn
+      fn: this.fn,
     });
   },
 };
