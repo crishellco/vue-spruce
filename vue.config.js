@@ -9,11 +9,8 @@ module.exports = {
   },
 
   configureWebpack: {
-    optimization: {
-      splitChunks: {
-        chunks: 'all',
-      },
-    },
+    mode: 'production',
+    optimization: {},
   },
 
   css: {
