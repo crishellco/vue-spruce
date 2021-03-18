@@ -22,7 +22,7 @@ describe('Sort', () => {
     });
   });
   it('should call the function', async () => {
-    await wrapper.find('button'); //.trigger('click');
+    await wrapper.find('button').trigger('click');
     expect(fn).toHaveBeenCalled();
   });
 });

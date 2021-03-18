@@ -54,7 +54,7 @@
   },
   "gitHooks": {
     "pre-commit": "lint-staged",
-    "pre-push": ""
+    "pre-push": "yarn test:unit --coverage=false"
   },
   "lint-staged": {
     "*.{js,jsx,vue}": [
