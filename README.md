@@ -193,28 +193,26 @@ Create reusable functions on the fly (great for lists!).
 Paginate an array and navigate through it's chunks.
 
 ```javascript
-<div v-for="num in 10">
-  <spruce-paginate :list="states" :size="15">
-    <div slot-scope="{ page, next, prev, pageNum, totalPages, isFirst, isLast, rangeStart, rangeEnd }">
-      <button
-        :disabled="isFirst"
-        @click="prev"
-      >
-        prev
-      </button>
-      <div class="px-4 flex flex-col items-center">
-        <div>Page: {{ pageNum }}/{{ totalPages }}</div>
-        <div>Showing: {{ rangeStart }} - {{ rangeEnd }} of {{ states.length }}</div>
-      </div>
-      <button
-        :disabled="isLast"
-        @click="next"
-      >
-        next
-      </button>
+<spruce-paginate :list="states" :size="15">
+  <div slot-scope="{ page, next, prev, pageNum, totalPages, isFirst, isLast, rangeStart, rangeEnd }">
+    <button
+      :disabled="isFirst"
+      @click="prev"
+    >
+      prev
+    </button>
+    <div class="px-4 flex flex-col items-center">
+      <div>Page: {{ pageNum }}/{{ totalPages }}</div>
+      <div>Showing: {{ rangeStart }} - {{ rangeEnd }} of {{ states.length }}</div>
     </div>
-  </spruce-paginate>
-</div>
+    <button
+      :disabled="isLast"
+      @click="next"
+    >
+      next
+    </button>
+  </div>
+</spruce-paginate>
 ```
 
 #### Props
