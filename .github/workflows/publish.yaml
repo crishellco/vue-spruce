@@ -1,9 +1,12 @@
 name: Publish
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Build"]
     branches:
       - master
+    types:
+      - completed
 
 jobs:
   publish:
