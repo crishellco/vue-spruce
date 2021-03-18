@@ -27,17 +27,17 @@ export default {
       const slot = this.$slots.default?.[0];
 
       /* istanbul ignore next */
-      if (!slot) {
-        return this.$emit(this.event);
+      if (!slot || e.target === window) {
+        return this.$emit(this.event, e);
       }
 
       /* istanbul ignore next */
       if (this.outside) {
-        return !slot?.elm?.contains(e.target) && this.$emit(this.event);
+        return !slot?.elm?.contains(e.target) && this.$emit(this.event, e);
       }
 
       /* istanbul ignore next */
-      slot?.elm?.contains(e.target) && this.$emit(this.event);
+      slot?.elm?.contains(e.target) && this.$emit(this.event, e);
     },
   },
 

@@ -32,6 +32,17 @@
             </div>
           </spruce-state>
         </div>
+
+        <div class="ml-4">
+          <spruce-state :value="{ width: 0 }">
+            <div slot-scope="{ state, update }">
+              <spruce-event event="resize" @resize="update({ width: $event.target.window.innerWidth })" />
+              <button class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64">
+                resize the window ({{ state.width }})
+              </button>
+            </div>
+          </spruce-state>
+        </div>
       </div>
     </div>
     <div class="flex-1 w-1/2 overflow-hidden border-b border-gray-600">

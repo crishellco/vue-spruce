@@ -9,17 +9,17 @@ A collection of useful Vue renderless components.
 Check out the [demo](https://vue-spruce.netlify.app/)
 
 - [Install](#install)
-  * [Package](#package)
-  * [Vue Plugin](#vue-plugin)
-  * [Named Imports](#named-imports)
+  - [Package](#package)
+  - [Vue Plugin](#vue-plugin)
+  - [Named Imports](#named-imports)
 - [The Components](#the-components)
-  * [`SpruceEvent`](#-spruceevent-)
-  * [`SpruceFunction`](#-sprucefunction-)
-  * [`SprucePaginate`](#-sprucepaginate-)
-  * [`SpruceSearch`](#-sprucesearch-)
-  * [`SpruceSort`](#-sprucesort-)
-  * [`SpruceState`](#-sprucestate-)
-  * [`SpruceToggle`](#-sprucetoggle-)
+  - [`SpruceEvent`](#-spruceevent-)
+  - [`SpruceFunction`](#-sprucefunction-)
+  - [`SprucePaginate`](#-sprucepaginate-)
+  - [`SpruceSearch`](#-sprucesearch-)
+  - [`SpruceSort`](#-sprucesort-)
+  - [`SpruceState`](#-sprucestate-)
+  - [`SpruceToggle`](#-sprucetoggle-)
 - [Examples](#examples)
 - [Development](#development)
 - [How to Contribute](#how-to-contribute)
@@ -34,6 +34,7 @@ yarn add -D @crishellco/vue-spruce
 # or
 npm i -D @crishellco/vue-spruce
 ```
+
 ### Vue Plugin
 
 Installs all components globally.
@@ -44,6 +45,7 @@ import VueSpruce from '@crishellco/vue-spruce';
 
 Vue.use(VueSpruce);
 ```
+
 ### Named Imports
 
 Alternatively, use only the components you need.
@@ -56,7 +58,7 @@ import {
   SpruceSearch,
   SpruceSort,
   SpruceState,
-  SpruceToggle
+  SpruceToggle,
 } from '@crishellco/vue-spruce';
 
 export default {
@@ -67,8 +69,8 @@ export default {
     SpruceSearch,
     SpruceSort,
     SpruceState,
-    SpruceToggle
-  }
+    SpruceToggle,
+  },
 };
 ```
 
@@ -86,19 +88,25 @@ Track any `window` event occurance inside or outside of `SpruceEvent`'s default 
   <button>Hover over me!</button>
 </spruce-event>
 ```
+
 #### Props
 
 | Name      | Description                                                   | Type    | Required | Default |
-|-----------|---------------------------------------------------------------|---------|----------|---------|
+| --------- | ------------------------------------------------------------- | ------- | -------- | ------- |
 | `event`   | The event to listen to                                        | String  | Yes      |         |
 | `outside` | Listen for the even only outside of the default slot elements | Boolean | No       | `false` |
-
 
 #### Events
 
 | Name                       | Description                   | Payload |
-|----------------------------|-------------------------------|---------|
+| -------------------------- | ----------------------------- | ------- |
 | _Same as the `event` prop_ | Fired when the event happens. | --      |
+
+#### Slots
+
+| Name      | Required |
+| --------- | -------- |
+| `default` | No       |
 
 ### `SpruceFunction`
 
@@ -111,17 +119,24 @@ Create reusable functions on the fly (great for lists!).
   </spruce-function>
 </div>
 ```
+
 #### Props
 
 | Name | Description  | Type     | Required | Default |
-|------|--------------|----------|----------|---------|
+| ---- | ------------ | -------- | -------- | ------- |
 | `fn` | The function | Function | Yes      |         |
+
+#### Slots
+
+| Name      | Required |
+| --------- | -------- |
+| `default` | Yes      |
 
 #### Slot Scope
 
-| Name | Description  | Type     |
-|------|--------------|----------|
-| `fn` | The function | function |
+| Slot      | Name | Description  | Type     |
+| --------- | ---- | ------------ | -------- |
+| `default` | `fn` | The function | function |
 
 ### `SprucePaginate`
 
@@ -151,33 +166,39 @@ Paginate an array and navigate through it's chunks.
   </spruce-paginate>
 </div>
 ```
+
 #### Props
 
 | Name   | Description           | Type       | Required | Default |
-|--------|-----------------------|------------|----------|---------|
+| ------ | --------------------- | ---------- | -------- | ------- |
 | `size` | Page size             | Number     | Yes      |         |
 | `list` | The items to paginate | Array<any> | Yes      |         |
 
+#### Slots
+
+| Name      | Required |
+| --------- | -------- |
+| `default` | Yes      |
+
 #### Slot Scope
 
-| Name         | Description                                                                                   | Type     |
-|--------------|-----------------------------------------------------------------------------------------------|----------|
-| `first`      | Go to first page                                                                              | Function |
-| `go`         | Go to specific page                                                                           | Function |
-| `isFirst`    | If currently on first page                                                                    | Boolean  |
-| `isLast`     | If currently on last page                                                                     | Boolean  |
-| `last`       | Go to last page                                                                               | Function |
-| `next`       | Go to next page                                                                               | Function |
-| `page`       | The current page                                                                              | any      |
-| `pages`      | The chunked pages                                                                             | Array    |
-| `links`      | A calculated array of specific page numbers that can be used for links `[1, 2, 3, '...', 40]` | Array    |
-| `pageNum`    | The current page number                                                                       | Number   |
-| `prev`       | Go to previous page                                                                           | Function |
-| `rangeEnd`   | The end of the current page                                                                   | Number   |
-| `rangeStart` | The start of the current page                                                                 | Number   |
-| `reset`      | Reset the state of pagination                                                                 | Function |
-| `totalPages` | Total number of pages                                                                         | Number   |
-
+| Slot      | Name         | Description                                                                                   | Type     |
+| --------- | ------------ | --------------------------------------------------------------------------------------------- | -------- |
+| `default` | `first`      | Go to first page                                                                              | Function |
+| `default` | `go`         | Go to specific page                                                                           | Function |
+| `default` | `isFirst`    | If currently on first page                                                                    | Boolean  |
+| `default` | `isLast`     | If currently on last page                                                                     | Boolean  |
+| `default` | `last`       | Go to last page                                                                               | Function |
+| `default` | `next`       | Go to next page                                                                               | Function |
+| `default` | `page`       | The current page                                                                              | any      |
+| `default` | `pages`      | The chunked pages                                                                             | Array    |
+| `default` | `links`      | A calculated array of specific page numbers that can be used for links `[1, 2, 3, '...', 40]` | Array    |
+| `default` | `pageNum`    | The current page number                                                                       | Number   |
+| `default` | `prev`       | Go to previous page                                                                           | Function |
+| `default` | `rangeEnd`   | The end of the current page                                                                   | Number   |
+| `default` | `rangeStart` | The start of the current page                                                                 | Number   |
+| `default` | `reset`      | Reset the state of pagination                                                                 | Function |
+| `default` | `totalPages` | Total number of pages                                                                         | Number   |
 
 ### `SpruceSearch`
 
@@ -192,19 +213,26 @@ Search an array of strings or objects by keys using [fuse.js](https://fusejs.io/
   </div>
 </spruce-search>
 ```
+
 #### Props
 
 | Name   | Description             | Type                  | Required | Default                                                                         |
-|--------|-------------------------|-----------------------|----------|---------------------------------------------------------------------------------|
+| ------ | ----------------------- | --------------------- | -------- | ------------------------------------------------------------------------------- |
 | `keys` | The keys to search in   | Array<String>         | No       | If `list` is Array<Object> then all of the first object's keys. Otherwise `[]`. |
 | `list` | The list to search      | Array<String, Object> | Yes      |                                                                                 |
 | `term` | The terms to search for | String                | No       | ''                                                                              |
 
+#### Slots
+
+| Name      | Required |
+| --------- | -------- |
+| `default` | Yes      |
+
 #### Slot Scope
 
-| Name      | Description       | Type                  |
-|-----------|-------------------|-----------------------|
-| `results` | The searched list | Array<String, Object> |
+| Slot      | Name      | Description       | Type                  |
+| --------- | --------- | ----------------- | --------------------- |
+| `default` | `results` | The searched list | Array<String, Object> |
 
 ### `SpruceSort`
 
@@ -219,13 +247,26 @@ Sort an array of strings or objects in either direction by specific keys.
   </div>
 </spruce-sort>
 ```
+
 #### Props
 
 | Name        | Description                               | Type       | Required | Default |
-|-------------|-------------------------------------------|------------|----------|---------|
+| ----------- | ----------------------------------------- | ---------- | -------- | ------- |
 | `list`      | The list to search                        | Array<any> | Yes      |         |
 | `direction` | The direction to sort in, 'asc' or 'desc' | String     | No       | 'asc'   |
 | `by`        | The object property to sort by            | String     | No       | ''      |
+
+#### Slots
+
+| Name      | Required |
+| --------- | -------- |
+| `default` | Yes      |
+
+#### Slot Scope
+
+| Slot      | Name      | Description       | Type                  |
+| --------- | --------- | ----------------- | --------------------- |
+| `default` | `results` | The searched list | Array<String, Object> |
 
 ### `SpruceState`
 
@@ -240,25 +281,31 @@ Create and manage localized state.
   </div>
 </spruce-state>
 ```
+
 #### Props
 
 | Name    | Description      | Type   | Required | Default |
-|---------|------------------|--------|----------|---------|
+| ------- | ---------------- | ------ | -------- | ------- |
 | `value` | The state object | Object | Yes      |         |
-
-#### Slot Scope
-
-| Name               | Description                                | Type     |
-|--------------------|--------------------------------------------|----------|
-| `state`            | The state                                  | Object   |
-| `update(newValue)` | Merges `newValue` with the current `state` | Function |
 
 #### Events
 
-
 | Name    | Description              | Payload |
-|---------|--------------------------|---------|
+| ------- | ------------------------ | ------- |
 | `input` | Fired when state updates | `state` |
+
+#### Slots
+
+| Name      | Required |
+| --------- | -------- |
+| `default` | Yes      |
+
+#### Slot Scope
+
+| Slot      | Name               | Description                                | Type     |
+| --------- | ------------------ | ------------------------------------------ | -------- |
+| `default` | `state`            | The state                                  | Object   |
+| `default` | `update(newValue)` | Merges `newValue` with the current `state` | Function |
 
 ### `SpruceToggle`
 
@@ -281,26 +328,33 @@ Toggle between on (`true`) and off (`false`).
   </div>
 </spruce-toggle>
 ```
+
 #### Props
 
 | Name    | Description             | Type    | Required | Default |
-|---------|-------------------------|---------|----------|---------|
+| ------- | ----------------------- | ------- | -------- | ------- |
 | `value` | The state of the toggle | Boolean | No       | `False` |
-
-#### Slot Scope
-
-| Name       | Description             | Type     |
-|------------|-------------------------|----------|
-| `isOn`     | The state of the toggle | Boolean  |
-| `on()`     | Sets `isOn` to `true`   | Function |
-| `off()`    | Sets `isOn` to `false`  | Function |
-| `toggle()` | Toggles `isOn`          | Function |
 
 #### Events
 
 | Name    | Description               | Payload |
-|---------|---------------------------|---------|
+| ------- | ------------------------- | ------- |
 | `input` | Fired when `isOn` updates | `isOn`  |
+
+#### Slots
+
+| Name      | Required |
+| --------- | -------- |
+| `default` | Yes      |
+
+#### Slot Scope
+
+| Slot      | Name       | Description             | Type     |
+| --------- | ---------- | ----------------------- | -------- |
+| `default` | `isOn`     | The state of the toggle | Boolean  |
+| `default` | `on()`     | Sets `isOn` to `true`   | Function |
+| `default` | `off()`    | Sets `isOn` to `false`  | Function |
+| `default` | `toggle()` | Toggles `isOn`          | Function |
 
 ## Examples
 
