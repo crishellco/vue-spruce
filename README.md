@@ -83,7 +83,7 @@ export default {
 
 Make asynchronous API calls.
 
-```javascript
+```html
 <spruce-crud url="api.google.com/users" method="get">
   <div slot-scope="{ loading, data, error, fetch }">
     <loading-indicator v-if="loading" />
@@ -130,7 +130,7 @@ Make asynchronous API calls.
 
 Track any `window` event occurance inside or outside of `SpruceEvent`'s default slot.
 
-```javascript
+```html
 <spruce-event
   event="mouseover"
   @mouseover="someMethod"
@@ -162,7 +162,7 @@ Track any `window` event occurance inside or outside of `SpruceEvent`'s default 
 
 Create reusable functions on the fly (great for lists!).
 
-```javascript
+```html
 <div v-for="num in 10">
   <spruce-function :fn="() => alert(num)">
     <button slot-scope="{ fn }" @click="fn">Click me!</button>
@@ -192,7 +192,7 @@ Create reusable functions on the fly (great for lists!).
 
 Paginate an array and navigate through it's chunks.
 
-```javascript
+```html
 <spruce-paginate :list="states" :size="15">
   <div slot-scope="{ page, next, prev, pageNum, totalPages, isFirst, isLast, rangeStart, rangeEnd }">
     <button
@@ -252,7 +252,7 @@ Paginate an array and navigate through it's chunks.
 
 Search an array of strings or objects by keys using [fuse.js](https://fusejs.io/).
 
-```javascript
+```html
 <spruce-search :list="states" :term="term" :keys="['name', 'email']">
   <div slot-scope="{ results }">
     <div v-for="(item, index) in results" :key="index">
@@ -286,7 +286,7 @@ Search an array of strings or objects by keys using [fuse.js](https://fusejs.io/
 
 Sort an array of strings or objects in either direction by specific keys.
 
-```javascript
+```html
 <spruce-sort :list="people" :by="by" :direction="direction" >
   <div slot-scope="{ results }">
       <div v-for="(item, index) in results" :key="index">
@@ -320,7 +320,7 @@ Sort an array of strings or objects in either direction by specific keys.
 
 Create and manage localized state.
 
-```javascript
+```html
 <spruce-state :value="{ count: 0 }">
   <div slot-scope="{ state, update }">
     <button @click="update({count: state.count + 1})">
@@ -359,7 +359,7 @@ Create and manage localized state.
 
 Toggle between on (`true`) and off (`false`).
 
-```javascript
+```html
 <spruce-toggle :value="true">
   <div slot-scope="{ isOn, on, off, toggle }">
     <div>
