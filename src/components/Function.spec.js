@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils';
 
-import { RenderlessFunction } from './';
+import { SpruceFunction } from './';
 
 let fn;
 let wrapper;
@@ -10,11 +10,11 @@ describe('Function', () => {
     fn = jest.fn();
 
     wrapper = mount({
-      components: { RenderlessFunction },
+      components: { SpruceFunction },
       template: `
-<renderless-function :fn="theFn">
+<spruce-function :fn="theFn">
   <button slot-scope="{ fn }" @click="fn">btn</button>
-</renderless-function>
+</spruce-function>
       `,
       methods: {
         theFn: fn,

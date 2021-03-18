@@ -1,29 +1,21 @@
 import {
-  RenderlessEvent,
-  RenderlessFunction,
-  RenderlessPaginate,
-  RenderlessSearch,
-  RenderlessSort,
-  RenderlessState,
-  RenderlessToggle,
+  SpruceEvent,
+  SpruceFunction,
+  SprucePaginate,
+  SpruceSearch,
+  SpruceSort,
+  SpruceState,
+  SpruceToggle,
 } from './components';
 
-export {
-  RenderlessEvent,
-  RenderlessFunction,
-  RenderlessPaginate,
-  RenderlessSearch,
-  RenderlessSort,
-  RenderlessState,
-  RenderlessToggle,
-};
+export { SpruceEvent, SpruceFunction, SprucePaginate, SpruceSearch, SpruceSort, SpruceState, SpruceToggle };
 
 export default function install(Vue) {
-  Vue.component('renderless-event', RenderlessEvent);
-  Vue.component('renderless-function', RenderlessFunction);
-  Vue.component('renderless-paginate', RenderlessPaginate);
-  Vue.component('renderless-search', RenderlessSearch);
-  Vue.component('renderless-sort', RenderlessSort);
-  Vue.component('renderless-state', RenderlessState);
-  Vue.component('renderless-toggle', RenderlessToggle);
+  Vue.component('spruce-event', SpruceEvent);
+  Vue.component('spruce-function', SpruceFunction);
+  Vue.component('spruce-paginate', SprucePaginate);
+  Vue.component('spruce-search', SpruceSearch);
+  Vue.component('spruce-sort', SpruceSort);
+  Vue.component('spruce-state', SpruceState);
+  Vue.component('spruce-toggle', SpruceToggle);
 }

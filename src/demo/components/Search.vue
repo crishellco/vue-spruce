@@ -2,10 +2,10 @@
   <div class="flex">
     <div class="flex-1 p-4 w-1/2 border-b border-gray-400">
       <h3 class="text-2xl font-bold mb-4">
-        Renderless Search
+        Spruce Search
       </h3>
       <div>
-        <renderless-state :value="{ term: '' }">
+        <spruce-state :value="{ term: '' }">
           <div slot-scope="{ state, update }">
             <input
               :value="state.term"
@@ -14,7 +14,7 @@
               placeholder="search"
               @input="update({ term: $event.target.value })"
             >
-            <renderless-search
+            <spruce-search
               :list="states"
               :term="state.term"
             >
@@ -41,9 +41,9 @@
                   </tbody>
                 </table>
               </div>
-            </renderless-search>
+            </spruce-search>
           </div>
-        </renderless-state>
+        </spruce-state>
       </div>
     </div>
     <div class="flex-1 w-1/2 overflow-hidden border-b border-gray-600">
@@ -55,16 +55,16 @@
 </template>
 
 <script>
-import { RenderlessSearch, RenderlessState } from '../../components';
+import { SpruceSearch, SpruceState } from '../../components';
 import { states } from '../fixtures';
 
 export default {
-  components: { RenderlessSearch, RenderlessState },
+  components: { SpruceSearch, SpruceState },
 
   data() {
     return {
       code: `
-<renderless-state :value="{ term: '' }">
+<spruce-state :value="{ term: '' }">
   <div slot-scope="{ state, update }">
     <input
       :value="state.term"
@@ -73,7 +73,7 @@ export default {
       placeholder="search"
       @input="update({ term: $event.target.value })"
     >
-    <renderless-search
+    <spruce-search
       :list="states"
       :term="state.term"
     >
@@ -100,9 +100,9 @@ export default {
           </tbody>
         </table>
       </div>
-    </renderless-search>
+    </spruce-search>
   </div>
-</renderless-state>
+</spruce-state>
       `.trim(),
       states,
     };

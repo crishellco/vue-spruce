@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { RenderlessEvent } from './';
+import { SpruceEvent } from './';
 
 let wrapper;
 
 describe('Event', () => {
   beforeEach(() => {
-    wrapper = shallowMount(RenderlessEvent, {
+    wrapper = shallowMount(SpruceEvent, {
       propsData: {
         event: 'click',
       },

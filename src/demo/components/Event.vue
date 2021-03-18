@@ -2,30 +2,30 @@
   <div class="flex">
     <div class="flex-1 w-1/2 p-4 border-b border-gray-400">
       <h3 class="text-2xl font-bold mb-4">
-        Renderless Event
+        Spruce Event
       </h3>
       <div class="flex">
         <div>
-          <renderless-state :value="{ count: 0 }">
+          <spruce-state :value="{ count: 0 }">
             <template
               slot-scope="{ state, update }"
             >
-              <renderless-event
+              <spruce-event
                 event="mouseover"
                 @mouseover="update({ count: state.count + 1 })"
               >
                 <button class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64">
                   hover over me ({{ state.count }})
                 </button>
-              </renderless-event>
+              </spruce-event>
             </template>
-          </renderless-state>
+          </spruce-state>
         </div>
 
         <div class="ml-4">
-          <renderless-state :value="{ count: 0 }">
+          <spruce-state :value="{ count: 0 }">
             <div slot-scope="{ state, update }">
-              <renderless-event
+              <spruce-event
                 event="click"
                 outside
                 @click="update({ count: state.count + 1 })"
@@ -36,9 +36,9 @@
                 >
                   click outside ({{ state.count }})
                 </button>
-              </renderless-event>
+              </spruce-event>
             </div>
-          </renderless-state>
+          </spruce-state>
         </div>
       </div>
     </div>
@@ -51,36 +51,36 @@
 </template>
 
 <script>
-import { RenderlessEvent, RenderlessState } from '../../components';
+import { SpruceEvent, SpruceState } from '../../components';
 
 export default {
-  components: { RenderlessEvent, RenderlessState },
+  components: { SpruceEvent, SpruceState },
 
   data() {
     return {
       code: `
 <div class="flex">
   <div>
-    <renderless-state :value="{ count: 0 }">
+    <spruce-state :value="{ count: 0 }">
       <template
         slot-scope="{ state, update }"
       >
-        <renderless-event
+        <spruce-event
           event="mouseover"
           @mouseover="update({ count: state.count + 1 })"
         >
           <button class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64">
             hover over me ({{ state.count }})
           </button>
-        </renderless-event>
+        </spruce-event>
       </template>
-    </renderless-state>
+    </spruce-state>
   </div>
 
   <div class="ml-4">
-    <renderless-state :value="{ count: 0 }">
+    <spruce-state :value="{ count: 0 }">
       <div slot-scope="{ state, update }">
-        <renderless-event
+        <spruce-event
           event="click"
           outside
           @click="update({ count: state.count + 1 })"
@@ -91,9 +91,9 @@ export default {
           >
             click outside ({{ state.count }})
           </button>
-        </renderless-event>
+        </spruce-event>
       </div>
-    </renderless-state>
+    </spruce-state>
   </div>
 </div>
       `.trim(),

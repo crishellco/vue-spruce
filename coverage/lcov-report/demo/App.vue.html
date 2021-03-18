@@ -14,41 +14,41 @@
         }
     </style>
 </head>
-    
+
 <body>
 <div class='wrapper'>
     <div class='pad1'>
         <h1><a href="../index.html">All files</a> / <a href="index.html">demo</a> App.vue</h1>
         <div class='clearfix'>
-            
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
                 <span class='fraction'>0/3</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>0/0</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>0/1</span>
             </div>
-        
-            
+
+
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
                 <span class='fraction'>0/3</span>
             </div>
-        
-            
+
+
         </div>
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
@@ -517,11 +517,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;div class="p-4"&gt;
     &lt;h3 class="text-2xl font-bold"&gt;
-      Renderless Event
+      Spruce Event
     &lt;/h3&gt;
     &lt;div class="flex border-b pb-4"&gt;
-      &lt;renderless-state :value="{ count: 0 }"&gt;
-        &lt;renderless-event
+      &lt;spruce-state :value="{ count: 0 }"&gt;
+        &lt;spruce-event
           slot-scope="{ state, update }"
           event="mouseover"
           @mouseover="update({ count: state.count + 1 })"
@@ -529,12 +529,12 @@
           &lt;button class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-48"&gt;
             hover over me ({{ state.count }})
           &lt;/button&gt;
-        &lt;/renderless-event&gt;
-      &lt;/renderless-state&gt;
+        &lt;/spruce-event&gt;
+      &lt;/spruce-state&gt;
 &nbsp;
-      &lt;renderless-toggle class="ml-4"&gt;
+      &lt;spruce-toggle class="ml-4"&gt;
         &lt;div slot-scope="{ isOn, off, toggle }"&gt;
-          &lt;renderless-event
+          &lt;spruce-event
             event="click"
             outside
             @click="off"
@@ -558,15 +558,15 @@
                 &gt;Option {{ num }}&lt;/a&gt;
               &lt;/div&gt;
             &lt;/button&gt;
-          &lt;/renderless-event&gt;
+          &lt;/spruce-event&gt;
         &lt;/div&gt;
-      &lt;/renderless-toggle&gt;
+      &lt;/spruce-toggle&gt;
     &lt;/div&gt;
 &nbsp;
     &lt;h3 class="text-2xl font-bold mt-6"&gt;
-      Renderless Search
+      Spruce Search
     &lt;/h3&gt;
-    &lt;renderless-state
+    &lt;spruce-state
       :value="{ term: '' }"
       class=" border-b pb-4"
     &gt;
@@ -578,7 +578,7 @@
           placeholder="search"
           @input="update({ term: $event.target.value })"
         &gt;
-        &lt;renderless-search
+        &lt;spruce-search
           :list="states"
           :term="state.term"
         &gt;
@@ -595,15 +595,15 @@
               &lt;/div&gt;
             &lt;/div&gt;
           &lt;/div&gt;
-        &lt;/renderless-search&gt;
+        &lt;/spruce-search&gt;
       &lt;/div&gt;
-    &lt;/renderless-state&gt;
+    &lt;/spruce-state&gt;
 &nbsp;
     &lt;h3 class="text-2xl font-bold mt-6"&gt;
-      Renderless Sort
+      Spruce Sort
     &lt;/h3&gt;
 &nbsp;
-    &lt;renderless-state
+    &lt;spruce-state
       :value="{ direction: 'asc', by: 'first_name' }"
       class=" border-b pb-4"
     &gt;
@@ -623,9 +623,9 @@
           &gt;
             desc
           &lt;/button&gt;
-          &lt;renderless-toggle&gt;
+          &lt;spruce-toggle&gt;
             &lt;div slot-scope="{ isOn, off, toggle }"&gt;
-              &lt;renderless-event
+              &lt;spruce-event
                 event="click"
                 outside
                 @click="off"
@@ -666,9 +666,9 @@
                     &gt;gender&lt;/a&gt;
                   &lt;/div&gt;
                 &lt;/button&gt;
-              &lt;/renderless-event&gt;
+              &lt;/spruce-event&gt;
             &lt;/div&gt;
-          &lt;/renderless-toggle&gt;
+          &lt;/spruce-toggle&gt;
           &lt;!-- &lt;select
             :value="state.by"
             class="border-2 border-transparent bg-gray-400 rounded py-2 px-4"
@@ -680,7 +680,7 @@
             &lt;option&gt;gender&lt;/option&gt;
           &lt;/select&gt; --&gt;
         &lt;/div&gt;
-        &lt;renderless-sort
+        &lt;spruce-sort
           :list="people"
           :by="state.by"
           :direction="state.direction"
@@ -698,15 +698,15 @@
               &lt;/div&gt;
             &lt;/div&gt;
           &lt;/div&gt;
-        &lt;/renderless-sort&gt;
+        &lt;/spruce-sort&gt;
       &lt;/div&gt;
-    &lt;/renderless-state&gt;
+    &lt;/spruce-state&gt;
 &nbsp;
     &lt;h3 class="text-2xl font-bold mt-6"&gt;
-      Renderless Toggle
+      Spruce Toggle
     &lt;/h3&gt;
 &nbsp;
-    &lt;renderless-toggle&gt;
+    &lt;spruce-toggle&gt;
       &lt;div slot-scope="{ isOn, toggle }"&gt;
         &lt;div class="w-1/2"&gt;
           &lt;div class="bg-gray-400 rounded-t flex items-center"&gt;
@@ -724,17 +724,17 @@
           &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-    &lt;/renderless-toggle&gt;
+    &lt;/spruce-toggle&gt;
   &lt;/div&gt;
 &lt;/template&gt;
 &nbsp;
 &lt;script&gt;
-<span class="cstat-no" title="statement not covered" >import { RenderlessEvent, RenderlessSearch, RenderlessSort, RenderlessState, RenderlessToggle } from '../components';</span>
+<span class="cstat-no" title="statement not covered" >import { SpruceEvent, SpruceSearch, SpruceSort, SpruceState, SpruceToggle } from '../components';</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >import { people, states } from './fixtures';</span>
 &nbsp;
 export default {
-  components: { RenderlessEvent, RenderlessSearch, RenderlessSort, RenderlessState, RenderlessToggle },
+  components: { SpruceEvent, SpruceSearch, SpruceSort, SpruceState, SpruceToggle },
 &nbsp;
 <span class="fstat-no" title="function not covered" >  data() {</span>
 <span class="cstat-no" title="statement not covered" >    return { people, states };</span>
@@ -763,4 +763,3 @@ export default {
         <script src="../block-navigation.js"></script>
     </body>
 </html>
-    

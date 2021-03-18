@@ -1,9 +1,9 @@
 {
-  "name": "@crishellco/vue-renderless-party",
+  "name": "@crishellco/vue-spruce",
   "version": "0.6.0",
   "author": "Chris Mitchell (@crishellco)",
   "description": "A collection of useful Vue renderless components",
-  "main": "dist/vue-renderless-party.umd.js",
+  "main": "dist/vue-spruce.umd.js",
   "files": [
     "dist/"
   ],
@@ -18,13 +18,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/crishellco/vue-renderless-party.git"
+    "url": "git+https://github.com/crishellco/vue-spruce.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/crishellco/vue-renderless-party/issues"
+    "url": "https://github.com/crishellco/vue-spruce/issues"
   },
-  "homepage": "https://crishellco.github.io/vue-renderless-party/",
+  "homepage": "https://crishellco.github.io/vue-spruce/",
   "publishConfig": {
     "access": "public"
   },

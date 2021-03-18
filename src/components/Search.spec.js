@@ -1,13 +1,13 @@
 import { people } from './../demo/fixtures';
 import { shallowMount } from '@vue/test-utils';
 
-import { RenderlessSearch } from './';
+import { SpruceSearch } from './';
 
 let wrapper;
 
 describe('Search', () => {
   beforeEach(() => {
-    wrapper = shallowMount(RenderlessSearch, {
+    wrapper = shallowMount(SpruceSearch, {
       propsData: {
         list: people,
         term: '',

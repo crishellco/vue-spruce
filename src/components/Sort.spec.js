@@ -1,13 +1,13 @@
 import { people } from './../demo/fixtures';
 import { shallowMount } from '@vue/test-utils';
 
-import { RenderlessSort } from './';
+import { SpruceSort } from './';
 
 let wrapper;
 
 describe('Sort', () => {
   beforeEach(() => {
-    wrapper = shallowMount(RenderlessSort, {
+    wrapper = shallowMount(SpruceSort, {
       propsData: {
         by: 'first_name',
         direction: 'asc',

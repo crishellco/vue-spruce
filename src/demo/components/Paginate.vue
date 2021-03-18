@@ -2,10 +2,10 @@
   <div class="flex">
     <div class="flex-1 p-4 w-1/2 border-b border-gray-400">
       <h3 class="text-2xl font-bold mb-4">
-        Renderless Paginate
+        Spruce Paginate
       </h3>
       <div>
-        <renderless-paginate
+        <spruce-paginate
           :size="12"
           :list="states"
         >
@@ -67,7 +67,7 @@
               </div>
             </div>
           </div>
-        </renderless-paginate>
+        </spruce-paginate>
       </div>
     </div>
     <div class="flex-1 w-1/2 overflow-hidden border-b border-gray-600">
@@ -79,16 +79,16 @@
 </template>
 
 <script>
-import { RenderlessPaginate } from '../../components';
+import { SprucePaginate } from '../../components';
 import { states } from '../fixtures';
 
 export default {
-  components: { RenderlessPaginate },
+  components: { SprucePaginate },
 
   data() {
     return {
       code: `
-<renderless-paginate
+<spruce-paginate
   :size="12"
   :list="states"
 >
@@ -150,7 +150,7 @@ export default {
       </div>
     </div>
   </div>
-</renderless-paginate>
+</spruce-paginate>
       `.trim(),
       states,
     };

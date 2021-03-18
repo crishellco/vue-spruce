@@ -1,7 +1,7 @@
-export { default as RenderlessEvent } from './Event.vue';
-export { default as RenderlessFunction } from './Function.vue';
-export { default as RenderlessPaginate } from './Paginate.vue';
-export { default as RenderlessSearch } from './Search.vue';
-export { default as RenderlessSort } from './Sort.vue';
-export { default as RenderlessState } from './State.vue';
-export { default as RenderlessToggle } from './Toggle.vue';
+export { default as SpruceEvent } from './Event.vue';
+export { default as SpruceFunction } from './Function.vue';
+export { default as SprucePaginate } from './Paginate.vue';
+export { default as SpruceSearch } from './Search.vue';
+export { default as SpruceSort } from './Sort.vue';
+export { default as SpruceState } from './State.vue';
+export { default as SpruceToggle } from './Toggle.vue';

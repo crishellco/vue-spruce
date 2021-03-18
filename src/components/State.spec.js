@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { RenderlessState } from './';
+import { SpruceState } from './';
 
 let wrapper;
 
 describe('State', () => {
   beforeEach(() => {
-    wrapper = shallowMount(RenderlessState, {
+    wrapper = shallowMount(SpruceState, {
       propsData: {
         value: { count: 0, number: 0 },
       },

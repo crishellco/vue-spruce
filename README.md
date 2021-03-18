@@ -1,26 +1,22 @@
-# Vue Renderless Party
+# Vue Spruce Party
 
-![Build](https://github.com/crishellco/vue-renderless-party/workflows/Build/badge.svg)
+![Build](https://github.com/crishellco/vue-spruce/workflows/Build/badge.svg)
 ![](badges/badge-branches.svg)
 ![](badges/badge-functionss.svg)
 ![](badges/badge-lines.svg)
 ![](badges/badge-statements.svg)
-[![Maintainability](https://api.codeclimate.com/v1/badges/e1f2536b9be3c32e6fef/maintainability)](https://codeclimate.com/github/crishellco/vue-renderless-party/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e1f2536b9be3c32e6fef/maintainability)](https://codeclimate.com/github/crishellco/vue-spruce/maintainability)
 
 A collection of useful Vue renderless components.
 
-Check out the [demo](https://vue-renderless-party.netlify.app/)
+Check out the [demo](https://vue-spruce.netlify.app/)
 
 ## Install
 
 ```bash
-yarn add -D @crishellco/vue-renderless-party
+yarn add -D @crishellco/vue-spruce
 # or
-npm i -D @crishellco/vue-renderless-party
-```
-
-```javascript
-import VueHubble from '@crishellco/vue-renderless-party';
+npm i -D @crishellco/vue-spruce
 ```
 
 ## Usage
@@ -29,47 +25,47 @@ import VueHubble from '@crishellco/vue-renderless-party';
 
 ```javascript
 import Vue from 'vue';
-import VueRenderlessParty from '@crishellco/vue-renderless-party';
+import VueSpruce from '@crishellco/vue-spruce';
 
-Vue.use(VueRenderlessParty);
+Vue.use(VueSpruce);
 ```
 #### Named Imports
 
 ```javascript
 import {
-  RenderlessEvent,
-  RenderlessFunction,
-  RenderlessPaginate,
-  RenderlessSearch,
-  RenderlessSort,
-  RenderlessState,
-  RenderlessToggle
-} from '@crishellco/vue-renderless-party';
+  SpruceEvent,
+  SpruceFunction,
+  SprucePaginate,
+  SpruceSearch,
+  SpruceSort,
+  SpruceState,
+  SpruceToggle
+} from '@crishellco/vue-spruce';
 
 export default {
   components: {
-    RenderlessEvent,
-    RenderlessFunction,
-    RenderlessPaginate,
-    RenderlessSearch,
-    RenderlessSort,
-    RenderlessState,
-    RenderlessToggle
+    SpruceEvent,
+    SpruceFunction,
+    SprucePaginate,
+    SpruceSearch,
+    SpruceSort,
+    SpruceState,
+    SpruceToggle
   }
 };
 ```
 
 ### The Components
 
-#### `RenderlessEvent`
+#### `SpruceEvent`
 
 ```javascript
-<renderless-event
+<spruce-event
   event="mouseover"
   @mouseover="someMethod"
 >
   <button>Hover over me!</button>
-</renderless-event>
+</spruce-event>
 ```
 ##### Props
 
@@ -85,13 +81,13 @@ export default {
 |----------------------------|-------------------------------|---------|
 | _Same as the `event` prop_ | Fired when the event happens. | --      |
 
-#### `RenderlessFunction`
+#### `SpruceFunction`
 
 ```javascript
 <div v-for="num in 10">
-  <renderless-function :fn="() => alert(num)">
+  <spruce-function :fn="() => alert(num)">
     <button slot-scope="{ fn }" @click="fn">Click me!</button>
-  </renderless-function>
+  </spruce-function>
 </div>
 ```
 ##### Props
@@ -106,11 +102,11 @@ export default {
 |------|--------------|----------|
 | `fn` | The function | function |
 
-#### `RenderlessPaginate`
+#### `SprucePaginate`
 
 ```javascript
 <div v-for="num in 10">
-  <renderless-paginate :list="states" :size="15">
+  <spruce-paginate :list="states" :size="15">
     <div slot-scope="{ page, next, prev, pageNum, totalPages, isFirst, isLast, rangeStart, rangeEnd }">
       <button
         :disabled="isFirst"
@@ -129,7 +125,7 @@ export default {
         next
       </button>
     </div>
-  </renderless-paginate>
+  </spruce-paginate>
 </div>
 ```
 ##### Props
@@ -155,16 +151,16 @@ export default {
 | `totalPages` | Total number of pages         | Number   |
 
 
-#### `RenderlessSearch`
+#### `SpruceSearch`
 
 ```javascript
-<renderless-search :list="states" :term="term" :keys="['name', 'email']">
+<spruce-search :list="states" :term="term" :keys="['name', 'email']">
   <div slot-scope="{ results }">
     <div v-for="(item, index) in results" :key="index">
       {{ item }}
     </div>
   </div>
-</renderless-search>
+</spruce-search>
 ```
 ##### Props
 
@@ -180,16 +176,16 @@ export default {
 |-----------|-------------------|-----------------------|
 | `results` | The searched list | Array<String, Object> |
 
-#### `RenderlessSort`
+#### `SpruceSort`
 
 ```javascript
-<renderless-sort :list="people" :by="by" :direction="direction" >
+<spruce-sort :list="people" :by="by" :direction="direction" >
   <div slot-scope="{ results }">
       <div v-for="(item, index) in results" :key="index">
         {{ item }}
       </div>
   </div>
-</renderless-sort>
+</spruce-sort>
 ```
 ##### Props
 
@@ -199,16 +195,16 @@ export default {
 | `direction` | The direction to sort in, 'asc' or 'desc' | String     | No       | 'asc'   |
 | `by`        | The object property to sort by            | String     | No       | ''      |
 
-#### `RenderlessState`
+#### `SpruceState`
 
 ```javascript
-<renderless-state :value="{ count: 0 }">
+<spruce-state :value="{ count: 0 }">
   <div slot-scope="{ state, update }">
     <button @click="update({count: state.count + 1})">
       Increment ({{ state.count }})
     </button>
   </div>
-</renderless-state>
+</spruce-state>
 ```
 ##### Props
 
@@ -230,10 +226,10 @@ export default {
 |---------|--------------------------|---------|
 | `input` | Fired when state updates | `state` |
 
-#### `RenderlessToggle`
+#### `SpruceToggle`
 
 ```javascript
-<renderless-toggle :value="true">
+<spruce-toggle :value="true">
   <div slot-scope="{ isOn, on, off, toggle }">
     <div>
       <span>Accordion header</span>
@@ -247,7 +243,7 @@ export default {
       <button @click="off">Close</button>
     </div>
   </div>
-</renderless-toggle>
+</spruce-toggle>
 ```
 ##### Props
 
@@ -271,7 +267,7 @@ export default {
 | `input` | Fired when `isOn` updates | `isOn`  |
 
 ### Examples
-See the [demo source code](src/demo) for real-world examples. Check out the [demo](https://vue-renderless-party.netlify.app/) to see the components in action with code examples.
+See the [demo source code](src/demo) for real-world examples. Check out the [demo](https://vue-spruce.netlify.app/) to see the components in action with code examples.
 
 ## Lint
 

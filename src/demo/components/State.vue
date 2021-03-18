@@ -2,14 +2,14 @@
   <div class="flex">
     <div class="flex-1 w-1/2 p-4 border-b border-gray-400">
       <h3 class="text-2xl font-bold mb-4">
-        Renderless State
+        Spruce State
       </h3>
       <div>
-        <renderless-function :fn="(str) => str.split('').sort(() => Math.random() - 0.5).join('')">
+        <spruce-function :fn="(str) => str.split('').sort(() => Math.random() - 0.5).join('')">
           <template
             slot-scope="{ fn }"
           >
-            <renderless-state
+            <spruce-state
               :value="{ name: 'ric flair', sport: 'wrestling' }"
             >
               <div
@@ -32,9 +32,9 @@
                   shuffle sport
                 </button>
               </div>
-            </renderless-state>
+            </spruce-state>
           </template>
-        </renderless-function>
+        </spruce-function>
       </div>
     </div>
     <div class="flex-1 w-1/2 overflow-hidden border-b border-gray-600">
@@ -46,19 +46,19 @@
 </template>
 
 <script>
-import { RenderlessFunction, RenderlessState } from '../../components';
+import { SpruceFunction, SpruceState } from '../../components';
 
 export default {
-  components: { RenderlessFunction, RenderlessState },
+  components: { SpruceFunction, SpruceState },
 
   data() {
     return {
       code: `
-<renderless-function :fn="(str) => str.split('').sort(() => Math.random() - 0.5).join('')">
+<spruce-function :fn="(str) => str.split('').sort(() => Math.random() - 0.5).join('')">
   <template
     slot-scope="{ fn }"
   >
-    <renderless-state
+    <spruce-state
       :value="{ name: 'ric flair', sport: 'wrestling' }"
     >
       <div
@@ -81,9 +81,9 @@ export default {
           shuffle sport
         </button>
       </div>
-    </renderless-state>
+    </spruce-state>
   </template>
-</renderless-function>
+</spruce-function>
       `.trim(),
     };
   },

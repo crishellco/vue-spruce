@@ -2,12 +2,12 @@
   <div class="flex">
     <div class="flex-1 p-4 w-1/2 border-b border-gray-400">
       <h3 class="text-2xl font-bold mb-4">
-        Renderless Sort
+        Spruce Sort
       </h3>
       <div>
-        <renderless-state :value="{ direction: 'asc', by: columns[0] }">
+        <spruce-state :value="{ direction: 'asc', by: columns[0] }">
           <template slot-scope="{ state, update }">
-            <renderless-sort
+            <spruce-sort
               :list="people"
               :by="state.by"
               :direction="state.direction"
@@ -55,9 +55,9 @@
                   </tbody>
                 </table>
               </div>
-            </renderless-sort>
+            </spruce-sort>
           </template>
-        </renderless-state>
+        </spruce-state>
       </div>
     </div>
     <div class="flex-1 w-1/2 overflow-hidden border-b border-gray-600">
@@ -69,22 +69,22 @@
 </template>
 
 <script>
-import { RenderlessSort, RenderlessState } from '../../components';
+import { SpruceSort, SpruceState } from '../../components';
 import { people } from '../fixtures';
 
 export default {
   components: {
-    RenderlessSort,
-    RenderlessState,
+    SpruceSort,
+    SpruceState,
   },
 
   data() {
     return {
       columns: Object.keys(people[0]),
       code: `
-<renderless-state :value="{ direction: 'asc', by: columns[0] }">
+<spruce-state :value="{ direction: 'asc', by: columns[0] }">
   <template slot-scope="{ state, update }">
-    <renderless-sort
+    <spruce-sort
       :list="people"
       :by="state.by"
       :direction="state.direction"
@@ -132,9 +132,9 @@ export default {
           </tbody>
         </table>
       </div>
-    </renderless-sort>
+    </spruce-sort>
   </template>
-</renderless-state>
+</spruce-state>
     `.trim(),
       people,
     };

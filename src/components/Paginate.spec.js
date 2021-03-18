@@ -1,13 +1,13 @@
 import { people } from '../demo/fixtures';
 import { shallowMount } from '@vue/test-utils';
 
-import { RenderlessPaginate } from '.';
+import { SprucePaginate } from '.';
 
 let wrapper;
 
 describe('Paginate', () => {
   beforeEach(() => {
-    wrapper = shallowMount(RenderlessPaginate, {
+    wrapper = shallowMount(SprucePaginate, {
       propsData: {
         size: 12,
         list: people,

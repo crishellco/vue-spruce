@@ -1,12 +1,12 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { RenderlessToggle } from './';
+import { SpruceToggle } from './';
 
 let wrapper;
 
 describe('Toggle', () => {
   beforeEach(() => {
-    wrapper = shallowMount(RenderlessToggle, {
+    wrapper = shallowMount(SpruceToggle, {
       scopedSlots: {
         default: '<p></p>',
       },

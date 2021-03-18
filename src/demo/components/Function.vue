@@ -2,9 +2,9 @@
   <div class="flex">
     <div class="flex-1 w-1/2 p-4 border-b border-gray-400">
       <h3 class="text-2xl font-bold mb-4">
-        Renderless Function
+        Spruce Function
       </h3>
-      <renderless-state
+      <spruce-state
         :value="{ count: 1 }"
       >
         <div
@@ -13,7 +13,7 @@
           <div class="mb-4">
             <code>State: {{ state }}</code>
           </div>
-          <renderless-function
+          <spruce-function
             v-for="num in 4"
             :key="num + 1"
             :fn="() => update({count: state.count * (num + 1)})"
@@ -30,9 +30,9 @@
                 <code>Fn: {{ fn.toString().replace('num', num) }}</code>
               </span>
             </div>
-          </renderless-function>
+          </spruce-function>
         </div>
-      </renderless-state>
+      </spruce-state>
     </div>
     <div class="flex-1 w-1/2 overflow-hidden border-b border-gray-600">
       <pre class="whitespace-pre flex-1 flex flex-col w-full overflow-auto bg-gray-700 p-4">
@@ -43,15 +43,15 @@
 </template>
 
 <script>
-import { RenderlessFunction, RenderlessState } from '../../components';
+import { SpruceFunction, SpruceState } from '../../components';
 
 export default {
-  components: { RenderlessFunction, RenderlessState },
+  components: { SpruceFunction, SpruceState },
 
   data() {
     return {
       code: `
-<renderless-state
+<spruce-state
   :value="{ count: 1 }"
 >
   <div
@@ -60,7 +60,7 @@ export default {
     <div class="mb-4">
       <code>State: {{ state }}</code>
     </div>
-    <renderless-function
+    <spruce-function
       v-for="num in 4"
       :key="num + 1"
       :fn="() => update({count: state.count * (num + 1)})"
@@ -77,9 +77,9 @@ export default {
           <code>Fn: {{ fn.toString().replace('num', num) }}</code>
         </span>
       </div>
-    </renderless-function>
+    </spruce-function>
   </div>
-</renderless-state>
+</spruce-state>
       `.trim(),
     };
   },
