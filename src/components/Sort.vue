@@ -2,6 +2,7 @@
 import sortArray from 'sort-array';
 
 export default {
+  name: 'SpruceSort',
   props: {
     list: {
       type: Array,
@@ -19,6 +20,7 @@ export default {
   },
 
   computed: {
+    // @vuese
     results() {
       if (!this.list.length) return this.list;
 

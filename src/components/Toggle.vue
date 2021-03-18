@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: 'SpruceToggle',
   props: {
     value: {
       default: false,

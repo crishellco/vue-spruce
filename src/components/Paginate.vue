@@ -6,6 +6,7 @@ const chunk = (arr, size) => {
 }
 
 export default {
+  name: 'SprucePaginate',
   props: {
     size: {
       type: Number,

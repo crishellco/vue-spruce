@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: 'SpruceEvent',
   props: {
     event: {
       type: String,

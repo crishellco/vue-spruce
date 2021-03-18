@@ -2,6 +2,7 @@
 import Fuse from 'fuse.js';
 
 export default {
+  name: 'SpruceSearch',
   props: {
     keys: {
       type: Array,

@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: 'SpruceState',
   props: {
     value: {
       type: Object,

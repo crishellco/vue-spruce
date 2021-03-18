@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: 'SpruceFunction',
   props: {
     fn: {
       type: Function,

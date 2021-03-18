@@ -11,17 +11,35 @@ A collection of useful Vue renderless components.
 
 Check out the [demo](https://vue-spruce.netlify.app/)
 
+- [Install](#install)
+  * [Package](#package)
+  * [Vue Plugin](#vue-plugin)
+  * [Named Imports](#named-imports)
+- [The Components](#the-components)
+  * [`SpruceEvent`](#-spruceevent-)
+  * [`SpruceFunction`](#-sprucefunction-)
+  * [`SprucePaginate`](#-sprucepaginate-)
+  * [`SpruceSearch`](#-sprucesearch-)
+  * [`SpruceSort`](#-sprucesort-)
+  * [`SpruceState`](#-sprucestate-)
+  * [`SpruceToggle`](#-sprucetoggle-)
+- [Examples](#examples)
+- [Development](#development)
+- [How to Contribute](#how-to-contribute)
+- [License](#license)
+
 ## Install
+
+### Package
 
 ```bash
 yarn add -D @crishellco/vue-spruce
 # or
 npm i -D @crishellco/vue-spruce
 ```
+### Vue Plugin
 
-## Usage
-### Importing
-#### Vue Plugin
+Installs all components globally.
 
 ```javascript
 import Vue from 'vue';
@@ -29,7 +47,9 @@ import VueSpruce from '@crishellco/vue-spruce';
 
 Vue.use(VueSpruce);
 ```
-#### Named Imports
+### Named Imports
+
+Alternatively, use only the components you need.
 
 ```javascript
 import {
@@ -55,9 +75,11 @@ export default {
 };
 ```
 
-### The Components
+## The Components
 
-#### `SpruceEvent`
+### `SpruceEvent`
+
+Track any `window` event occurance inside or outside of `SpruceEvent`'s default slot.
 
 ```javascript
 <spruce-event
@@ -67,7 +89,7 @@ export default {
   <button>Hover over me!</button>
 </spruce-event>
 ```
-##### Props
+#### Props
 
 | Name      | Description                                                   | Type    | Required | Default |
 |-----------|---------------------------------------------------------------|---------|----------|---------|
@@ -75,13 +97,15 @@ export default {
 | `outside` | Listen for the even only outside of the default slot elements | Boolean | No       | `false` |
 
 
-##### Events
+#### Events
 
 | Name                       | Description                   | Payload |
 |----------------------------|-------------------------------|---------|
 | _Same as the `event` prop_ | Fired when the event happens. | --      |
 
-#### `SpruceFunction`
+### `SpruceFunction`
+
+Create reusable functions on the fly (great for lists!).
 
 ```javascript
 <div v-for="num in 10">
@@ -90,19 +114,21 @@ export default {
   </spruce-function>
 </div>
 ```
-##### Props
+#### Props
 
 | Name | Description  | Type     | Required | Default |
 |------|--------------|----------|----------|---------|
 | `fn` | The function | Function | Yes      |         |
 
-##### Slot Scope
+#### Slot Scope
 
 | Name | Description  | Type     |
 |------|--------------|----------|
 | `fn` | The function | function |
 
-#### `SprucePaginate`
+### `SprucePaginate`
+
+Paginate an array and navigate through it's chunks.
 
 ```javascript
 <div v-for="num in 10">
@@ -128,14 +154,14 @@ export default {
   </spruce-paginate>
 </div>
 ```
-##### Props
+#### Props
 
 | Name   | Description           | Type       | Required | Default |
 |--------|-----------------------|------------|----------|---------|
 | `size` | Page size             | Number     | Yes      |         |
 | `list` | The items to paginate | Array<any> | Yes      |         |
 
-##### Slot Scope
+#### Slot Scope
 
 | Name         | Description                   | Type     |
 |--------------|-------------------------------|----------|
@@ -151,7 +177,9 @@ export default {
 | `totalPages` | Total number of pages         | Number   |
 
 
-#### `SpruceSearch`
+### `SpruceSearch`
+
+Search an array of strings or objects by keys using [fuse.js](https://fusejs.io/).
 
 ```javascript
 <spruce-search :list="states" :term="term" :keys="['name', 'email']">
@@ -162,7 +190,7 @@ export default {
   </div>
 </spruce-search>
 ```
-##### Props
+#### Props
 
 | Name   | Description             | Type                  | Required | Default                                                                         |
 |--------|-------------------------|-----------------------|----------|---------------------------------------------------------------------------------|
@@ -170,13 +198,15 @@ export default {
 | `list` | The list to search      | Array<String, Object> | Yes      |                                                                                 |
 | `term` | The terms to search for | String                | No       | ''                                                                              |
 
-##### Slot Scope
+#### Slot Scope
 
 | Name      | Description       | Type                  |
 |-----------|-------------------|-----------------------|
 | `results` | The searched list | Array<String, Object> |
 
-#### `SpruceSort`
+### `SpruceSort`
+
+Sort an array of strings or objects in either direction by specific keys.
 
 ```javascript
 <spruce-sort :list="people" :by="by" :direction="direction" >
@@ -187,7 +217,7 @@ export default {
   </div>
 </spruce-sort>
 ```
-##### Props
+#### Props
 
 | Name        | Description                               | Type       | Required | Default |
 |-------------|-------------------------------------------|------------|----------|---------|
@@ -195,7 +225,9 @@ export default {
 | `direction` | The direction to sort in, 'asc' or 'desc' | String     | No       | 'asc'   |
 | `by`        | The object property to sort by            | String     | No       | ''      |
 
-#### `SpruceState`
+### `SpruceState`
+
+Create and manage localized state.
 
 ```javascript
 <spruce-state :value="{ count: 0 }">
@@ -206,27 +238,29 @@ export default {
   </div>
 </spruce-state>
 ```
-##### Props
+#### Props
 
 | Name    | Description      | Type   | Required | Default |
 |---------|------------------|--------|----------|---------|
 | `value` | The state object | Object | Yes      |         |
 
-##### Slot Scope
+#### Slot Scope
 
 | Name               | Description                                | Type     |
 |--------------------|--------------------------------------------|----------|
 | `state`            | The state                                  | Object   |
 | `update(newValue)` | Merges `newValue` with the current `state` | Function |
 
-##### Events
+#### Events
 
 
 | Name    | Description              | Payload |
 |---------|--------------------------|---------|
 | `input` | Fired when state updates | `state` |
 
-#### `SpruceToggle`
+### `SpruceToggle`
+
+Toggle between on (`true`) and off (`false`).
 
 ```javascript
 <spruce-toggle :value="true">
@@ -245,13 +279,13 @@ export default {
   </div>
 </spruce-toggle>
 ```
-##### Props
+#### Props
 
 | Name    | Description             | Type    | Required | Default |
 |---------|-------------------------|---------|----------|---------|
 | `value` | The state of the toggle | Boolean | No       | `False` |
 
-##### Slot Scope
+#### Slot Scope
 
 | Name       | Description             | Type     |
 |------------|-------------------------|----------|
@@ -260,40 +294,43 @@ export default {
 | `off()`    | Sets `isOn` to `false`  | Function |
 | `toggle()` | Toggles `isOn`          | Function |
 
-##### Events
+#### Events
 
 | Name    | Description               | Payload |
 |---------|---------------------------|---------|
 | `input` | Fired when `isOn` updates | `isOn`  |
 
-### Examples
+## Examples
+
 See the [demo source code](src/demo) for real-world examples. Check out the [demo](https://vue-spruce.netlify.app/) to see the components in action with code examples.
 
-## Lint
+## Development
+
+### Lint
 
 ```bash
 yarn lint
 ```
 
-## Test
+### Test
 
 ```bash
 yarn test:unit
 ```
 
-## Build Dist
+### Build Dist
 
 ```bash
 yarn build
 ```
 
-## Run Demo
+### Run Demo
 
 ```bash
 yarn serve
 ```
 
-## Build Demo
+### Build Demo
 
 ```bash
 yarn build:demo
