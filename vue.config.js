@@ -10,14 +10,10 @@ module.exports = {
 
   configureWebpack: {
     optimization: {
-      // nodeEnv: 'production',
-      // minimize: true,
       splitChunks: {
         chunks: 'all',
       },
     },
-
-    // exclude: ['src/**/*.spec.js'],
   },
 
   css: {
