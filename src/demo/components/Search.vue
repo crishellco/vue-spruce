@@ -10,7 +10,7 @@
             <input
               :value="state.term"
               type="text"
-              class="border-2 bg-white py-2 px-4 w-1/2"
+              class="border-2 bg-white py-2 px-4 w-1/2 mb-4"
               placeholder="search"
               @input="update({ term: $event.target.value })"
             >
@@ -20,16 +20,26 @@
             >
               <div
                 slot-scope="{ results }"
-                class="h-64 w-full"
+                class="w-full overflow-auto text-xs"
+                style="height: 35rem"
               >
-                <div class="overflow-y-scroll h-full w-full my-4">
-                  <div
-                    v-for="(item, index) in results"
-                    :key="index"
-                  >
-                    {{ item }}
-                  </div>
-                </div>
+                <table class="w-full">
+                  <thead>
+                    <tr class="text-bold text-left">
+                      <th>name</th>
+                      <th>abbreviation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      v-for="({name, abbreviation}, index) in results"
+                      :key="index"
+                    >
+                      <td>{{ name }}</td>
+                      <td>{{ abbreviation }}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </renderless-search>
           </div>
@@ -59,7 +69,7 @@ export default {
     <input
       :value="state.term"
       type="text"
-      class="border-2 bg-white py-2 px-4 w-1/2"
+      class="border-2 bg-white py-2 px-4 w-1/2 mb-4"
       placeholder="search"
       @input="update({ term: $event.target.value })"
     >
@@ -69,16 +79,26 @@ export default {
     >
       <div
         slot-scope="{ results }"
-        class="h-64 w-full"
+        class="w-full overflow-auto text-xs"
+        style="height: 35rem"
       >
-        <div class="overflow-y-scroll h-full w-full my-4">
-          <div
-            v-for="(item, index) in results"
-            :key="index"
-          >
-            {{ item }}
-          </div>
-        </div>
+        <table class="w-full">
+          <thead>
+            <tr class="text-bold text-left">
+              <th>name</th>
+              <th>abbreviation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="({name, abbreviation}, index) in results"
+              :key="index"
+            >
+              <td>{{ name }}</td>
+              <td>{{ abbreviation }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </renderless-search>
   </div>

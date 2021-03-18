@@ -5,22 +5,36 @@
         Renderless State
       </h3>
       <div>
-        <renderless-state :value="{ name: 'ric flair' }">
-          <div
-            slot-scope="{ state, update }"
+        <renderless-function :fn="(str) => str.split('').sort(() => Math.random() - 0.5).join('')">
+          <template
+            slot-scope="{ fn }"
           >
-            <div class="mb-4">
-              <code>{{ state }} //state</code>
-            </div>
-
-            <button
-              class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-48"
-              @click="update({name: state.name.split('').reverse().join('')})"
+            <renderless-state
+              :value="{ name: 'ric flair', sport: 'wrestling' }"
             >
-              reverse name
-            </button>
-          </div>
-        </renderless-state>
+              <div
+                slot-scope="{ state, update }"
+              >
+                <div class="mb-4">
+                  <code>State: {{ state }}</code>
+                </div>
+                <button
+                  class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64"
+                  @click="update({name: fn(state.name)})"
+                >
+                  shuffle name
+                </button>
+
+                <button
+                  class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64 ml-4"
+                  @click="update({sport: fn(state.sport)})"
+                >
+                  shuffle sport
+                </button>
+              </div>
+            </renderless-state>
+          </template>
+        </renderless-function>
       </div>
     </div>
     <div class="flex-1 w-1/2 overflow-hidden border-b border-gray-600">
@@ -32,30 +46,44 @@
 </template>
 
 <script>
-import {  RenderlessState } from '../../components';
+import { RenderlessFunction, RenderlessState } from '../../components';
 
 export default {
-  components: {  RenderlessState },
+  components: { RenderlessFunction, RenderlessState },
 
   data() {
     return {
       code: `
-<renderless-state :value="{ name: 'ric flair' }">
-  <div
-    slot-scope="{ state, update }"
+<renderless-function :fn="(str) => str.split('').sort(() => Math.random() - 0.5).join('')">
+  <template
+    slot-scope="{ fn }"
   >
-    <div class="mb-4">
-      <code>{{ state }} //state</code>
-    </div>
-
-    <button
-      class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-48"
-      @click="update({name: state.name.split('').reverse().join('')})"
+    <renderless-state
+      :value="{ name: 'ric flair', sport: 'wrestling' }"
     >
-      reverse name
-    </button>
-  </div>
-</renderless-state>
+      <div
+        slot-scope="{ state, update }"
+      >
+        <div class="mb-4">
+          <code>State: {{ state }}</code>
+        </div>
+        <button
+          class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64"
+          @click="update({name: fn(state.name)})"
+        >
+          shuffle name
+        </button>
+
+        <button
+          class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64 ml-4"
+          @click="update({sport: fn(state.sport)})"
+        >
+          shuffle sport
+        </button>
+      </div>
+    </renderless-state>
+  </template>
+</renderless-function>
       `.trim(),
     };
   },

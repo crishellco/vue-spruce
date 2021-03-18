@@ -36,11 +36,19 @@ Vue.use(VueRenderlessParty);
 #### Named Imports
 
 ```javascript
-import { RenderlessEvent, RenderlessSearch, RenderlessSort, RenderlessState, RenderlessToggle } from '@crishellco/vue-renderless-party';
+import {
+  RenderlessEvent,
+  RenderlessFunction,
+  RenderlessSearch,
+  RenderlessSort,
+  RenderlessState,
+  RenderlessToggle
+} from '@crishellco/vue-renderless-party';
 
 export default {
   components: {
     RenderlessEvent,
+    RenderlessFunction,
     RenderlessSearch,
     RenderlessSort,
     RenderlessState,
@@ -74,6 +82,22 @@ export default {
 | Name                       | Description                   | Payload |
 |----------------------------|-------------------------------|---------|
 | _Same as the `event` prop_ | Fired when the event happens. | --      |
+
+#### `RenderlessFunction`
+
+```javascript
+<div v-for="num in 10">
+  <renderless-function :fn="() => alert(num)">
+    <button slot-scope="{ fn }" @click="fn">Click me!</button>
+  </renderless-function>
+</div>
+```
+##### Props
+
+| Name | Description  | Type     | Required | Default |
+|------|--------------|----------|----------|---------|
+| `fn` | The function | Function | Yes      |         |
+
 
 #### `RenderlessSearch`
 
