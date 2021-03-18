@@ -1,4 +1,4 @@
-# Vue Spruce Party
+# Vue Spruce
 
 ![Build](https://github.com/crishellco/vue-spruce/workflows/Build/badge.svg)
 [![codecov](https://codecov.io/gh/crishellco/vue-spruce/branch/master/graph/badge.svg?token=M7N86U5GF7)](https://codecov.io/gh/crishellco/vue-spruce)
