@@ -1,0 +1,60 @@
+yarn run v1.22.4
+$ vue-cli-service build --target lib  --dest ./dist ./src/package/index.js --report-json
+
+ WARNING  Compiled with 3 warnings1:36:14 PM
+
+ warning  
+
+asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  vue-spruce.common.js (291 KiB)
+
+ warning  
+
+entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  vue-spruce.common (291 KiB)
+      vue-spruce.common.js
+
+
+ warning  
+
+webpack performance recommendations: 
+You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+For more info visit https://webpack.js.org/guides/code-splitting/
+
+ WARNING  Compiled with 3 warnings1:36:14 PM
+
+ warning  
+
+asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  vue-spruce.umd.js (291 KiB)
+
+ warning  
+
+entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  vue-spruce.umd (291 KiB)
+      vue-spruce.umd.js
+
+
+ warning  
+
+webpack performance recommendations: 
+You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+For more info visit https://webpack.js.org/guides/code-splitting/
+
+ DONE  Compiled successfully in 4616ms1:36:15 PM
+
+  File                          Size                   Gzipped
+
+  dist/vue-spruce.umd.min.js    92.56 KiB              31.77 KiB
+  dist/vue-spruce.umd.js        291.29 KiB             72.63 KiB
+  dist/vue-spruce.common.js     290.90 KiB             72.51 KiB
+
+  Images and other types of assets omitted.
+
+Done in 8.20s.

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { SpruceToggle } from '../../components';
+import { SpruceToggle } from '../../package/components';
 import code from './Toggle.gist';
 
 export default {

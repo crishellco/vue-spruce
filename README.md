@@ -406,7 +406,7 @@ Toggle between on (`true`) and off (`false`).
 
 ## Examples
 
-See the [demo source code](src/demo) for real-world examples. Check out the [demo](https://vue-spruce.netlify.app/) to see the components in action with code examples.
+See the [demo source code](src/demo/components) for real-world examples. Check out the [demo](https://vue-spruce.netlify.app/) to see the components in action with code examples.
 
 ## Development
 

@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { SpruceCrud } from '../../components';
+import { SpruceCrud } from '../../package/components';
 import code from './Crud.gist';
 
 export default {

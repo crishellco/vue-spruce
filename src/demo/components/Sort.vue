@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { SpruceSort, SpruceState } from '../../components';
+import { SpruceSort, SpruceState } from '../../package/components';
 import { people } from '../fixtures';
 import code from './Sort.gist';
 

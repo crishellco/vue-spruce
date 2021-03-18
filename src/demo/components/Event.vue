@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { SpruceEvent, SpruceState } from '../../components';
+import { SpruceEvent, SpruceState } from '../../package/components';
 import code from './Event.gist';
 
 export default {

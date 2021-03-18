@@ -113,7 +113,7 @@
 </template>
 
 <script>
-import { SprucePaginate } from '../../components';
+import { SprucePaginate } from '../../package/components';
 import { states, simplePeople } from '../fixtures';
 import code from './Paginate.gist';
 

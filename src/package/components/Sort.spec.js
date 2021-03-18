@@ -1,4 +1,4 @@
-import { people } from './../demo/fixtures';
+import { people } from './../../demo/fixtures';
 import { shallowMount } from '@vue/test-utils';
 
 import { SpruceSort } from './';

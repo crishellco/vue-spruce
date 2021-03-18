@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { SpruceSearch, SpruceState } from '../../components';
+import { SpruceSearch, SpruceState } from '../../package/components';
 import { states } from '../fixtures';
 import code from './Search.gist';
 

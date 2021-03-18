@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { SpruceFunction, SpruceState } from '../../components';
+import { SpruceFunction, SpruceState } from '../../package/components';
 import code from './State.gist';
 
 export default {
