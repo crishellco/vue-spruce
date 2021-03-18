@@ -4,6 +4,8 @@
 
     <function />
 
+    <paginate />
+
     <search />
 
     <sort />
@@ -17,13 +19,14 @@
 <script>
 import Event from './components/Event.vue';
 import Function from './components/Function.vue';
+import Paginate from './components/Paginate.vue';
 import Search from './components/Search.vue';
 import Sort from './components/Sort.vue';
 import State from './components/State.vue';
 import Toggle from './components/Toggle.vue';
 
 export default {
-  components: { Event, Function, Toggle, Sort, State, Search },
+  components: { Event, Function, Paginate, Toggle, Sort, State, Search },
 };
 </script>
 

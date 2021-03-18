@@ -5,7 +5,7 @@ import { RenderlessFunction } from './';
 let fn;
 let wrapper;
 
-describe('Sort', () => {
+describe('Function', () => {
   beforeEach(() => {
     fn = jest.fn();
 

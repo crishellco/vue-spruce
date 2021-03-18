@@ -39,6 +39,7 @@ Vue.use(VueRenderlessParty);
 import {
   RenderlessEvent,
   RenderlessFunction,
+  RenderlessPaginate,
   RenderlessSearch,
   RenderlessSort,
   RenderlessState,
@@ -49,6 +50,7 @@ export default {
   components: {
     RenderlessEvent,
     RenderlessFunction,
+    RenderlessPaginate,
     RenderlessSearch,
     RenderlessSort,
     RenderlessState,
@@ -98,6 +100,60 @@ export default {
 |------|--------------|----------|----------|---------|
 | `fn` | The function | Function | Yes      |         |
 
+##### Slot Scope
+
+| Name | Description  | Type     |
+|------|--------------|----------|
+| `fn` | The function | function |
+
+#### `RenderlessPaginate`
+
+```javascript
+<div v-for="num in 10">
+  <renderless-paginate :list="states" :size="15">
+    <div slot-scope="{ page, next, prev, pageNum, totalPages, isFirst, isLast, rangeStart, rangeEnd }">
+      <button
+        :disabled="isFirst"
+        @click="prev"
+      >
+        prev
+      </button>
+      <div class="px-4 flex flex-col items-center">
+        <div>Page: {{ pageNum }}/{{ totalPages }}</div>
+        <div>Showing: {{ rangeStart }} - {{ rangeEnd }} of {{ states.length }}</div>
+      </div>
+      <button
+        :disabled="isLast"
+        @click="next"
+      >
+        next
+      </button>
+    </div>
+  </renderless-paginate>
+</div>
+```
+##### Props
+
+| Name   | Description           | Type       | Required | Default |
+|--------|-----------------------|------------|----------|---------|
+| `size` | Page size             | Number     | Yes      |         |
+| `list` | The items to paginate | Array<any> | Yes      |         |
+
+##### Slot Scope
+
+| Name         | Description                   | Type     |
+|--------------|-------------------------------|----------|
+| `isFirst`    | If currently on first page    | Boolean  |
+| `isLast`     | If currently on last page     | Boolean  |
+| `next`       | Go to next page               | Function |
+| `page`       | The current page              | any      |
+| `pageNum`    | The current page number       | Number   |
+| `prev`       | Go to previous page           | Function |
+| `rangeEnd`   | The end of the current page   | Number   |
+| `rangeStart` | The start of the current page | Number   |
+| `reset`      | Reset the state of pagination | Function |
+| `totalPages` | Total number of pages         | Number   |
+
 
 #### `RenderlessSearch`
 
@@ -137,11 +193,11 @@ export default {
 ```
 ##### Props
 
-| Name        | Description                               | Type                  | Required | Default |
-|-------------|-------------------------------------------|-----------------------|----------|---------|
-| `list`      | The list to search                        | Array<String, Object> | Yes      |         |
-| `direction` | The direction to sort in, 'asc' or 'desc' | String                | No       | 'asc'   |
-| `by`        | The object property to sort by            | String                | No       | ''      |
+| Name        | Description                               | Type       | Required | Default |
+|-------------|-------------------------------------------|------------|----------|---------|
+| `list`      | The list to search                        | Array<any> | Yes      |         |
+| `direction` | The direction to sort in, 'asc' or 'desc' | String     | No       | 'asc'   |
+| `by`        | The object property to sort by            | String     | No       | ''      |
 
 #### `RenderlessState`
 
@@ -156,9 +212,9 @@ export default {
 ```
 ##### Props
 
-| Name    | Description      | Type        | Required | Default |
-|---------|------------------|-------------|----------|---------|
-| `value` | The state object | Object<any> | Yes      |         |
+| Name    | Description      | Type   | Required | Default |
+|---------|------------------|--------|----------|---------|
+| `value` | The state object | Object | Yes      |         |
 
 ##### Slot Scope
 
@@ -214,13 +270,8 @@ export default {
 |---------|---------------------------|---------|
 | `input` | Fired when `isOn` updates | `isOn`  |
 
-
-
-
-
-
 ### Examples
-See the [demo source code](src/demo) for real-world examples.
+See the [demo source code](src/demo) for real-world examples. Check out the [demo](https://vue-renderless-party.netlify.app/) to see the components in action with code examples.
 
 ## Lint
 
@@ -231,13 +282,25 @@ yarn lint
 ## Test
 
 ```bash
-yarn test
+yarn test:unit
 ```
 
 ## Build Dist
 
 ```bash
 yarn build
+```
+
+## Run Demo
+
+```bash
+yarn serve
+```
+
+## Build Demo
+
+```bash
+yarn build:demo
 ```
 
 ## How to Contribute

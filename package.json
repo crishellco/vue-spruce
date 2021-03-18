@@ -1,6 +1,6 @@
 {
   "name": "@crishellco/vue-renderless-party",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": "Chris Mitchell (@crishellco)",
   "description": "A collection of useful Vue renderless components",
   "main": "dist/vue-renderless-party.umd.js",
@@ -32,8 +32,7 @@
     "core-js": "^3.6.5",
     "fuse.js": "^6.4.6",
     "sort-array": "^4.1.4",
-    "vue": "^2.6.11",
-    "vue-code-highlight": "^0.7.6"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
