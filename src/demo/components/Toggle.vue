@@ -1,13 +1,12 @@
 <template>
-  <div class="flex">
-    <div class="flex-1 p-4 w-1/2 border-b border-gray-400">
-      <h3 class="text-2xl font-bold mb-4">SpruceToggle</h3>
-      <spruce-toggle root>
-        <div slot-scope="{ isOn, toggle }" class="">
-          <pre class="whitespace-pre flex-1 flex flex-col w-full overflow-auto bg-gray-700 p-4 rounded mb-4">
-              <code class="block text-sm font-mono text-white flex flex-1">{{JSON.stringify({isOn}, null, 2)}}</code>
-          </pre>
-          <div class="bg-gray-400 rounded-t flex items-center w-1/2">
+  <demo-section name="SpruceToggle" :code="code">
+    <spruce-toggle>
+      <div slot-scope="{ isOn, toggle }">
+        <pre class="whitespace-pre flex-1 flex flex-col w-full overflow-auto bg-gray-700 p-4 rounded mb-4">
+          <code class="block text-sm font-mono text-white flex flex-1">{{JSON.stringify({isOn}, null, 2)}}</code>
+        </pre>
+        <div class="flex flex-col">
+          <div class="bg-gray-400 rounded-t flex items-center">
             <span class="flex-1 p-4">Accordion</span>
             <span
               class="flex-none cursor-pointer mr-2 w-8 h-8 text-lg hover:bg-gray-500 leading-none rounded flex items-center justify-center"
@@ -15,24 +14,24 @@
               >{{ isOn ? '▲' : '▼' }}</span
             >
           </div>
-          <div v-if="isOn" class="border rounded-b p-4">content</div>
+          <spruce-crud url="https://baconipsum.com/api/?type=all-meat&paras=1&start-with-lorem=1&format=text" immediate>
+            <div v-if="isOn" slot-scope="{ data }" class="border rounded-b p-4">{{ data }}</div>
+          </spruce-crud>
         </div>
-      </spruce-toggle>
-    </div>
-    <div class="flex-1 w-1/2 overflow-hidden border-b border-gray-600">
-      <pre class="whitespace-pre flex-1 flex flex-col w-full overflow-auto bg-gray-700 p-4">
-         <code class="block text-sm font-mono text-white flex flex-1 select-all">{{ code }}</code>
-      </pre>
-    </div>
-  </div>
+      </div>
+    </spruce-toggle>
+  </demo-section>
 </template>
 
 <script>
-import { SpruceToggle } from '../../package/components';
+import { SpruceCrud, SpruceToggle } from '../../package/components';
+import { DemoSection } from '../shared';
 import code from './Toggle.gist';
 
 export default {
   components: {
+    DemoSection,
+    SpruceCrud,
     SpruceToggle,
   },
 
