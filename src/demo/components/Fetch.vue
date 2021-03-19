@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       urls: [
-        'http://slowwly.robertomurray.co.uk/delay/1800/url/https://jsonplaceholder.typicode.com/posts/1',
+        'https://6053559e45e4b30017291628.mockapi.io/users/1',
         'https://6053559e45e4b30017291628.mockapi.io/users/12321',
       ],
       code,
