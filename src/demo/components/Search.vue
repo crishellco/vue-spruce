@@ -1,5 +1,5 @@
 <template>
-  <demo-section name="SprucePaginate" :code="code">
+  <demo-section name="SpruceSearch" :code="code">
     <spruce-state :value="{ term: '' }">
       <div slot-scope="{ state, update }">
         <input

@@ -1,15 +1,10 @@
 <script>
 export default {
-  name: 'SpruceCrud',
+  name: 'SpruceFetch',
   props: {
     url: {
       type: String,
       required: true,
-    },
-
-    method: {
-      default: 'get',
-      type: String,
     },
 
     immediate: {
@@ -47,17 +42,13 @@ export default {
       return this.fetch();
     },
 
-    fetch({ method } = {}) {
-      return this.query(method || this.method);
-    },
-
-    async query(method) {
+    async fetch() {
       if (this.loading) return;
 
       this.loading = true;
 
       try {
-        const response = await fetch(this.url, { method: method.toUpperCase() });
+        const response = await fetch(this.url, { method: 'GET' });
         const data = await response.json();
 
         if (response.ok) {

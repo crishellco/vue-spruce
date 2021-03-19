@@ -1,6 +1,6 @@
 import {
-  SpruceCrud,
   SpruceEvent,
+  SpruceFetch,
   SpruceFunction,
   SprucePaginate,
   SpruceSearch,
@@ -9,7 +9,16 @@ import {
   SpruceToggle,
 } from './components';
 
-export { SpruceCrud, SpruceEvent, SpruceFunction, SprucePaginate, SpruceSearch, SpruceSort, SpruceState, SpruceToggle };
+export {
+  SpruceEvent,
+  SpruceFetch,
+  SpruceFunction,
+  SprucePaginate,
+  SpruceSearch,
+  SpruceSort,
+  SpruceState,
+  SpruceToggle,
+};
 
 const defaultOptions = {
   componentPrefix: 'spruce',
@@ -18,8 +27,8 @@ const defaultOptions = {
 export default function install(Vue, options = {}) {
   const { componentPrefix } = { ...defaultOptions, ...options };
 
-  Vue.component(`${componentPrefix}-crud`, SpruceCrud);
   Vue.component(`${componentPrefix}-event`, SpruceEvent);
+  Vue.component(`${componentPrefix}-fetch`, SpruceFetch);
   Vue.component(`${componentPrefix}-function`, SpruceFunction);
   Vue.component(`${componentPrefix}-paginate`, SprucePaginate);
   Vue.component(`${componentPrefix}-search`, SpruceSearch);

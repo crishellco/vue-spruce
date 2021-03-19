@@ -1,26 +1,19 @@
 <template>
   <div class="demos">
-    <crud />
-
     <event />
-
+    <fetch />
     <function />
-
     <paginate />
-
     <search />
-
     <sort />
-
     <state />
-
     <toggle />
   </div>
 </template>
 
 <script>
-import Crud from './components/Crud.vue';
 import Event from './components/Event.vue';
+import Fetch from './components/Fetch.vue';
 import Function from './components/Function.vue';
 import Paginate from './components/Paginate.vue';
 import Search from './components/Search.vue';
@@ -29,7 +22,16 @@ import State from './components/State.vue';
 import Toggle from './components/Toggle.vue';
 
 export default {
-  components: { Crud, Event, Function, Paginate, Toggle, Sort, State, Search },
+  components: {
+    Event,
+    Fetch,
+    Function,
+    Paginate,
+    Search,
+    Sort,
+    State,
+    Toggle,
+  },
 };
 </script>
 

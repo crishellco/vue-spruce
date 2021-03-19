@@ -1,13 +1,13 @@
 <template>
-  <demo-section name="SpruceCrud" :code="code" expanded>
-    <spruce-crud v-for="{ url, method } in urls" :key="url" :url="url" :method="method">
+  <demo-section name="SpruceFetch" :code="code" expanded>
+    <spruce-fetch v-for="url in urls" :key="url" :url="url">
       <div slot-scope="{ loading, data, error, fetch }" class="py-4 border-t">
         <div class="mb-4 flex justify-between">
           <div
             class="rounded-l py-2 px-4 uppercase font-mono leading-none flex items-center w-16 text-sm justify-center"
             :class="{ 'bg-red-500': !loading && error, 'bg-blue-500': !loading && !error, 'bg-green-500': loading }"
           >
-            {{ method }}
+            GET
           </div>
           <div
             class="font-semibold font-mono text-sm flex-1 border-b-2 border-t-2 border-gray-400 flex items-center px-2"
@@ -32,33 +32,23 @@
             </pre>
         </div>
       </div>
-    </spruce-crud>
+    </spruce-fetch>
   </demo-section>
 </template>
 
 <script>
-import { SpruceCrud } from '../../package/components';
+import { SpruceFetch } from '../../package/components';
 import { DemoSection } from '../shared';
-import code from './Crud.gist';
+import code from './Fetch.gist';
 
 export default {
-  components: { DemoSection, SpruceCrud },
+  components: { DemoSection, SpruceFetch },
 
   data() {
     return {
       urls: [
-        {
-          url: 'http://slowwly.robertomurray.co.uk/delay/1800/url/https://jsonplaceholder.typicode.com/posts/1',
-          method: 'get',
-        },
-        {
-          url: 'https://6053559e45e4b30017291628.mockapi.io/users/1',
-          method: 'put',
-        },
-        {
-          url: 'https://6053559e45e4b30017291628.mockapi.io/users/12321',
-          method: 'get',
-        },
+        'http://slowwly.robertomurray.co.uk/delay/1800/url/https://jsonplaceholder.typicode.com/posts/1',
+        'https://6053559e45e4b30017291628.mockapi.io/users/12321',
       ],
       code,
     };

@@ -1,6 +1,6 @@
 import { Component } from 'vue';
 
-declare const SpruceCrud: Component;
+declare const SpruceFetch: Component;
 declare const SpruceEvent: Component;
 declare const SpruceFunction: Component;
 declare const SprucePaginate: Component;

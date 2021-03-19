@@ -13,8 +13,8 @@ Check out the [demo](https://vue-spruce.netlify.app/)
   - [Vue Plugin](#vue-plugin)
   - [Named Imports](#named-imports)
 - [The Components](#the-components)
-  - [`SpruceCrud`](#-sprucecrud-)
   - [`SpruceEvent`](#-spruceevent-)
+  - [`SpruceFetch`](#-sprucefetch-)
   - [`SpruceFunction`](#-sprucefunction-)
   - [`SprucePaginate`](#-sprucepaginate-)
   - [`SpruceSearch`](#-sprucesearch-)
@@ -61,8 +61,8 @@ Alternatively, use only the components you need.
 
 ```javascript
 import {
-  SpruceCrud,
   SpruceEvent,
+  SpruceFetch,
   SpruceFunction,
   SprucePaginate,
   SpruceSearch,
@@ -73,8 +73,8 @@ import {
 
 export default {
   components: {
-    SpruceCrud,
     SpruceEvent,
+    SpruceFetch,
     SpruceFunction,
     SprucePaginate,
     SpruceSearch,
@@ -86,52 +86,6 @@ export default {
 ```
 
 ## The Components
-
-### `SpruceCrud`
-
-Make asynchronous API calls.
-
-```html
-<spruce-crud url="api.google.com/users" method="get">
-  <div slot-scope="{ loading, data, error, fetch }">
-    <loading-indicator v-if="loading" />
-    <div v-else-if="errors">Errors! {{ error.status }}</div>
-    <div v-else>Data: {{ data }}</div>
-    <button @click="fetch">Refetch</button>
-  <div>
-</spruce-crud>
-```
-
-#### Props
-
-| Name        | Description                                                | Type    | Required | Default |
-| ----------- | ---------------------------------------------------------- | ------- | -------- | ------- |
-| `url`       | The API url (changing this will refetch and rest all data) | String  | Yes      |         |
-| `method`    | The REST method                                            | String  | No       | `get`   |
-| `immediate` | Weather to immediate make the request on mount             | Boolean | No       | `true`  |
-
-#### Events
-
-| Name      | Description                          | Payload                           |
-| --------- | ------------------------------------ | --------------------------------- |
-| `success` | Fires when the request is successful | `{data: Object, fetch: Function}` |
-| `error`   | Fires when the request fails         | `{data: Object, fetch: Function}` |
-
-#### Slots
-
-| Name      | Required |
-| --------- | -------- |
-| `default` | Yes      |
-
-#### Slot Scope
-
-| Slot      | Name      | Description                          | Type                               |
-| --------- | --------- | ------------------------------------ | ---------------------------------- |
-| `default` | `calls`   | Number of calls made                 | Number                             |
-| `default` | `data`    | The response on a successful request | Object                             |
-| `default` | `error`   | The response on a failed request     | `{ data: Object, status: Number }` |
-| `default` | `loading` | Whether a request is in progress     | Boolean                            |
-| `default` | `fetch`   | Makes another request                | Function                           |
 
 ### `SpruceEvent`
 
@@ -161,6 +115,51 @@ Track any `window` event occurance inside or outside of `SpruceEvent`'s default 
 | Name      | Required |
 | --------- | -------- |
 | `default` | No       |
+
+### `SpruceFetch`
+
+Make asynchronous API fetch calls.
+
+```html
+<spruce-fetch url="api.google.com/users" >
+  <div slot-scope="{ loading, data, error, fetch }">
+    <loading-indicator v-if="loading" />
+    <div v-else-if="errors">Errors! {{ error.status }}</div>
+    <div v-else>Data: {{ data }}</div>
+    <button @click="fetch">Refetch</button>
+  <div>
+</spruce-fetch>
+```
+
+#### Props
+
+| Name        | Description                                                | Type    | Required | Default |
+| ----------- | ---------------------------------------------------------- | ------- | -------- | ------- |
+| `url`       | The API url (changing this will refetch and rest all data) | String  | Yes      |         |
+| `immediate` | Weather to immediate make the request on mount             | Boolean | No       | `true`  |
+
+#### Events
+
+| Name      | Description                          | Payload                           |
+| --------- | ------------------------------------ | --------------------------------- |
+| `success` | Fires when the request is successful | `{data: Object, fetch: Function}` |
+| `error`   | Fires when the request fails         | `{data: Object, fetch: Function}` |
+
+#### Slots
+
+| Name      | Required |
+| --------- | -------- |
+| `default` | Yes      |
+
+#### Slot Scope
+
+| Slot      | Name      | Description                          | Type                               |
+| --------- | --------- | ------------------------------------ | ---------------------------------- |
+| `default` | `calls`   | Number of calls made                 | Number                             |
+| `default` | `data`    | The response on a successful request | Object                             |
+| `default` | `error`   | The response on a failed request     | `{ data: Object, status: Number }` |
+| `default` | `loading` | Whether a request is in progress     | Boolean                            |
+| `default` | `fetch`   | Makes another request                | Function                           |
 
 ### `SpruceFunction`
 

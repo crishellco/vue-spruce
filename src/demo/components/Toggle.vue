@@ -14,9 +14,9 @@
               >{{ isOn ? '▲' : '▼' }}</span
             >
           </div>
-          <spruce-crud url="https://baconipsum.com/api/?type=all-meat&paras=1" immediate>
+          <spruce-fetch url="https://baconipsum.com/api/?type=all-meat&paras=1" immediate>
             <div v-if="isOn" slot-scope="{ data }" class="border rounded-b p-4">{{ data[0] }}</div>
-          </spruce-crud>
+          </spruce-fetch>
         </div>
       </div>
     </spruce-toggle>
@@ -24,14 +24,14 @@
 </template>
 
 <script>
-import { SpruceCrud, SpruceToggle } from '../../package/components';
+import { SpruceFetch, SpruceToggle } from '../../package/components';
 import { DemoSection } from '../shared';
 import code from './Toggle.gist';
 
 export default {
   components: {
     DemoSection,
-    SpruceCrud,
+    SpruceFetch,
     SpruceToggle,
   },
 

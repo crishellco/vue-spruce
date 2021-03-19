@@ -12,12 +12,12 @@ describe('install', () => {
   it('should install with default options', () => {
     localVue.use(VueSpruce);
 
-    expect(localVue.options.components).toHaveProperty('spruce-crud');
+    expect(localVue.options.components).toHaveProperty('spruce-fetch');
   });
 
   it('should install with custom options', () => {
     localVue.use(VueSpruce, { componentPrefix: 's' });
 
-    expect(localVue.options.components).toHaveProperty('s-crud');
+    expect(localVue.options.components).toHaveProperty('s-fetch');
   });
 });

@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 
-import { SpruceCrud } from './';
+import { SpruceFetch } from '.';
 
 const data = { ric: 'flair' };
 const defaultOptions = { ok: true, data, status: 200 };
@@ -19,11 +19,11 @@ function flushPromises() {
   return new Promise(setImmediate);
 }
 
-describe('Crud', () => {
+describe('Fetch', () => {
   beforeEach(() => {
     setupFetch();
 
-    wrapper = shallowMount(SpruceCrud, {
+    wrapper = shallowMount(SpruceFetch, {
       propsData: {
         url: 'api.google.com',
         method: 'get',
@@ -56,7 +56,7 @@ describe('Crud', () => {
   });
 
   it('should fetch immediately', () => {
-    shallowMount(SpruceCrud, {
+    shallowMount(SpruceFetch, {
       propsData: {
         url: 'api.google.com',
         method: 'get',
