@@ -1,18 +1,27 @@
-import axios from 'axios';
 import { shallowMount } from '@vue/test-utils';
-
-jest.mock('axios');
 
 import { SpruceCrud } from './';
 
 const data = { ric: 'flair' };
+const defaultOptions = { ok: true, data, status: 200 };
 
 let wrapper;
 
+function setupFetch(options = {}) {
+  const { ok, data, status } = { ...defaultOptions, ...options };
+
+  global.fetch = jest
+    .fn()
+    .mockImplementation(() => Promise.resolve({ ok, json: () => Promise.resolve({ ...data }), status }));
+}
+
+function flushPromises() {
+  return new Promise(setImmediate);
+}
+
 describe('Crud', () => {
   beforeEach(() => {
-    jest.resetAllMocks();
-    axios.mockImplementation(() => Promise.resolve({ status: 200, data }));
+    setupFetch();
 
     wrapper = shallowMount(SpruceCrud, {
       propsData: {
@@ -27,28 +36,22 @@ describe('Crud', () => {
   });
   it('should reset', async () => {
     await wrapper.vm.reset();
-    expect(axios).toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalled();
     expect(wrapper.vm.data).toEqual(data);
   });
 
   it('should watch url', async () => {
     await wrapper.setProps({ url: 'different' });
-    expect(axios).toHaveBeenCalled();
-    expect(wrapper.vm.data).toEqual(data);
-  });
-
-  it('should watch params', async () => {
-    await wrapper.setProps({ params: data });
-    expect(axios).toHaveBeenCalled();
+    await flushPromises();
+    expect(fetch).toHaveBeenCalled();
     expect(wrapper.vm.data).toEqual(data);
   });
 
   it('should handle errors', async () => {
-    axios.mockImplementation(() => Promise.reject({ response: { status: 400, data } }));
+    setupFetch({ ok: false, status: 400 });
 
     await wrapper.vm.fetch();
-
-    expect(axios).toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalled();
     expect(wrapper.vm.error).toEqual({ status: 400, data });
   });
 
@@ -63,13 +66,25 @@ describe('Crud', () => {
       },
     });
 
-    expect(axios).toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalled();
   });
 
   it('should not fetch when loading', () => {
     wrapper.vm.fetch();
     wrapper.vm.fetch();
 
-    expect(axios).toHaveBeenCalledTimes(1);
+    expect(wrapper.vm.loading).toBeTruthy();
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it('should catch an exception from fetch', async () => {
+    const error = 'oops';
+
+    global.fetch = jest.fn().mockImplementation(() => Promise.reject(error));
+
+    await wrapper.vm.fetch();
+
+    expect(wrapper.vm.data).toBeNull();
+    expect(wrapper.vm.loading).toBeFalsy();
   });
 });

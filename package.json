@@ -1,6 +1,6 @@
 {
   "name": "@crishellco/vue-spruce",
-  "version": "0.12.2",
+  "version": "0.13.0",
   "author": "Chris Mitchell (@crishellco)",
   "description": "A collection of useful Vue renderless components",
   "main": "dist/vue-spruce.umd.js",

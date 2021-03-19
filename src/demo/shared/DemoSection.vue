@@ -10,7 +10,7 @@
             >{{ isOn ? '-' : '+' }}</span
           >
         </div>
-        <div v-if="isOn" root class="mt-4">
+        <div v-if="isOn" class="mt-4">
           <slot />
         </div>
       </div>

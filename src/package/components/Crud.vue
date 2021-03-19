@@ -1,6 +1,4 @@
 <script>
-import axios from 'axios';
-
 export default {
   name: 'SpruceCrud',
   props: {
@@ -18,11 +16,6 @@ export default {
       default: true,
       type: Boolean,
     },
-
-    params: {
-      default: () => ({}),
-      type: Object,
-    },
   },
 
   data() {
@@ -38,14 +31,6 @@ export default {
     url() {
       this.reset();
     },
-
-    params: {
-      handler() {
-        this.reset();
-      },
-
-      deep: true,
-    },
   },
 
   mounted() {
@@ -59,31 +44,36 @@ export default {
       this.error = null;
       this.loading = false;
 
-      this.fetch();
+      return this.fetch();
     },
 
-    fetch({ method, params } = {}) {
-      return this.query(method || this.method, params || this.params);
+    fetch({ method } = {}) {
+      return this.query(method || this.method);
     },
 
-    async query(method, params) {
+    async query(method) {
       if (this.loading) return;
 
       this.loading = true;
 
       try {
-        const response = await axios({
-          method,
-          url: this.url,
-          params,
-        });
+        const response = await fetch(this.url, { method: method.toUpperCase() });
+        const data = await response.json();
 
-        this.data = response.data;
-        this.error = null;
-        this.$emit('success', { data: response, fetch: this.fetch });
+        if (response.ok) {
+          this.data = data;
+          this.error = null;
+          this.$emit('success', { data: response, fetch: this.fetch });
+        } else {
+          this.data = null;
+          this.error = {
+            data,
+            status: response.status,
+          };
+          this.$emit('error', { data: response, fetch: this.fetch });
+        }
       } catch (error) {
         this.data = null;
-        this.error = error.response;
         this.$emit('error', { data: error, fetch: this.fetch });
       }
 

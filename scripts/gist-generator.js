@@ -11,8 +11,8 @@ files.forEach(file => {
 
   const res = parseComponent(sfc);
   const template = res.template;
-  const root = parse(template.content).querySelector('[root]');
+  const root = parse(template.content).querySelector('demo-section');
   const newName = file.substr(0, file.lastIndexOf('.')) + '.gist';
 
-  fs.writeFileSync(newName, html(root.toString(), { indent_size: 2, wrap_line_length: 60, max_preserve_newlines: 2 }));
+  fs.writeFileSync(newName, html(root.innerHTML, { indent_size: 2, wrap_line_length: 60, max_preserve_newlines: 2 }));
 });

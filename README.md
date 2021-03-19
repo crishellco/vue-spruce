@@ -104,19 +104,18 @@ Make asynchronous API calls.
 
 #### Props
 
-| Name        | Description                                                              | Type    | Required | Default |
-| ----------- | ------------------------------------------------------------------------ | ------- | -------- | ------- |
-| `url`       | The API url (changing this will refetch and rest all data)               | String  | Yes      |         |
-| `method`    | The REST method                                                          | String  | No       | `get`   |
-| `immediate` | Weather to immediate make the request on mount                           | Boolean | No       | `true`  |
-| `params`    | Additional request params (changing this will refetch and rest all data) | Object  | No       | `{}`    |
+| Name        | Description                                                | Type    | Required | Default |
+| ----------- | ---------------------------------------------------------- | ------- | -------- | ------- |
+| `url`       | The API url (changing this will refetch and rest all data) | String  | Yes      |         |
+| `method`    | The REST method                                            | String  | No       | `get`   |
+| `immediate` | Weather to immediate make the request on mount             | Boolean | No       | `true`  |
 
 #### Events
 
 | Name      | Description                          | Payload                           |
 | --------- | ------------------------------------ | --------------------------------- |
-| `success` | Fires when the request is successful | `{data: object, fetch: function}` |
-| `error`   | Fires when the request fails         | `{data: object, fetch: function}` |
+| `success` | Fires when the request is successful | `{data: Object, fetch: Function}` |
+| `error`   | Fires when the request fails         | `{data: Object, fetch: Function}` |
 
 #### Slots
 
@@ -126,13 +125,13 @@ Make asynchronous API calls.
 
 #### Slot Scope
 
-| Slot      | Name      | Description                          | Type     |
-| --------- | --------- | ------------------------------------ | -------- |
-| `default` | `calls`   | Number of calls made                 | Number   |
-| `default` | `data`    | The response on a successful request | any      |
-| `default` | `error`   | The response on a failed request     | any      |
-| `default` | `loading` | Whether a request is in progress     | Boolean  |
-| `default` | `fetch`   | Makes another request                | Function |
+| Slot      | Name      | Description                          | Type                               |
+| --------- | --------- | ------------------------------------ | ---------------------------------- |
+| `default` | `calls`   | Number of calls made                 | Number                             |
+| `default` | `data`    | The response on a successful request | Object                             |
+| `default` | `error`   | The response on a failed request     | `{ data: Object, status: Number }` |
+| `default` | `loading` | Whether a request is in progress     | Boolean                            |
+| `default` | `fetch`   | Makes another request                | Function                           |
 
 ### `SpruceEvent`
 
@@ -263,11 +262,11 @@ Search an array of strings or objects by keys using [fuse.js](https://fusejs.io/
 
 #### Props
 
-| Name   | Description             | Type                  | Required | Default                                                                         |
-| ------ | ----------------------- | --------------------- | -------- | ------------------------------------------------------------------------------- |
-| `keys` | The keys to search in   | Array<String>         | No       | If `list` is Array<Object> then all of the first object's keys. Otherwise `[]`. |
-| `list` | The list to search      | Array<String, Object> | Yes      |                                                                                 |
-| `term` | The terms to search for | String                | No       | ''                                                                              |
+| Name   | Description             | Type   | Required | Default                                                                           |
+| ------ | ----------------------- | ------ | -------- | --------------------------------------------------------------------------------- |
+| `keys` | The keys to search in   | Array  | No       | If `list` is `Array<Object>` then all of the first object's keys. Otherwise `[]`. |
+| `list` | The list to search      | Array  | Yes      |                                                                                   |
+| `term` | The terms to search for | String | No       | ''                                                                                |
 
 #### Slots
 
@@ -277,9 +276,9 @@ Search an array of strings or objects by keys using [fuse.js](https://fusejs.io/
 
 #### Slot Scope
 
-| Slot      | Name      | Description       | Type                  |
-| --------- | --------- | ----------------- | --------------------- |
-| `default` | `results` | The searched list | Array<String, Object> |
+| Slot      | Name      | Description       | Type  |
+| --------- | --------- | ----------------- | ----- |
+| `default` | `results` | The searched list | Array |
 
 ### `SpruceSort`
 
@@ -297,11 +296,11 @@ Sort an array of strings or objects in either direction by specific keys.
 
 #### Props
 
-| Name        | Description                               | Type       | Required | Default |
-| ----------- | ----------------------------------------- | ---------- | -------- | ------- |
-| `list`      | The list to search                        | Array<any> | Yes      |         |
-| `direction` | The direction to sort in, 'asc' or 'desc' | String     | No       | 'asc'   |
-| `by`        | The object property to sort by            | String     | No       | ''      |
+| Name        | Description                               | Type   | Required | Default |
+| ----------- | ----------------------------------------- | ------ | -------- | ------- |
+| `list`      | The list to search                        | Array  | Yes      |         |
+| `direction` | The direction to sort in, 'asc' or 'desc' | String | No       | 'asc'   |
+| `by`        | The object property to sort by            | String | No       | ''      |
 
 #### Slots
 

@@ -1,6 +1,6 @@
 <template>
   <demo-section name="SprucePaginate" :code="code">
-    <spruce-state :value="{ term: '' }" root>
+    <spruce-state :value="{ term: '' }">
       <div slot-scope="{ state, update }">
         <input
           :value="state.term"

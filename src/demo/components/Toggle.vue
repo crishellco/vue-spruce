@@ -14,8 +14,8 @@
               >{{ isOn ? '▲' : '▼' }}</span
             >
           </div>
-          <spruce-crud url="https://baconipsum.com/api/?type=all-meat&paras=1&start-with-lorem=1&format=text" immediate>
-            <div v-if="isOn" slot-scope="{ data }" class="border rounded-b p-4">{{ data }}</div>
+          <spruce-crud url="https://baconipsum.com/api/?type=all-meat&paras=1" immediate>
+            <div v-if="isOn" slot-scope="{ data }" class="border rounded-b p-4">{{ data[0] }}</div>
           </spruce-crud>
         </div>
       </div>
