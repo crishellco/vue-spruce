@@ -9,9 +9,6 @@ A collection of useful Vue renderless components.
 Check out the [demo](https://vue-spruce.netlify.app/)
 
 - [Install](#install)
-  - [Package](#package)
-  - [Vue Plugin](#vue-plugin)
-  - [Named Imports](#named-imports)
 - [The Components](#the-components)
   - [`SpruceEvent`](#-spruceevent-)
   - [`SpruceFetch`](#-sprucefetch-)
@@ -24,6 +21,7 @@ Check out the [demo](https://vue-spruce.netlify.app/)
 - [Examples](#examples)
 - [Development](#development)
 - [How to Contribute](#how-to-contribute)
+  - [Pull Requests](#pull-requests)
 - [License](#license)
 
 ## Install
