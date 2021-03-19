@@ -10,14 +10,14 @@ Check out the [demo](https://vue-spruce.netlify.app/)
 
 - [Install](#install)
 - [The Components](#the-components)
-  - [`SpruceEvent`](#spruceevent)
-  - [`SpruceFetch`](#sprucefetch)
-  - [`SpruceFunction`](#sprucefunction)
-  - [`SprucePaginate`](#sprucepaginate)
-  - [`SpruceSearch`](#sprucesearch)
-  - [`SpruceSort`](#sprucesort)
-  - [`SpruceState`](#sprucestate)
-  - [`SpruceToggle`](#sprucetoggle)
+  - [SpruceEvent](#spruceevent)
+  - [SpruceFetch](#sprucefetch)
+  - [SpruceFunction](#sprucefunction)
+  - [SprucePaginate](#sprucepaginate)
+  - [SpruceSearch](#sprucesearch)
+  - [SpruceSort](#sprucesort)
+  - [SpruceState](#sprucestate)
+  - [SpruceToggle](#sprucetoggle)
 - [Examples](#examples)
 - [Development](#development)
 - [How to Contribute](#how-to-contribute)
@@ -85,7 +85,7 @@ export default {
 
 ## The Components
 
-### `SpruceEvent`
+### SpruceEvent
 
 Track any `window` event occurance inside or outside of `SpruceEvent`'s default slot.
 
@@ -114,7 +114,7 @@ Track any `window` event occurance inside or outside of `SpruceEvent`'s default 
 | --------- | -------- |
 | `default` | No       |
 
-### `SpruceFetch`
+### SpruceFetch
 
 Make asynchronous API fetch calls.
 
@@ -159,7 +159,7 @@ Make asynchronous API fetch calls.
 | `default` | `loading` | Whether a request is in progress     | Boolean                            |
 | `default` | `fetch`   | Makes another request                | Function                           |
 
-### `SpruceFunction`
+### SpruceFunction
 
 Create reusable functions on the fly (great for lists!).
 
@@ -189,7 +189,7 @@ Create reusable functions on the fly (great for lists!).
 | --------- | ---- | ------------ | -------- |
 | `default` | `fn` | The function | Function |
 
-### `SprucePaginate`
+### SprucePaginate
 
 Paginate an array and navigate through it's chunks.
 
@@ -243,7 +243,7 @@ Paginate an array and navigate through it's chunks.
 | `default` | `reset`      | Reset the state of pagination                                                                 | Function |
 | `default` | `totalPages` | Total number of pages                                                                         | Number   |
 
-### `SpruceSearch`
+### SpruceSearch
 
 Search an array of strings or objects by keys using [fuse.js](https://fusejs.io/).
 
@@ -277,7 +277,7 @@ Search an array of strings or objects by keys using [fuse.js](https://fusejs.io/
 | --------- | --------- | ----------------- | ----- |
 | `default` | `results` | The searched list | Array |
 
-### `SpruceSort`
+### SpruceSort
 
 Sort an array of strings or objects in either direction by specific keys.
 
@@ -311,7 +311,7 @@ Sort an array of strings or objects in either direction by specific keys.
 | --------- | --------- | ----------------- | --------------------- |
 | `default` | `results` | The searched list | Array<String, Object> |
 
-### `SpruceState`
+### SpruceState
 
 Create and manage localized state.
 
@@ -350,7 +350,7 @@ Create and manage localized state.
 | `default` | `state`            | The state                                  | Object   |
 | `default` | `update(newValue)` | Merges `newValue` with the current `state` | Function |
 
-### `SpruceToggle`
+### SpruceToggle
 
 Toggle between on (`true`) and off (`false`).
 
