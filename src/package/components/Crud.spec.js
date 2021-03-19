@@ -9,7 +9,7 @@ const data = { ric: 'flair' };
 
 let wrapper;
 
-describe('Event', () => {
+describe('Crud', () => {
   beforeEach(() => {
     jest.resetAllMocks();
     axios.mockImplementation(() => Promise.resolve({ status: 200, data }));
