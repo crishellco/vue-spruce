@@ -45,7 +45,7 @@ import Vue from 'vue';
 import VueSpruce from '@crishellco/vue-spruce';
 
 Vue.use(VueSpruce);
-// or with custom
+// or with options
 Vue.use(VueSpruce, { componentPrefix: 's' });
 ```
 
