@@ -11,7 +11,7 @@
     >
       <template slot-scope="{ fn }">
         <spruce-state :value="{ name: 'ric flair', sport: 'wrestling' }">
-          <div slot-scope="{ state, update }">
+          <div slot-scope="{ state, set }">
             <div class="mb-4">
               <div class="font-semibold">State:</div>
               <pre class="whitespace-pre flex-1 flex flex-col w-full overflow-auto bg-gray-700 p-4 rounded">
@@ -20,14 +20,14 @@
             </div>
             <button
               class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64"
-              @click="update({ name: fn(state.name) })"
+              @click="set({ name: fn(state.name) })"
             >
               shuffle name
             </button>
 
             <button
               class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64 ml-4"
-              @click="update({ sport: fn(state.sport) })"
+              @click="set({ sport: fn(state.sport) })"
             >
               shuffle sport
             </button>

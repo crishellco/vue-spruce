@@ -317,8 +317,8 @@ Create and manage localized state.
 
 ```html
 <spruce-state :value="{ count: 0 }">
-  <div slot-scope="{ state, update }">
-    <button @click="update({count: state.count + 1})">
+  <div slot-scope="{ state, set }">
+    <button @click="set({count: state.count + 1})">
       Increment ({{ state.count }})
     </button>
   </div>
@@ -345,10 +345,10 @@ Create and manage localized state.
 
 #### Slot Scope
 
-| Slot      | Name               | Description                                | Type     |
-| --------- | ------------------ | ------------------------------------------ | -------- |
-| `default` | `state`            | The state                                  | Object   |
-| `default` | `update(newValue)` | Merges `newValue` with the current `state` | Function |
+| Slot      | Name            | Description                                | Type     |
+| --------- | --------------- | ------------------------------------------ | -------- |
+| `default` | `state`         | The state                                  | Object   |
+| `default` | `set(newValue)` | Merges `newValue` with the current `state` | Function |
 
 ### SpruceToggle
 

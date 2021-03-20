@@ -20,7 +20,7 @@ export default {
     },
 
     value(newVal) {
-      this.$set(this, 'localValue', newVal);
+      this.set(newVal);
     },
   },
 
@@ -29,15 +29,23 @@ export default {
   },
 
   methods: {
-    update(newVal) {
+    set(newVal) {
       this.$set(this, 'localValue', { ...this.localValue, ...newVal });
+    },
+
+    update(newVal) {
+      console.warn(
+        `The 'update' method has been dreprecated and will be remove in the next major version. Please use 'set' instead.`
+      );
+
+      this.set(newVal);
     },
   },
 
   render() {
     return this.$scopedSlots.default({
       state: this.localValue,
-      update: this.update,
+      set: this.set,
     });
   },
 };

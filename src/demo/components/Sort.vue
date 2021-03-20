@@ -1,7 +1,7 @@
 <template>
   <demo-section name="SpruceSort" :code="code">
     <spruce-state :value="{ direction: 'asc', by: columns[0] }">
-      <template slot-scope="{ state, update }">
+      <template slot-scope="{ state, set }">
         <spruce-sort :list="people" :by="state.by" :direction="state.direction">
           <div slot-scope="{ results }" class="w-full overflow-auto text-xs" style="height: 46rem">
             <table class="w-full mt-4">
@@ -14,9 +14,9 @@
                     @click="
                       () => {
                         if (state.by === col) {
-                          update({ direction: state.direction === 'desc' ? 'asc' : 'desc' });
+                          set({ direction: state.direction === 'desc' ? 'asc' : 'desc' });
                         } else {
-                          update({ by: col });
+                          set({ by: col });
                         }
                       }
                     "

@@ -3,8 +3,8 @@
     <div class="flex items-center">
       <div>
         <spruce-state :value="{ count: 0 }">
-          <template slot-scope="{ state, update }">
-            <spruce-event event="mouseover" @mouseover="update({ count: state.count + 1 })">
+          <template slot-scope="{ state, set }">
+            <spruce-event event="mouseover" @mouseover="set({ count: state.count + 1 })">
               <button class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64">
                 hover over me ({{ state.count }})
               </button>
@@ -15,8 +15,8 @@
 
       <div class="ml-4">
         <spruce-state :value="{ count: 0 }">
-          <div slot-scope="{ state, update }">
-            <spruce-event event="click" outside @click="update({ count: state.count + 1 })">
+          <div slot-scope="{ state, set }">
+            <spruce-event event="click" outside @click="set({ count: state.count + 1 })">
               <button
                 class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64"
                 @click.stop
@@ -30,8 +30,8 @@
 
       <div class="ml-4">
         <spruce-state :value="{ width: 0 }">
-          <div slot-scope="{ state, update }">
-            <spruce-event event="resize" @resize="update({ width: $event.target.window.innerWidth })" />
+          <div slot-scope="{ state, set }">
+            <spruce-event event="resize" @resize="set({ width: $event.target.window.innerWidth })" />
             <button class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64">
               resize the window ({{ state.width }})
             </button>
