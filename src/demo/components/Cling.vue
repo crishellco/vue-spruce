@@ -1,5 +1,5 @@
 <template>
-  <demo-section name="SpruceCling" :code="code" class="flex" expanded @toggled="handleToggled">
+  <demo-section name="SpruceCling" :code="code" class="flex" @toggled="handleToggled">
     <div ref="container" class="relative h-64">
       <div class="absolute" :style="wrapperStyle">
         <spruce-cling :placement="placement">
@@ -68,20 +68,13 @@ export default {
     };
   },
 
-  async mounted() {
-    await this.$nextTick();
-    this.start();
-  },
-
   beforeDestroy() {
     this.stop();
   },
 
   methods: {
     handleToggled(isOn) {
-      this.stop();
-
-      return isOn && this.start();
+      return isOn ? this.start() : this.stop();
     },
 
     start() {
@@ -90,6 +83,7 @@ export default {
     },
 
     stop() {
+      this.remaining = MOVE_INTERVAL;
       clearInterval(this.moveButtonInterval);
       clearInterval(this.remainingUntilMoveInterval);
     },

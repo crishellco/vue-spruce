@@ -1,6 +1,7 @@
+export { default as SpruceAtLeast } from './AtLeast.vue';
 export { default as SpruceCling } from './Cling.vue';
-export { default as SpruceFetch } from './Fetch.vue';
 export { default as SpruceEvent } from './Event.vue';
+export { default as SpruceFetch } from './Fetch.vue';
 export { default as SpruceFunction } from './Function.vue';
 export { default as SprucePaginate } from './Paginate.vue';
 export { default as SpruceSearch } from './Search.vue';

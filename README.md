@@ -10,6 +10,7 @@ Check out the [demo](https://vue-spruce.netlify.app/)
 
 - [Install](#install)
 - [The Components](#the-components)
+  - [SpruceAtLeast](#spruceatleast)
   - [SpruceCling](#sprucecling)
   - [SpruceEvent](#spruceevent)
   - [SpruceFetch](#sprucefetch)
@@ -72,6 +73,7 @@ Alternatively, use only the components you need.
 
 ```javascript
 import {
+  SpruceAtLeast,
   SpruceCling,
   SpruceEvent,
   SpruceFetch,
@@ -86,6 +88,7 @@ import {
 
 export default {
   components: {
+    SpruceAtLeast,
     SpruceCling,
     SpruceEvent,
     SpruceFetch,
@@ -101,6 +104,42 @@ export default {
 ```
 
 ## The Components
+
+### SpruceAtLeast
+
+Ensures a component shows for at least a given amount of time, in milliseconds, before hiding.
+
+```html
+<spruce-at-least :ms="5000" :show="shouldShowImage">
+  <div slot-scope="{ disabled, show }">
+    <img v-if="show" src="http://www.fillmurray.com/g/200/300" alt="" />
+
+    <button :disabled="disabled" @click="shouldShowImage = !shouldShowImage">
+      {{ disabled ? 'waiting...' : show ? 'hide' : 'show' }}
+    </button>
+  </div>
+</spruce-at-least>
+```
+
+#### Props
+
+| Name   | Description                                                        | Type    | Required | Default |
+| ------ | ------------------------------------------------------------------ | ------- | -------- | ------- |
+| `ms`   | Minimum amount of time to show, in milliseconds                    | Number  | Yes      |         |
+| `show` | Weather or not to show the contents (given enough time has passed) | Boolean | No       | `true`  |
+
+#### Slots
+
+| Name      | Required |
+| --------- | -------- |
+| `default` | Yes      |
+
+#### Slot Scope
+
+| Slot      | Name       | Description                                                | Type    |
+| --------- | ---------- | ---------------------------------------------------------- | ------- |
+| `default` | `disabled` | True if waiting to hide content after `ms` time has passed | Boolean |
+| `default` | `show`     | If the contents should be shown                            | Boolean |
 
 ### SpruceCling
 

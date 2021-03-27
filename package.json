@@ -1,6 +1,6 @@
 {
   "name": "@crishellco/vue-spruce",
-  "version": "0.17.0",
+  "version": "0.18.0",
   "author": "Chris Mitchell (@crishellco)",
   "description": "A collection of useful Vue renderless components",
   "main": "dist/vue-spruce.umd.js",
@@ -59,7 +59,8 @@
     "raw-loader": "^4.0.2",
     "vue": "^2.6.11",
     "vue-sfc-parser": "^0.1.2",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+    "vue2-transitions": "^0.3.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged",

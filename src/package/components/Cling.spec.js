@@ -4,7 +4,7 @@ import { shallowMount } from '@vue/test-utils';
 import { SpruceCling } from '.';
 
 describe('Cling', () => {
-  it('render with attrs and placement', async () => {
+  it('should render with attrs and placement', async () => {
     const wrapper = await shallowMount(SpruceCling, {
       propsData: { placement: 'top' },
       scopedSlots: {
@@ -18,7 +18,7 @@ describe('Cling', () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  it('render without attrs or placement', async () => {
+  it('should render without attrs or placement', async () => {
     const wrapper = await shallowMount(SpruceCling, {
       scopedSlots: {
         anchor: '<p></p>',

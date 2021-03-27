@@ -1,5 +1,6 @@
 <template>
   <div class="demos">
+    <at-least />
     <cling />
     <event />
     <fetch />
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+import AtLeast from './components/AtLeast.vue';
 import Cling from './components/Cling.vue';
 import Event from './components/Event.vue';
 import Fetch from './components/Fetch.vue';
@@ -27,6 +29,7 @@ import Watch from './components/Watch.vue';
 
 export default {
   components: {
+    AtLeast,
     Cling,
     Event,
     Fetch,
