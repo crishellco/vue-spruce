@@ -1,5 +1,5 @@
 <template>
-  <spruce-toggle :value="expanded">
+  <spruce-toggle :value="expanded" @input="$emit('toggled', $event)">
     <section slot-scope="{ isOn, toggle }" class="flex">
       <div class="flex-1 p-4 w-1/2 border-b border-gray-400">
         <div class="flex items-center justify-between">

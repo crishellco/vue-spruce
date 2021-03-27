@@ -1,6 +1,6 @@
 <template>
   <demo-section name="SprucePaginate" :code="code">
-    <spruce-paginate :size="75" :list="simplePeople">
+    <spruce-paginate :size="25" :list="simplePeople">
       <div
         slot-scope="{
           page,

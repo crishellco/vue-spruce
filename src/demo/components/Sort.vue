@@ -1,8 +1,8 @@
 <template>
   <demo-section name="SpruceSort" :code="code">
     <spruce-state :value="{ direction: 'asc', by: columns[0] }">
-      <template slot-scope="{ state, set }">
-        <spruce-sort :list="people" :by="state.by" :direction="state.direction">
+      <template slot-scope="{ by, direction, set }">
+        <spruce-sort :list="people" :by="by" :direction="direction">
           <div slot-scope="{ results }" class="w-full overflow-auto text-xs" style="height: 46rem">
             <table class="w-full mt-4">
               <thead>
@@ -13,8 +13,8 @@
                     class="cursor-pointer"
                     @click="
                       () => {
-                        if (state.by === col) {
-                          set({ direction: state.direction === 'desc' ? 'asc' : 'desc' });
+                        if (by === col) {
+                          set({ direction: direction === 'desc' ? 'asc' : 'desc' });
                         } else {
                           set({ by: col });
                         }
@@ -22,9 +22,7 @@
                     "
                   >
                     <span>{{ col }}</span>
-                    <span class="ml-2" :class="{ 'opacity-0': state.by !== col }">{{
-                      state.direction === 'asc' ? '▲' : '▼'
-                    }}</span>
+                    <span class="ml-2" :class="{ 'opacity-0': by !== col }">{{ direction === 'asc' ? '▲' : '▼' }}</span>
                   </th>
                 </tr>
               </thead>

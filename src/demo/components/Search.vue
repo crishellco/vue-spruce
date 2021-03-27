@@ -1,15 +1,15 @@
 <template>
   <demo-section name="SpruceSearch" :code="code">
     <spruce-state :value="{ term: '' }">
-      <div slot-scope="{ state, set }">
+      <div slot-scope="{ term, set }">
         <input
-          :value="state.term"
+          :value="term"
           type="text"
           class="border-2 bg-white py-2 px-4 w-1/2 mb-4"
           placeholder="search"
           @input="set({ term: $event.target.value })"
         />
-        <spruce-search :list="states" :term="state.term">
+        <spruce-search :list="states" :term="term">
           <div slot-scope="{ results }" class="w-full overflow-auto text-xs" style="height: 31rem">
             <table class="w-full">
               <thead>

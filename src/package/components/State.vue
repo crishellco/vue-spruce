@@ -44,7 +44,7 @@ export default {
 
   render() {
     return this.$scopedSlots.default({
-      state: this.localValue,
+      ...this.localValue,
       set: this.set,
     });
   },

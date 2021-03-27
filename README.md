@@ -10,6 +10,7 @@ Check out the [demo](https://vue-spruce.netlify.app/)
 
 - [Install](#install)
 - [The Components](#the-components)
+  - [SpruceCling](#sprucecling)
   - [SpruceEvent](#spruceevent)
   - [SpruceFetch](#sprucefetch)
   - [SpruceFunction](#sprucefunction)
@@ -18,6 +19,7 @@ Check out the [demo](https://vue-spruce.netlify.app/)
   - [SpruceSort](#sprucesort)
   - [SpruceState](#sprucestate)
   - [SpruceToggle](#sprucetoggle)
+  - [SpruceWatch](#sprucewatch)
 - [Examples](#examples)
 - [Development](#development)
 - [How to Contribute](#how-to-contribute)
@@ -47,6 +49,17 @@ Vue.use(VueSpruce);
 Vue.use(VueSpruce, { componentPrefix: 's' });
 ```
 
+### Nuxt Module
+
+Installs all components globally.
+
+```javascript
+// nuxt.config.js
+{
+  modules: ['@crishellco/vue-spruce/nuxt', { componentPrefix: 's' }];
+}
+```
+
 #### Options
 
 | Name              | Description                                         | Default  |
@@ -59,6 +72,7 @@ Alternatively, use only the components you need.
 
 ```javascript
 import {
+  SpruceCling,
   SpruceEvent,
   SpruceFetch,
   SpruceFunction,
@@ -67,10 +81,12 @@ import {
   SpruceSort,
   SpruceState,
   SpruceToggle,
+  SpruceWatch,
 } from '@crishellco/vue-spruce';
 
 export default {
   components: {
+    SpruceCling,
     SpruceEvent,
     SpruceFetch,
     SpruceFunction,
@@ -79,11 +95,52 @@ export default {
     SpruceSort,
     SpruceState,
     SpruceToggle,
+    SpruceWatch,
   },
 };
 ```
 
 ## The Components
+
+### SpruceCling
+
+Clings the `clinger` slot's contents to the `anchor` slot's contents using `popper.js`. Great for things like dropdown menus. _See the [demo](https://vue-spruce.netlify.app/) for more context._
+
+```html
+<spruce-cling placement="bottom">
+  <template #anchor>
+    <button>
+      i'm a button
+    </button>
+  </template>
+  <template #clinger>
+    <div>
+      <div>i'm a clinger!</div>
+    </div>
+  </template>
+</spruce-cling>
+```
+
+#### Props
+
+| Name        | Description                                                                                                                  | Type   | Required | Default |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ------ | -------- | ------- |
+| `modifiers` | The [popper.js modifiers](https://popper.js.org/docs/v2/modifiers/)                                                          | Array  | No       | `[]`    |
+| `placement` | The [popper.js placement](https://popper.js.org/docs/v2/constructors//#options) of the `clinger` in relation to the `anchor` | String | No       | `auto`  |
+
+#### Slots
+
+| Name      | Required |
+| --------- | -------- |
+| `anchor`  | Yes      |
+| `clinger` | Yes      |
+
+#### Slot Scope
+
+| Slot      | Name     | Description                 | Type     |
+| --------- | -------- | --------------------------- | -------- |
+| `anchor`  | `update` | Updates the popper instance | Function |
+| `clinger` | `update` | Updates the popper instance | Function |
 
 ### SpruceEvent
 
@@ -317,9 +374,9 @@ Create and manage localized state.
 
 ```html
 <spruce-state :value="{ count: 0 }">
-  <div slot-scope="{ state, set }">
-    <button @click="set({count: state.count + 1})">
-      Increment ({{ state.count }})
+  <div slot-scope="{ count, set }">
+    <button @click="set({count: count + 1})">
+      Increment ({{ count }})
     </button>
   </div>
 </spruce-state>
@@ -347,7 +404,7 @@ Create and manage localized state.
 
 | Slot      | Name            | Description                                | Type     |
 | --------- | --------------- | ------------------------------------------ | -------- |
-| `default` | `state`         | The state                                  | Object   |
+| `default` | `[key]`         | Each key in the `state` prop               | Any      |
 | `default` | `set(newValue)` | Merges `newValue` with the current `state` | Function |
 
 ### SpruceToggle
@@ -398,6 +455,37 @@ Toggle between on (`true`) and off (`false`).
 | `default` | `on()`     | Sets `isOn` to `true`   | Function |
 | `default` | `off()`    | Sets `isOn` to `false`  | Function |
 | `default` | `toggle()` | Toggles `isOn`          | Function |
+
+### SpruceWatch
+
+Watches variables for changes and emits events when changes occur.
+
+```html
+<spruce-watch :watch="{count}" @changed="handleAnyChange" @changed:count="handleCountChange">
+  <button @click="count++">
+    count++ ({{ count }})
+  </button>
+</spruce-watch>
+```
+
+#### Props
+
+| Name    | Description              | Type   | Required | Default |
+| ------- | ------------------------ | ------ | -------- | ------- |
+| `watch` | Values you wish to watch | Object | Yes      |         |
+
+#### Events
+
+| Name            | Description                                    | Payload                                  |
+| --------------- | ---------------------------------------------- | ---------------------------------------- |
+| `changed`       | Fired when any value in `watch` changes        | `{key: count, oldValue: 0, newValue: 1}` |
+| `changed:[key]` | Fired when a specific value in `watch` changes | `{oldValue: 0, newValue: 1}`             |
+
+#### Slots
+
+| Name      | Required |
+| --------- | -------- |
+| `default` | No       |
 
 ## Examples
 

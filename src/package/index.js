@@ -1,4 +1,5 @@
 import {
+  SpruceCling,
   SpruceEvent,
   SpruceFetch,
   SpruceFunction,
@@ -7,9 +8,11 @@ import {
   SpruceSort,
   SpruceState,
   SpruceToggle,
+  SpruceWatch,
 } from './components';
 
 export {
+  SpruceCling,
   SpruceEvent,
   SpruceFetch,
   SpruceFunction,
@@ -18,6 +21,7 @@ export {
   SpruceSort,
   SpruceState,
   SpruceToggle,
+  SpruceWatch,
 };
 
 const defaultOptions = {
@@ -27,6 +31,7 @@ const defaultOptions = {
 export default function install(Vue, options = {}) {
   const { componentPrefix } = { ...defaultOptions, ...options };
 
+  Vue.component(`${componentPrefix}-cling`, SpruceCling);
   Vue.component(`${componentPrefix}-event`, SpruceEvent);
   Vue.component(`${componentPrefix}-fetch`, SpruceFetch);
   Vue.component(`${componentPrefix}-function`, SpruceFunction);
@@ -35,4 +40,5 @@ export default function install(Vue, options = {}) {
   Vue.component(`${componentPrefix}-sort`, SpruceSort);
   Vue.component(`${componentPrefix}-state`, SpruceState);
   Vue.component(`${componentPrefix}-toggle`, SpruceToggle);
+  Vue.component(`${componentPrefix}-watch`, SpruceWatch);
 }

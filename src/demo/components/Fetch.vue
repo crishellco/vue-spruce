@@ -1,5 +1,5 @@
 <template>
-  <demo-section name="SpruceFetch" :code="code" expanded>
+  <demo-section name="SpruceFetch" :code="code">
     <spruce-fetch v-for="url in urls" :key="url" :url="url">
       <div slot-scope="{ loading, data, error, fetch }" class="py-4 border-t">
         <div class="mb-4 flex justify-between">
