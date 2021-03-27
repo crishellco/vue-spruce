@@ -56,7 +56,7 @@ Installs all components globally.
 ```javascript
 // nuxt.config.js
 {
-  modules: ['@crishellco/vue-spruce/nuxt', { componentPrefix: 's' }];
+  modules: [['@crishellco/vue-spruce/nuxt', { componentPrefix: 's' }]];
 }
 ```
 
