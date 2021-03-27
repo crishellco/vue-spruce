@@ -31,9 +31,9 @@
       <div class="ml-4">
         <spruce-state :value="{ width: 0 }">
           <div slot-scope="{ width, set }">
-            <spruce-event event="resize" @resize="set({ width: $event.target.window.innerWidth })" />
+            <spruce-event event="resize" immediate @resize="set({ width: $event.target.window.innerWidth })" />
             <button class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64">
-              resize the window ({{ width }})
+              resize the window ({{ width }}px)
             </button>
           </div>
         </spruce-state>
@@ -43,17 +43,14 @@
 </template>
 
 <script>
-import { SpruceEvent, SpruceState } from '../../package/components';
 import { DemoSection } from '../shared';
 import code from './Event.gist';
 
 export default {
-  components: { DemoSection, SpruceEvent, SpruceState },
+  components: { DemoSection },
 
   data() {
-    return {
-      code,
-    };
+    return { code };
   },
 };
 </script>

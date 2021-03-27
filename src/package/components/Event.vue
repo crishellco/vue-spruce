@@ -6,6 +6,10 @@ export default {
       type: String,
       required: true,
     },
+    immediate: {
+      default: false,
+      type: Boolean,
+    },
     outside: {
       default: false,
       type: Boolean,
@@ -15,6 +19,10 @@ export default {
   mounted() {
     this.handleEvent = this.handleEvent.bind(this);
     window.addEventListener(this.event, this.handleEvent);
+
+    if (this.immediate) {
+      window.dispatchEvent(new Event(this.event));
+    }
   },
 
   /* istanbul ignore next */

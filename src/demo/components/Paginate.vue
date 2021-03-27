@@ -101,13 +101,12 @@
 </template>
 
 <script>
-import { SprucePaginate } from '../../package/components';
 import { states, simplePeople } from '../fixtures';
 import { DemoSection } from '../shared';
 import code from './Paginate.gist';
 
 export default {
-  components: { DemoSection, SprucePaginate },
+  components: { DemoSection },
 
   data() {
     return {

@@ -25,16 +25,18 @@ export default {
       const first = this.list[0];
       const isObject = typeof first === 'object';
       const keys = isObject ? (this.keys.length ? this.keys : Object.keys(first)) : [];
-      const fuse = new Fuse(this.list, { includeScore: false, shouldSort: false, keys });
+      const fuse = new Fuse(this.list, {
+        includeScore: false,
+        shouldSort: false,
+        keys,
+      });
 
       return fuse.search(this.term).map(({ item }) => item);
     },
   },
 
   render() {
-    return this.$scopedSlots.default({
-      results: this.results,
-    });
+    return this.$scopedSlots.default({ results: this.results });
   },
 };
 </script>

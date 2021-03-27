@@ -39,9 +39,7 @@ export default {
   },
 
   data() {
-    return {
-      pageIndex: 0,
-    };
+    return { pageIndex: 0 };
   },
 
   computed: {

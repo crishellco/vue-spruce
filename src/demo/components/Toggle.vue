@@ -24,21 +24,14 @@
 </template>
 
 <script>
-import { SpruceFetch, SpruceToggle } from '../../package/components';
 import { DemoSection } from '../shared';
 import code from './Toggle.gist';
 
 export default {
-  components: {
-    DemoSection,
-    SpruceFetch,
-    SpruceToggle,
-  },
+  components: { DemoSection },
 
   data() {
-    return {
-      code,
-    };
+    return { code };
   },
 };
 </script>

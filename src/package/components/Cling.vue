@@ -17,38 +17,49 @@ export default {
   },
 
   data() {
-    return {
-      popper: null,
-    };
+    return { popper: null };
+  },
+
+  watch: {
+    modifiers() {
+      this.init();
+    },
+
+    placement() {
+      this.init();
+    },
   },
 
   async mounted() {
     await this.$forceUpdate();
 
-    const anchor = this.$el.querySelector('[spruce-cling-anchor]');
-    const clinger = this.$el.querySelector('[spruce-cling-clinger]');
-    const options = {
-      modifiers: this.modifiers,
-      placement: this.placement,
-    };
-
-    if (this.placement === 'auto') {
-      options.modifiers.push(flip);
-    }
-
-    this.popper = createPopper(anchor, clinger, options);
+    this.init();
   },
 
   methods: {
+    init() {
+      if (this.popper) this.popper.destroy();
+
+      const anchor = this.$el.querySelector('[spruce-cling-anchor]');
+      const clinger = this.$el.querySelector('[spruce-cling-clinger]');
+      const options = {
+        modifiers: [...this.modifiers],
+        placement: this.placement,
+      };
+
+      if (this.placement.indexOf('auto') > -1) {
+        options.modifiers.push(flip);
+      }
+
+      this.popper = createPopper(anchor, clinger, options);
+    },
     update() {
       this.popper.update();
     },
   },
 
   render(h) {
-    const props = {
-      update: this.update,
-    };
+    const props = { update: this.update };
     /* istanbul ignore next */
     const anchor = this.$scopedSlots.anchor(props)[0];
     const anchorData = anchor.data || {};
@@ -57,8 +68,20 @@ export default {
     const clingerData = clinger.data || {};
     const clingerDataAttrs = clingerData.attrs || {};
 
-    anchor.data = { ...anchorData, attrs: { ...anchorDataAttrs, 'spruce-cling-anchor': true } };
-    clinger.data = { ...clingerData, attrs: { ...clingerDataAttrs, 'spruce-cling-clinger': true } };
+    anchor.data = {
+      ...anchorData,
+      attrs: {
+        ...anchorDataAttrs,
+        'spruce-cling-anchor': true,
+      },
+    };
+    clinger.data = {
+      ...clingerData,
+      attrs: {
+        ...clingerDataAttrs,
+        'spruce-cling-clinger': true,
+      },
+    };
 
     return h('div', [anchor, clinger]);
   },

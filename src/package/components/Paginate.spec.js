@@ -12,11 +12,10 @@ describe('Paginate', () => {
         size: 12,
         list: people,
       },
-      scopedSlots: {
-        default: '<p></p>',
-      },
+      scopedSlots: { default: '<p></p>' },
     });
   });
+
   it('should paginate', async () => {
     expect(wrapper.vm.isFirst).toBeTruthy();
     expect(wrapper.vm.isLast).toBeFalsy();
@@ -42,15 +41,11 @@ describe('Paginate', () => {
     wrapper.vm.first();
     expect(wrapper.vm.pageNum).toBe(1);
 
-    await wrapper.setProps({
-      list: [],
-    });
+    await wrapper.setProps({ list: [] });
 
     expect(wrapper.vm.pageIndex).toBe(0);
 
-    await wrapper.setProps({
-      list: people,
-    });
+    await wrapper.setProps({ list: people });
 
     wrapper.vm.last();
     wrapper.vm.next();
@@ -61,9 +56,7 @@ describe('Paginate', () => {
 
     expect(wrapper.vm.pageIndex).toBe(3);
 
-    await wrapper.setProps({
-      size: 5,
-    });
+    await wrapper.setProps({ size: 5 });
 
     expect(wrapper.vm.pageIndex).toBe(0);
 

@@ -3,16 +3,27 @@ import { shallowMount } from '@vue/test-utils';
 import { SpruceFetch } from '.';
 
 const data = { ric: 'flair' };
-const defaultOptions = { ok: true, data, status: 200 };
+const defaultOptions = {
+  ok: true,
+  data,
+  status: 200,
+};
 
 let wrapper;
 
 function setupFetch(options = {}) {
-  const { ok, data, status } = { ...defaultOptions, ...options };
+  const { ok, data, status } = {
+    ...defaultOptions,
+    ...options,
+  };
 
-  global.fetch = jest
-    .fn()
-    .mockImplementation(() => Promise.resolve({ ok, json: () => Promise.resolve({ ...data }), status }));
+  global.fetch = jest.fn().mockImplementation(() =>
+    Promise.resolve({
+      ok,
+      json: () => Promise.resolve({ ...data }),
+      status,
+    })
+  );
 }
 
 function flushPromises() {
@@ -29,11 +40,10 @@ describe('Fetch', () => {
         method: 'get',
         immediate: false,
       },
-      scopedSlots: {
-        default: '<p></p>',
-      },
+      scopedSlots: { default: '<p></p>' },
     });
   });
+
   it('should reset', async () => {
     await wrapper.vm.reset();
     expect(fetch).toHaveBeenCalled();
@@ -48,11 +58,17 @@ describe('Fetch', () => {
   });
 
   it('should handle errors', async () => {
-    setupFetch({ ok: false, status: 400 });
+    setupFetch({
+      ok: false,
+      status: 400,
+    });
 
     await wrapper.vm.fetch();
     expect(fetch).toHaveBeenCalled();
-    expect(wrapper.vm.error).toEqual({ status: 400, data });
+    expect(wrapper.vm.error).toEqual({
+      status: 400,
+      data,
+    });
   });
 
   it('should fetch immediately', () => {
@@ -61,9 +77,7 @@ describe('Fetch', () => {
         url: 'api.google.com',
         method: 'get',
       },
-      scopedSlots: {
-        default: '<p></p>',
-      },
+      scopedSlots: { default: '<p></p>' },
     });
 
     expect(fetch).toHaveBeenCalled();

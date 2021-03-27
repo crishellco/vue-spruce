@@ -13,11 +13,10 @@ describe('Sort', () => {
         direction: 'asc',
         list: people,
       },
-      scopedSlots: {
-        default: '<p></p>',
-      },
+      scopedSlots: { default: '<p></p>' },
     });
   });
+
   it('should sort', async () => {
     expect(wrapper.vm.results[0]).toEqual({
       id: 15,

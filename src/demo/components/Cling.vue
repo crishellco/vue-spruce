@@ -1,48 +1,65 @@
 <template>
   <demo-section name="SpruceCling" :code="code" class="flex" expanded @toggled="handleToggled">
     <div ref="container" class="relative h-64">
-      <spruce-toggle>
-        <div slot-scope="{ isOn, toggle }" class="absolute" :style="wrapperStyle">
-          <spruce-cling placement="bottom">
-            <template #anchor="{update}">
-              <spruce-watch :watch="{ buttonStyle }" @changed:buttonStyle="update">
-                <button
-                  ref="anchor"
-                  :style="buttonStyle"
-                  class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64 flex items-center justify-between"
-                  @click="toggle"
-                >
-                  click me
-                  <span class="text-lg leading-none">{{ isOn ? '▲' : '▼' }}</span>
-                </button>
-              </spruce-watch>
-            </template>
-            <template #clinger>
-              <div class="w-full">
-                <div v-if="isOn" class="p-4 shadow bg-white ">contents!</div>
-              </div>
-            </template>
-          </spruce-cling>
-        </div>
-      </spruce-toggle>
+      <div class="absolute" :style="wrapperStyle">
+        <spruce-cling :placement="placement">
+          <template #anchor="{update}">
+            <spruce-watch :watch="{ buttonStyle }" @changed:buttonStyle="update">
+              <button
+                ref="anchor"
+                :style="buttonStyle"
+                class="border-2 border-transparent bg-gray-500 rounded py-2 px-4 w-64 shadow"
+              >
+                anchor: moving in {{ (remaining / 1000).toFixed(1) }}s...
+              </button>
+            </spruce-watch>
+          </template>
+          <template #clinger>
+            <div class="w-full">
+              <div class="p-4 shadow bg-gray-200 rounded">clinger: {{ placement }}</div>
+            </div>
+          </template>
+        </spruce-cling>
+      </div>
     </div>
   </demo-section>
 </template>
 
 <script>
-import { SpruceCling, SpruceToggle, SpruceWatch } from '../../package/components';
 import { DemoSection } from '../shared';
 import code from './Cling.gist';
 
+const PLACEMENTS = [
+  'auto',
+  'auto-start',
+  'auto-end',
+  'top',
+  'top-start',
+  'top-end',
+  'bottom',
+  'bottom-start',
+  'bottom-end',
+  'right',
+  'right-start',
+  'right-end',
+  'left',
+  'left-start',
+  'left-end',
+];
+
+const MOVE_INTERVAL = 5000;
+const REMAINING_INTERVAL = 100;
+
 export default {
-  components: { DemoSection, SpruceCling, SpruceToggle, SpruceWatch },
+  components: { DemoSection },
 
   data() {
     return {
-      buttonStyle: {
-        width: '16rem',
-      },
-      interval: null,
+      placement: 'bottom',
+      buttonStyle: { width: '16rem' },
+      remaining: MOVE_INTERVAL,
+      moveButtonInterval: null,
+      remainingUntilMoveInterval: null,
       wrapperStyle: {
         left: '0px',
         top: '0px',
@@ -68,14 +85,26 @@ export default {
     },
 
     start() {
-      this.interval = setInterval(this.moveButton, 5000);
+      this.moveButtonInterval = setInterval(this.moveButton, MOVE_INTERVAL);
+      this.remainingUntilMoveInterval = setInterval(this.updateRemaining, REMAINING_INTERVAL);
     },
 
     stop() {
-      clearInterval(this.interval);
+      clearInterval(this.moveButtonInterval);
+      clearInterval(this.remainingUntilMoveInterval);
+    },
+
+    updateRemaining() {
+      if (this.remaining === REMAINING_INTERVAL) {
+        this.remaining = MOVE_INTERVAL;
+      } else {
+        this.remaining -= REMAINING_INTERVAL;
+      }
     },
 
     async moveButton() {
+      this.placement = PLACEMENTS[Math.floor(Math.random() * PLACEMENTS.length)];
+
       let { width, height } = this.$refs.container.getBoundingClientRect();
 
       width -= this.$refs.anchor.offsetWidth;
@@ -86,9 +115,7 @@ export default {
         top: `${Math.floor(Math.random() * height) + 1}px`,
       };
 
-      this.buttonStyle = {
-        width: `${Math.floor(Math.random() * 24) + 10}rem`,
-      };
+      this.buttonStyle = { width: `${Math.floor(Math.random() * 24) + 10}rem` };
 
       await this.$nextTick();
     },

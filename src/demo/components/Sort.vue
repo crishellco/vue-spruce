@@ -42,17 +42,12 @@
 </template>
 
 <script>
-import { SpruceSort, SpruceState } from '../../package/components';
 import { people } from '../fixtures';
 import { DemoSection } from '../shared';
 import code from './Sort.gist';
 
 export default {
-  components: {
-    DemoSection,
-    SpruceSort,
-    SpruceState,
-  },
+  components: { DemoSection },
 
   data() {
     return {

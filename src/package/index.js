@@ -1,44 +1,18 @@
-import {
-  SpruceCling,
-  SpruceEvent,
-  SpruceFetch,
-  SpruceFunction,
-  SprucePaginate,
-  SpruceSearch,
-  SpruceSort,
-  SpruceState,
-  SpruceToggle,
-  SpruceWatch,
-} from './components';
+import * as components from './components';
 
-export {
-  SpruceCling,
-  SpruceEvent,
-  SpruceFetch,
-  SpruceFunction,
-  SprucePaginate,
-  SpruceSearch,
-  SpruceSort,
-  SpruceState,
-  SpruceToggle,
-  SpruceWatch,
-};
+export * from './components';
 
-const defaultOptions = {
-  componentPrefix: 'spruce',
-};
+const defaultOptions = { componentPrefix: 'spruce' };
 
 export default function install(Vue, options = {}) {
-  const { componentPrefix } = { ...defaultOptions, ...options };
+  const { componentPrefix } = {
+    ...defaultOptions,
+    ...options,
+  };
 
-  Vue.component(`${componentPrefix}-cling`, SpruceCling);
-  Vue.component(`${componentPrefix}-event`, SpruceEvent);
-  Vue.component(`${componentPrefix}-fetch`, SpruceFetch);
-  Vue.component(`${componentPrefix}-function`, SpruceFunction);
-  Vue.component(`${componentPrefix}-paginate`, SprucePaginate);
-  Vue.component(`${componentPrefix}-search`, SpruceSearch);
-  Vue.component(`${componentPrefix}-sort`, SpruceSort);
-  Vue.component(`${componentPrefix}-state`, SpruceState);
-  Vue.component(`${componentPrefix}-toggle`, SpruceToggle);
-  Vue.component(`${componentPrefix}-watch`, SpruceWatch);
+  for (const name in components) {
+    const component = components[name];
+
+    Vue.component(`${componentPrefix}-${name.replace('Spruce', '').toLowerCase()}`, component);
+  }
 }

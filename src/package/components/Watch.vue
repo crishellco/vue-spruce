@@ -10,9 +10,7 @@ export default {
   },
 
   data() {
-    return {
-      unwatchers: [],
-    };
+    return { unwatchers: [] };
   },
 
   async mounted() {
@@ -25,8 +23,15 @@ export default {
     for (const key in this.watch) {
       this.unwatchers.push(
         this.$watch(`watch.${key}`, (oldValue, newValue) => {
-          this.$emit(`changed:${key}`, { oldValue, newValue });
-          this.$emit(`changed`, { key, oldValue, newValue });
+          this.$emit(`changed:${key}`, {
+            oldValue,
+            newValue,
+          });
+          this.$emit(`changed`, {
+            key,
+            oldValue,
+            newValue,
+          });
         })
       );
     }

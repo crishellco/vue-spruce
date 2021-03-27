@@ -1,3 +1,4 @@
+import { defaultModifiers } from '@popperjs/core/lib/popper-lite';
 import { shallowMount } from '@vue/test-utils';
 
 import { SpruceCling } from '.';
@@ -26,5 +27,8 @@ describe('Cling', () => {
     });
 
     expect(wrapper.exists()).toBe(true);
+
+    await wrapper.setProps({ placement: 'bottom' });
+    await wrapper.setProps({ modifiers: [...defaultModifiers] });
   });
 });

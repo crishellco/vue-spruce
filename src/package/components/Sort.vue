@@ -24,14 +24,15 @@ export default {
     results() {
       if (!this.list.length) return this.list;
 
-      return sortArray([...this.list], { order: this.direction, by: this.by });
+      return sortArray([...this.list], {
+        order: this.direction,
+        by: this.by,
+      });
     },
   },
 
   render() {
-    return this.$scopedSlots.default({
-      results: this.results,
-    });
+    return this.$scopedSlots.default({ results: this.results });
   },
 };
 </script>

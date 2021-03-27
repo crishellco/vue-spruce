@@ -12,9 +12,7 @@ describe('Search', () => {
         list: people,
         term: '',
       },
-      scopedSlots: {
-        default: '<p></p>',
-      },
+      scopedSlots: { default: '<p></p>' },
     });
   });
 
@@ -27,7 +25,10 @@ describe('Search', () => {
       last_name: 'Belfitt',
     });
 
-    await wrapper.setProps({ keys: ['first_name', 'last_name'], term: 'Corbishley' });
+    await wrapper.setProps({
+      keys: ['first_name', 'last_name'],
+      term: 'Corbishley',
+    });
     expect(wrapper.vm.results[0]).toEqual({
       email: 'vcorbishley1@aol.com',
       first_name: 'Viole',
@@ -36,7 +37,10 @@ describe('Search', () => {
       last_name: 'Corbishley',
     });
 
-    await wrapper.setProps({ term: 'Felix', list: people.map(({ first_name }) => first_name) });
+    await wrapper.setProps({
+      term: 'Felix',
+      list: people.map(({ first_name }) => first_name),
+    });
     expect(wrapper.vm.results[0]).toEqual('Felix');
   });
 });

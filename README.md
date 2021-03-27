@@ -154,10 +154,11 @@ Track any `window` event occurance inside or outside of `SpruceEvent`'s default 
 
 #### Props
 
-| Name      | Description                                                   | Type    | Required | Default |
-| --------- | ------------------------------------------------------------- | ------- | -------- | ------- |
-| `event`   | The event to listen to                                        | String  | Yes      |         |
-| `outside` | Listen for the even only outside of the default slot elements | Boolean | No       | `false` |
+| Name        | Description                                                   | Type    | Required | Default |
+| ----------- | ------------------------------------------------------------- | ------- | -------- | ------- |
+| `event`     | The event to listen to                                        | String  | Yes      |         |
+| `immediate` | First event immediately (in `mounted`)                        | Boolean | No       | `false` |
+| `outside`   | Listen for the even only outside of the default slot elements | Boolean | No       | `false` |
 
 #### Events
 

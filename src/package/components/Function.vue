@@ -9,9 +9,7 @@ export default {
   },
 
   render() {
-    return this.$scopedSlots.default({
-      fn: this.fn,
-    });
+    return this.$scopedSlots.default({ fn: this.fn });
   },
 };
 </script>

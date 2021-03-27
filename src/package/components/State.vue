@@ -9,9 +9,7 @@ export default {
   },
 
   data() {
-    return {
-      localValue: null,
-    };
+    return { localValue: null };
   },
 
   watch: {
@@ -30,7 +28,10 @@ export default {
 
   methods: {
     set(newVal) {
-      this.$set(this, 'localValue', { ...this.localValue, ...newVal });
+      this.$set(this, 'localValue', {
+        ...this.localValue,
+        ...newVal,
+      });
     },
 
     update(newVal) {

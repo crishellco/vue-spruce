@@ -49,17 +49,14 @@
 </template>
 
 <script>
-import { SpruceFunction, SpruceWatch, SpruceState } from '../../package/components';
 import { DemoSection } from '../shared';
 import code from './Watch.gist';
 
 export default {
-  components: { DemoSection, SpruceFunction, SpruceWatch, SpruceState },
+  components: { DemoSection },
 
   data() {
-    return {
-      code,
-    };
+    return { code };
   },
 };
 </script>

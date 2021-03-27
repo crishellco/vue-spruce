@@ -6,12 +6,9 @@ let wrapper;
 
 describe('Toggle', () => {
   beforeEach(() => {
-    wrapper = shallowMount(SpruceToggle, {
-      scopedSlots: {
-        default: '<p></p>',
-      },
-    });
+    wrapper = shallowMount(SpruceToggle, { scopedSlots: { default: '<p></p>' } });
   });
+
   it('should track state', async () => {
     await wrapper.vm.on();
     expect(wrapper.vm.localValue).toBeTruthy();
@@ -23,9 +20,7 @@ describe('Toggle', () => {
     await wrapper.vm.off();
     expect(wrapper.vm.localValue).toBeFalsy();
 
-    await wrapper.setProps({
-      value: true,
-    });
+    await wrapper.setProps({ value: true });
     expect(wrapper.vm.localValue).toBeTruthy();
   });
 });

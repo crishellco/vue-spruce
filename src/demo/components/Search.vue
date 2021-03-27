@@ -33,13 +33,12 @@
 </template>
 
 <script>
-import { SpruceSearch, SpruceState } from '../../package/components';
 import { states } from '../fixtures';
 import { DemoSection } from '../shared';
 import code from './Search.gist';
 
 export default {
-  components: { DemoSection, SpruceSearch, SpruceState },
+  components: { DemoSection },
 
   data() {
     return {

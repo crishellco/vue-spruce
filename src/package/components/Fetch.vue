@@ -54,18 +54,27 @@ export default {
         if (response.ok) {
           this.data = data;
           this.error = null;
-          this.$emit('success', { data: response, fetch: this.fetch });
+          this.$emit('success', {
+            data: response,
+            fetch: this.fetch,
+          });
         } else {
           this.data = null;
           this.error = {
             data,
             status: response.status,
           };
-          this.$emit('error', { data: response, fetch: this.fetch });
+          this.$emit('error', {
+            data: response,
+            fetch: this.fetch,
+          });
         }
       } catch (error) {
         this.data = null;
-        this.$emit('error', { data: error, fetch: this.fetch });
+        this.$emit('error', {
+          data: error,
+          fetch: this.fetch,
+        });
       }
 
       this.calls++;
