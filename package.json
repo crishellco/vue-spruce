@@ -36,7 +36,7 @@
   "dependencies": {
     "fuse.js": "^6.4.6",
     "sort-array": "^4.1.4",
-    "vue": "^2.6.11"
+    "vue": "2.6.14"
   },
   "devDependencies": {
     "@commitlint/cli": "15.0.0",
