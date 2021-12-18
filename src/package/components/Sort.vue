@@ -11,7 +11,7 @@ export default {
     direction: {
       type: String,
       default: 'asc',
-      validator: value => ['asc', 'desc'].includes(value),
+      validator: (value) => ['asc', 'desc'].includes(value),
     },
     by: {
       default: '',

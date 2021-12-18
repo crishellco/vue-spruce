@@ -17,7 +17,7 @@ export default {
     await this.$nextTick();
 
     /* istanbul ignore next */
-    this.unwatchers.forEach(unwatch => unwatch);
+    this.unwatchers.forEach((unwatch) => unwatch);
     this.unwatchers = [];
 
     for (const key in this.watch) {

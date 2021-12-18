@@ -2,7 +2,7 @@
   <demo-section name="SpruceState" :code="code">
     <spruce-function
       :fn="
-        str =>
+        (str) =>
           str
             .split('')
             .sort(() => Math.random() - 0.5)

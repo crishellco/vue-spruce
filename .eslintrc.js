@@ -16,6 +16,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/component-name-in-template-casing': ['error', 'kebab-case'],
     'object-curly-newline': ['error', { multiline: true }],
+    'vue/multi-word-component-names': 'off',
   },
   overrides: [
     {

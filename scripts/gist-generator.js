@@ -6,7 +6,7 @@ const glob = require('glob');
 
 const files = glob.sync(process.cwd() + '/src/**/demo/components/*.vue');
 
-files.forEach(file => {
+files.forEach((file) => {
   const sfc = fs.readFileSync(file, 'utf8');
 
   const res = parseComponent(sfc);

@@ -3,7 +3,7 @@
     <div ref="container" class="relative h-64">
       <div class="absolute" :style="wrapperStyle">
         <spruce-cling :placement="placement">
-          <template #anchor="{update}">
+          <template #anchor="{ update }">
             <spruce-watch :watch="{ buttonStyle }" @changed:buttonStyle="update">
               <button
                 ref="anchor"

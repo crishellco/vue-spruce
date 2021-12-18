@@ -1,13 +1,6 @@
 <template>
   <demo-section name="SpuceWatch" :code="code" class="flex">
-    <spruce-function
-      :fn="
-        () =>
-          Math.random()
-            .toString(16)
-            .substr(2, 8)
-      "
-    >
+    <spruce-function :fn="() => Math.random().toString(16).substr(2, 8)">
       <spruce-state slot-scope="{ fn }" :value="{ random: fn(), count: 0, events: [] }">
         <div slot-scope="{ count, random, events, set }">
           <div class="flex items-center mb-4">
@@ -28,9 +21,7 @@
             <table class="w-full text-xs">
               <thead>
                 <tr class="text-bold text-left">
-                  <th>
-                    changes observed
-                  </th>
+                  <th>changes observed</th>
                 </tr>
               </thead>
               <tbody>

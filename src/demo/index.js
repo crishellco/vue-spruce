@@ -7,4 +7,4 @@ Vue.config.productionTip = false;
 
 Vue.use(VueSpruce);
 
-new Vue({ render: h => h(App) }).$mount('#app');
+new Vue({ render: (h) => h(App) }).$mount('#app');

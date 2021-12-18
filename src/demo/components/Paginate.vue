@@ -22,12 +22,8 @@
         <table class="w-full">
           <thead>
             <tr class="text-bold text-left">
-              <th class="w-1/2">
-                first_name
-              </th>
-              <th class="w-1/2">
-                last_name
-              </th>
+              <th class="w-1/2">first_name</th>
+              <th class="w-1/2">last_name</th>
             </tr>
           </thead>
           <tbody>
@@ -37,7 +33,7 @@
             </tr>
           </tbody>
         </table>
-        <div class="mt-4 flex  items-center">
+        <div class="mt-4 flex items-center">
           <div class="flex-1" />
           <div class="flex items-center flex-none">
             <button

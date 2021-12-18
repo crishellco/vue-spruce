@@ -42,7 +42,7 @@ export default {
 
     start() {
       this.localShow = true;
-      this.promise = new Promise(resolve => {
+      this.promise = new Promise((resolve) => {
         setTimeout(resolve, this.ms);
       });
     },
