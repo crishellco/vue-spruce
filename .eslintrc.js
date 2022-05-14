@@ -6,7 +6,7 @@ module.exports = {
     'plugin:jest-formatting/recommended',
     'plugin:vue/recommended',
     'eslint:recommended',
-    'prettier/vue',
+    'prettier',
     'plugin:prettier/recommended',
   ],
   plugins: ['jest-formatting'],
