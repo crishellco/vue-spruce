@@ -4,6 +4,7 @@ node_modules
 /dist-demo
 coverage
 *.gist
+.history
 
 # local env files
 .env.local
