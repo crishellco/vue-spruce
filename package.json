@@ -36,7 +36,7 @@
   "dependencies": {
     "fuse.js": "^6.4.6",
     "sort-array": "^4.1.4",
-    "vue": "2.7.8"
+    "vue": "3.2.37"
   },
   "devDependencies": {
     "@commitlint/cli": "17.0.3",
@@ -64,7 +64,7 @@
     "prettier": "2.7.1",
     "raw-loader": "4.0.2",
     "semantic-release": "19.0.3",
-    "vue": "2.7.8",
+    "vue": "3.2.37",
     "vue-sfc-parser": "0.1.2",
     "vue-template-compiler": "2.7.8",
     "vue2-transitions": "0.3.0"
