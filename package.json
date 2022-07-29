@@ -34,6 +34,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@vue/vue2-jest": "^28.0.1",
     "fuse.js": "^6.4.6",
     "sort-array": "^4.1.4",
     "vue": "2.7.8"

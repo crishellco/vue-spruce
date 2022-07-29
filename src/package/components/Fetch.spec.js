@@ -1,3 +1,9 @@
+/**
+ * @jest-environment jsdom
+ */
+
+import { setImmediate } from 'timers';
+
 import { shallowMount } from '@vue/test-utils';
 
 import { SpruceFetch } from '.';
