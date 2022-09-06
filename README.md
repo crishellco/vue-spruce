@@ -64,7 +64,7 @@ Installs all components globally.
 #### Options
 
 | Name              | Description                                         | Default  |
-| ----------------- | --------------------------------------------------- | -------- |
+|-------------------|-----------------------------------------------------|----------|
 | `componentPrefix` | The prefix used when installing components globally | `spruce` |
 
 ### Named Imports
@@ -124,20 +124,20 @@ Ensures a component shows for at least a given amount of time, in milliseconds, 
 #### Props
 
 | Name   | Description                                                        | Type    | Required | Default |
-| ------ | ------------------------------------------------------------------ | ------- | -------- | ------- |
+|--------|--------------------------------------------------------------------|---------|----------|---------|
 | `ms`   | Minimum amount of time to show, in milliseconds                    | Number  | Yes      |         |
 | `show` | Weather or not to show the contents (given enough time has passed) | Boolean | No       | `true`  |
 
 #### Slots
 
 | Name      | Required |
-| --------- | -------- |
+|-----------|----------|
 | `default` | Yes      |
 
 #### Slot Scope
 
 | Slot      | Name       | Description                                                | Type    |
-| --------- | ---------- | ---------------------------------------------------------- | ------- |
+|-----------|------------|------------------------------------------------------------|---------|
 | `default` | `disabled` | True if waiting to hide content after `ms` time has passed | Boolean |
 | `default` | `show`     | If the contents should be shown                            | Boolean |
 
@@ -163,21 +163,21 @@ Clings the `clinger` slot's contents to the `anchor` slot's contents using `popp
 #### Props
 
 | Name        | Description                                                                                                                  | Type   | Required | Default |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ------ | -------- | ------- |
+|-------------|------------------------------------------------------------------------------------------------------------------------------|--------|----------|---------|
 | `modifiers` | The [popper.js modifiers](https://popper.js.org/docs/v2/modifiers/)                                                          | Array  | No       | `[]`    |
 | `placement` | The [popper.js placement](https://popper.js.org/docs/v2/constructors//#options) of the `clinger` in relation to the `anchor` | String | No       | `auto`  |
 
 #### Slots
 
 | Name      | Required |
-| --------- | -------- |
+|-----------|----------|
 | `anchor`  | Yes      |
 | `clinger` | Yes      |
 
 #### Slot Scope
 
 | Slot      | Name     | Description                 | Type     |
-| --------- | -------- | --------------------------- | -------- |
+|-----------|----------|-----------------------------|----------|
 | `anchor`  | `update` | Updates the popper instance | Function |
 | `clinger` | `update` | Updates the popper instance | Function |
 
@@ -194,7 +194,7 @@ Track any `window` event occurance inside or outside of `SpruceEvent`'s default 
 #### Props
 
 | Name        | Description                                                   | Type    | Required | Default |
-| ----------- | ------------------------------------------------------------- | ------- | -------- | ------- |
+|-------------|---------------------------------------------------------------|---------|----------|---------|
 | `event`     | The event to listen to                                        | String  | Yes      |         |
 | `immediate` | First event immediately (in `mounted`)                        | Boolean | No       | `false` |
 | `outside`   | Listen for the even only outside of the default slot elements | Boolean | No       | `false` |
@@ -202,13 +202,13 @@ Track any `window` event occurance inside or outside of `SpruceEvent`'s default 
 #### Events
 
 | Name                       | Description                   | Payload |
-| -------------------------- | ----------------------------- | ------- |
+|----------------------------|-------------------------------|---------|
 | _Same as the `event` prop_ | Fired when the event happens. | --      |
 
 #### Slots
 
 | Name      | Required |
-| --------- | -------- |
+|-----------|----------|
 | `default` | No       |
 
 ### SpruceFetch
@@ -229,27 +229,27 @@ Make asynchronous API fetch calls.
 #### Props
 
 | Name        | Description                                                | Type    | Required | Default |
-| ----------- | ---------------------------------------------------------- | ------- | -------- | ------- |
+|-------------|------------------------------------------------------------|---------|----------|---------|
 | `url`       | The API url (changing this will refetch and rest all data) | String  | Yes      |         |
 | `immediate` | Weather to immediate make the request on mount             | Boolean | No       | `true`  |
 
 #### Events
 
 | Name      | Description                          | Payload                           |
-| --------- | ------------------------------------ | --------------------------------- |
+|-----------|--------------------------------------|-----------------------------------|
 | `success` | Fires when the request is successful | `{data: Object, fetch: Function}` |
 | `error`   | Fires when the request fails         | `{data: Object, fetch: Function}` |
 
 #### Slots
 
 | Name      | Required |
-| --------- | -------- |
+|-----------|----------|
 | `default` | Yes      |
 
 #### Slot Scope
 
 | Slot      | Name      | Description                          | Type                               |
-| --------- | --------- | ------------------------------------ | ---------------------------------- |
+|-----------|-----------|--------------------------------------|------------------------------------|
 | `default` | `calls`   | Number of calls made                 | Number                             |
 | `default` | `data`    | The response on a successful request | Object                             |
 | `default` | `error`   | The response on a failed request     | `{ data: Object, status: Number }` |
@@ -271,19 +271,19 @@ Create reusable functions on the fly (great for lists!).
 #### Props
 
 | Name | Description  | Type     | Required | Default |
-| ---- | ------------ | -------- | -------- | ------- |
+|------|--------------|----------|----------|---------|
 | `fn` | The function | Function | Yes      |         |
 
 #### Slots
 
 | Name      | Required |
-| --------- | -------- |
+|-----------|----------|
 | `default` | Yes      |
 
 #### Slot Scope
 
 | Slot      | Name | Description  | Type     |
-| --------- | ---- | ------------ | -------- |
+|-----------|------|--------------|----------|
 | `default` | `fn` | The function | Function |
 
 ### SprucePaginate
@@ -310,20 +310,20 @@ Paginate an array and navigate through it's chunks.
 #### Props
 
 | Name   | Description           | Type       | Required | Default |
-| ------ | --------------------- | ---------- | -------- | ------- |
+|--------|-----------------------|------------|----------|---------|
 | `size` | Page size             | Number     | Yes      |         |
 | `list` | The items to paginate | Array<any> | Yes      |         |
 
 #### Slots
 
 | Name      | Required |
-| --------- | -------- |
+|-----------|----------|
 | `default` | Yes      |
 
 #### Slot Scope
 
 | Slot      | Name         | Description                                                                                   | Type     |
-| --------- | ------------ | --------------------------------------------------------------------------------------------- | -------- |
+|-----------|--------------|-----------------------------------------------------------------------------------------------|----------|
 | `default` | `first`      | Go to first page                                                                              | Function |
 | `default` | `go`         | Go to specific page                                                                           | Function |
 | `default` | `isFirst`    | If currently on first page                                                                    | Boolean  |
@@ -356,22 +356,23 @@ Search an array of strings or objects by keys using [fuse.js](https://fusejs.io/
 
 #### Props
 
-| Name   | Description             | Type   | Required | Default                                                                           |
-| ------ | ----------------------- | ------ | -------- | --------------------------------------------------------------------------------- |
-| `keys` | The keys to search in   | Array  | No       | If `list` is `Array<Object>` then all of the first object's keys. Otherwise `[]`. |
-| `list` | The list to search      | Array  | Yes      |                                                                                   |
-| `term` | The terms to search for | String | No       | ''                                                                                |
+| Name        | Description             | Type   | Required | Default                                                                           |
+|-------------|-------------------------|--------|----------|-----------------------------------------------------------------------------------|
+| `keys`      | The keys to search in   | Array  | No       | If `list` is `Array<Object>` then all of the first object's keys. Otherwise `[]`. |
+| `list`      | The list to search      | Array  | Yes      |                                                                                   |
+| `term`      | The terms to search for | String | No       | ''                                                                                |
+| `threshold` | Fuse.js match threshold | Float  | No       | 0.6                                                                               |
 
 #### Slots
 
 | Name      | Required |
-| --------- | -------- |
+|-----------|----------|
 | `default` | Yes      |
 
 #### Slot Scope
 
 | Slot      | Name      | Description       | Type  |
-| --------- | --------- | ----------------- | ----- |
+|-----------|-----------|-------------------|-------|
 | `default` | `results` | The searched list | Array |
 
 ### SpruceSort
@@ -391,7 +392,7 @@ Sort an array of strings or objects in either direction by specific keys.
 #### Props
 
 | Name        | Description                               | Type   | Required | Default |
-| ----------- | ----------------------------------------- | ------ | -------- | ------- |
+|-------------|-------------------------------------------|--------|----------|---------|
 | `list`      | The list to search                        | Array  | Yes      |         |
 | `direction` | The direction to sort in, 'asc' or 'desc' | String | No       | 'asc'   |
 | `by`        | The object property to sort by            | String | No       | ''      |
@@ -399,13 +400,13 @@ Sort an array of strings or objects in either direction by specific keys.
 #### Slots
 
 | Name      | Required |
-| --------- | -------- |
+|-----------|----------|
 | `default` | Yes      |
 
 #### Slot Scope
 
 | Slot      | Name      | Description       | Type                  |
-| --------- | --------- | ----------------- | --------------------- |
+|-----------|-----------|-------------------|-----------------------|
 | `default` | `results` | The searched list | Array<String, Object> |
 
 ### SpruceState
@@ -425,25 +426,25 @@ Create and manage localized state.
 #### Props
 
 | Name    | Description      | Type   | Required | Default |
-| ------- | ---------------- | ------ | -------- | ------- |
+|---------|------------------|--------|----------|---------|
 | `value` | The state object | Object | Yes      |         |
 
 #### Events
 
 | Name    | Description              | Payload |
-| ------- | ------------------------ | ------- |
+|---------|--------------------------|---------|
 | `input` | Fired when state updates | `state` |
 
 #### Slots
 
 | Name      | Required |
-| --------- | -------- |
+|-----------|----------|
 | `default` | Yes      |
 
 #### Slot Scope
 
 | Slot      | Name            | Description                                | Type     |
-| --------- | --------------- | ------------------------------------------ | -------- |
+|-----------|-----------------|--------------------------------------------|----------|
 | `default` | `[key]`         | Each key in the `state` prop               | Any      |
 | `default` | `set(newValue)` | Merges `newValue` with the current `state` | Function |
 
@@ -472,25 +473,25 @@ Toggle between on (`true`) and off (`false`).
 #### Props
 
 | Name    | Description             | Type    | Required | Default |
-| ------- | ----------------------- | ------- | -------- | ------- |
+|---------|-------------------------|---------|----------|---------|
 | `value` | The state of the toggle | Boolean | No       | `False` |
 
 #### Events
 
 | Name    | Description               | Payload |
-| ------- | ------------------------- | ------- |
+|---------|---------------------------|---------|
 | `input` | Fired when `isOn` updates | `isOn`  |
 
 #### Slots
 
 | Name      | Required |
-| --------- | -------- |
+|-----------|----------|
 | `default` | Yes      |
 
 #### Slot Scope
 
 | Slot      | Name       | Description             | Type     |
-| --------- | ---------- | ----------------------- | -------- |
+|-----------|------------|-------------------------|----------|
 | `default` | `isOn`     | The state of the toggle | Boolean  |
 | `default` | `on()`     | Sets `isOn` to `true`   | Function |
 | `default` | `off()`    | Sets `isOn` to `false`  | Function |
@@ -511,20 +512,20 @@ Watches variables for changes and emits events when changes occur.
 #### Props
 
 | Name    | Description              | Type   | Required | Default |
-| ------- | ------------------------ | ------ | -------- | ------- |
+|---------|--------------------------|--------|----------|---------|
 | `watch` | Values you wish to watch | Object | Yes      |         |
 
 #### Events
 
 | Name            | Description                                    | Payload                                  |
-| --------------- | ---------------------------------------------- | ---------------------------------------- |
+|-----------------|------------------------------------------------|------------------------------------------|
 | `changed`       | Fired when any value in `watch` changes        | `{key: count, oldValue: 0, newValue: 1}` |
 | `changed:[key]` | Fired when a specific value in `watch` changes | `{oldValue: 0, newValue: 1}`             |
 
 #### Slots
 
 | Name      | Required |
-| --------- | -------- |
+|-----------|----------|
 | `default` | No       |
 
 ## Examples

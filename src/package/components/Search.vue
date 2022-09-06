@@ -1,6 +1,8 @@
 <script>
 import Fuse from 'fuse.js';
 
+export const THRESHOLD = 0.6;
+
 export default {
   name: 'SpruceSearch',
   props: {
@@ -16,6 +18,10 @@ export default {
       type: String,
       default: '',
     },
+    threshold: {
+      type: Number,
+      default: THRESHOLD,
+    },
   },
 
   computed: {
@@ -28,6 +34,7 @@ export default {
       const fuse = new Fuse(this.list, {
         includeScore: false,
         shouldSort: false,
+        threshold: this.threshold,
         keys,
       });
 
