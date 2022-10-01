@@ -37,6 +37,15 @@ describe('Search', () => {
       last_name: 'Corbishley',
     });
 
+    await wrapper.setProps({ keys: [] });
+    expect(wrapper.vm.results[0]).toEqual({
+      email: 'vcorbishley1@aol.com',
+      first_name: 'Viole',
+      gender: 'Male',
+      id: 2,
+      last_name: 'Corbishley',
+    });
+
     await wrapper.setProps({
       term: 'Felix',
       list: people.map(({ first_name }) => first_name),
