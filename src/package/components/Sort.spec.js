@@ -44,6 +44,15 @@ describe('Sort', () => {
       gender: 'Bigender',
     });
 
+    await wrapper.setProps({ by: 'id' });
+    expect(wrapper.vm.results[0]).toEqual({
+      id: 50,
+      first_name: 'Morton',
+      last_name: 'Stidson',
+      email: 'mstidson1d@devhub.com',
+      gender: 'Female',
+    });
+
     await wrapper.setProps({ list: [] });
     expect(wrapper.vm.results).toEqual([]);
   });
