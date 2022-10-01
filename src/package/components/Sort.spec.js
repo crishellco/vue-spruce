@@ -47,4 +47,11 @@ describe('Sort', () => {
     await wrapper.setProps({ list: [] });
     expect(wrapper.vm.results).toEqual([]);
   });
+
+  it('should fire the change event', async () => {
+    expect(wrapper.emitted('change')).toBeFalsy();
+
+    await wrapper.setProps({ direction: 'desc' });
+    expect(wrapper.emitted('change')[0]).toEqual(expect.any(Array));
+  });
 });
