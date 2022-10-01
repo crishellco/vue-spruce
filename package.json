@@ -16,8 +16,10 @@
     "build:demo": "yarn generate && vue-cli-service build --target app --dest ./dist-demo ./src/demo/index.js",
     "test": "npm-run-all --print-label --parallel lint:* --parallel test:*",
     "test:unit": "vue-cli-service test:unit",
+    "test:unit:changed": "yarn test:unit --changedSince=master",
+    "test:unit:watch": "yarn test:unit:changed --watch",
     "lint:js": "vue-cli-service lint src scripts",
-    "lint:js:fix": "yarn lint --fix",
+    "lint:js:fix": "yarn lint:js --fix",
     "generate": "node scripts/gist-generator.js",
     "release": "semantic-release"
   },
@@ -36,7 +38,7 @@
   "dependencies": {
     "@vue/vue2-jest": "^28.0.1",
     "fuse.js": "^6.4.6",
-    "sort-array": "^4.1.4",
+    "lodash.orderby": "^4.6.0",
     "vue": "2.7.10"
   },
   "devDependencies": {

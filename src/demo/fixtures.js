@@ -338,7 +338,7 @@ export const people = [
   },
   {
     id: 15,
-    first_name: 'Adelaide',
+    first_name: 'adelaide',
     last_name: 'Evequot',
     email: 'aevequote@wordpress.org',
     gender: 'Non-binary',
