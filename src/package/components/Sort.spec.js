@@ -20,7 +20,7 @@ describe('Sort', () => {
   it('should sort', async () => {
     expect(wrapper.vm.results[0]).toEqual({
       id: 15,
-      first_name: 'Adelaide',
+      first_name: 'adelaide',
       last_name: 'Evequot',
       email: 'aevequote@wordpress.org',
       gender: 'Non-binary',

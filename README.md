@@ -377,7 +377,9 @@ Search an array of strings or objects by keys using [fuse.js](https://fusejs.io/
 
 ### SpruceSort
 
-Sort an array of strings or objects in either direction by specific keys.
+Sort an array of strings or objects in either direction by specific keys. 
+
+_Note: string sorting is case insensitive._
 
 ```html
 <spruce-sort :list="people" :by="by" :direction="direction">
