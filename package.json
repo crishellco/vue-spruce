@@ -2,7 +2,7 @@
   "name": "@crishellco/vue-spruce",
   "version": "0.18.1",
   "author": "Chris Mitchell (@crishellco)",
-  "description": "A collection of useful Vue renderless components",
+  "description": "A collection of useful Vue 2 renderless components",
   "main": "dist/vue-spruce.umd.js",
   "types": "index.d.ts",
   "files": [
