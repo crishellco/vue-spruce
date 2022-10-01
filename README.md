@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/crishellco/vue-spruce/branch/master/graph/badge.svg?token=M7N86U5GF7)](https://codecov.io/gh/crishellco/vue-spruce)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e1f2536b9be3c32e6fef/maintainability)](https://codeclimate.com/github/crishellco/vue-spruce/maintainability)
 
-A collection of useful Vue renderless components.
+A collection of useful Vue 2 renderless components.
 
 Check out the [demo](https://vue-spruce.netlify.app/)
 
