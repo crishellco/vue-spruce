@@ -36,10 +36,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@vue/vue2-jest": "^28.0.1",
+    "@vue/vue2-jest": "^29.0.0",
     "fuse.js": "^6.4.6",
     "lodash.orderby": "^4.6.0",
-    "vue": "2.7.10"
+    "vue": "3.2.40"
   },
   "devDependencies": {
     "@commitlint/cli": "17.1.2",
@@ -67,7 +67,7 @@
     "prettier": "2.7.1",
     "raw-loader": "4.0.2",
     "semantic-release": "19.0.5",
-    "vue": "2.7.10",
+    "vue": "3.2.40",
     "vue-sfc-parser": "0.1.2",
     "vue-template-compiler": "2.7.10",
     "vue2-transitions": "0.3.0"
