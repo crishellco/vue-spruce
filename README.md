@@ -397,6 +397,12 @@ Sort an array of strings or objects in either direction by specific keys.
 | `direction` | The direction to sort in, 'asc' or 'desc' | String | No       | 'asc'   |
 | `by`        | The object property to sort by            | String | No       | ''      |
 
+#### Events
+
+| Name     | Description                                       | Payload   |
+|----------|---------------------------------------------------|-----------|
+| `change` | Fired when `results` change (the list is sorted). | `results` |
+
 #### Slots
 
 | Name      | Required |

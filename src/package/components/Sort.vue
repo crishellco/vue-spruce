@@ -31,6 +31,12 @@ export default {
     },
   },
 
+  watch: {
+    results(results) {
+      this.$emit('change', results);
+    },
+  },
+
   render() {
     return this.$scopedSlots.default({ results: this.results });
   },
