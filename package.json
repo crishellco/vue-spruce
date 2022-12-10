@@ -39,7 +39,7 @@
     "@vue/vue2-jest": "^28.0.1",
     "fuse.js": "^6.4.6",
     "lodash.orderby": "^4.6.0",
-    "vue": "2.7.14"
+    "vue": "3.2.45"
   },
   "devDependencies": {
     "@commitlint/cli": "17.2.0",
@@ -67,7 +67,7 @@
     "prettier": "2.7.1",
     "raw-loader": "4.0.2",
     "semantic-release": "19.0.5",
-    "vue": "2.7.14",
+    "vue": "3.2.45",
     "vue-sfc-parser": "0.1.2",
     "vue-template-compiler": "2.7.14",
     "vue2-transitions": "0.3.0"
