@@ -216,7 +216,7 @@ Track any `window` event occurance inside or outside of `SpruceEvent`'s default 
 Make asynchronous API fetch calls.
 
 ```html
-<spruce-fetch url="api.google.com/users" >
+<spruce-fetch url="https://dog-api.kinduff.com/api/facts" >
   <div slot-scope="{ loading, data, error, fetch }">
     <loading-indicator v-if="loading" />
     <div v-else-if="errors">Errors! {{ error.status }}</div>
