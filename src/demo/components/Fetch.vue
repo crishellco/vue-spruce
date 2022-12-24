@@ -45,10 +45,7 @@ export default {
 
   data() {
     return {
-      urls: [
-        'https://6053559e45e4b30017291628.mockapi.io/users/1',
-        'https://6053559e45e4b30017291628.mockapi.io/users/12321',
-      ],
+      urls: ['https://dog-api.kinduff.com/api/facts', 'http://calapi.inadiutorium.cz/api/v0/en/calendars/default'],
       code,
     };
   },
