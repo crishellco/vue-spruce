@@ -10,7 +10,14 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   plugins: ['jest-formatting'],
-  parserOptions: { parser: 'babel-eslint' },
+  parserOptions: {
+    requireConfigFile: false,
+    babelOptions: {
+      babelrc: false,
+      configFile: false,
+      presets: ['babel-eslint'],
+    },
+  },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
