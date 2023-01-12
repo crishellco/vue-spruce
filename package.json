@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "17.4.2",
-    "@form8ion/commitlint-config": "1.0.42",
+    "@form8ion/commitlint-config": "1.0.43",
     "@popperjs/core": "2.11.6",
     "@vue/cli-plugin-babel": "5.0.8",
     "@vue/cli-plugin-eslint": "5.0.8",
