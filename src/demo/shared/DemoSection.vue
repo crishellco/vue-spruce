@@ -1,8 +1,8 @@
 <template>
   <spruce-toggle :value="expanded" @input="$emit('toggled', $event)">
     <section slot-scope="{ isOn, toggle }" class="flex">
-      <div class="flex-1 p-4 w-1/2 border-b border-gray-400">
-        <div class="flex items-center justify-between">
+      <div class="flex-1 p-4 w-1/2 border-b border-gray-400 flex flex-col">
+        <div class="flex items-center justify-between flex-none">
           <h3 class="text-2xl font-bold">{{ name }}</h3>
           <span
             class="flex-none cursor-pointer mr-2 w-8 h-8 text-xl font-bold bg-gray-300 hover:bg-gray-500 leading-none rounded flex items-center justify-center"
@@ -10,7 +10,7 @@
             >{{ isOn ? '-' : '+' }}</span
           >
         </div>
-        <div v-if="isOn" class="mt-4">
+        <div v-if="isOn" class="flex-1 flex flex-col mt-4">
           <slot />
         </div>
       </div>
