@@ -1,7 +1,0 @@
-{
-  "paths": [
-    "src"
-  ],
-  "regex": "(.+)?{key}(.+)?",
-  "testFileExtension": "spec.js"
-}
