@@ -1,22 +1,17 @@
 <template>
-  <demo-section name="SpruceCling" :code="code" class="flex" @toggled="handleToggled">
-    <div ref="container" class="relative h-64">
-      <div class="absolute" :style="wrapperStyle">
-        <spruce-cling :placement="placement">
-          <template #anchor="{ update }">
-            <spruce-watch :watch="{ buttonStyle }" @changed:buttonStyle="update">
-              <button
-                ref="anchor"
-                :style="buttonStyle"
-                class="border-2 border-transparent bg-gray-500 rounded py-2 px-4 w-64 shadow"
-              >
-                anchor: moving in {{ (remaining / 1000).toFixed(1) }}s...
-              </button>
-            </spruce-watch>
+  <demo-section name="SpruceCling" :code="code" class="flex flex-1">
+    <h4 class="text-lg font-semibold mb-4">Hover over each button to see the placement of its clinger</h4>
+    <div class="flex flex-col flex-1 justify-center">
+      <div class="flex justify-center flex-wrap relative p-2">
+        <spruce-cling v-for="placement in placements" :key="placement" :placement="placement" class="group m-2">
+          <template #anchor="">
+            <button class="border-2 border-transparent bg-gray-400 hover:bg-gray-500 rounded shadow w-48 h-16 text-sm">
+              #anchor: {{ placement }}
+            </button>
           </template>
           <template #clinger>
-            <div class="w-full">
-              <div class="p-4 shadow bg-gray-200 rounded">clinger: {{ placement }}</div>
+            <div class="p-2 shadow bg-blue-100 text-blue-600 rounded invisible group-hover:visible">
+              #clinger: {{ placement }}
             </div>
           </template>
         </spruce-cling>
@@ -31,87 +26,32 @@ import code from './Cling.gist';
 
 const PLACEMENTS = [
   'auto',
-  'auto-start',
   'auto-end',
-  'top',
-  'top-start',
-  'top-end',
+  'auto-start',
   'bottom',
-  'bottom-start',
   'bottom-end',
-  'right',
-  'right-start',
-  'right-end',
+  'bottom-start',
   'left',
-  'left-start',
   'left-end',
+  'left-start',
+  'right',
+  'right-end',
+  'right-start',
+  'top',
+  'top-end',
+  'top-start',
 ];
-
-const MOVE_INTERVAL = 5000;
-const REMAINING_INTERVAL = 100;
 
 export default {
   components: { DemoSection },
 
   data() {
-    return {
-      placement: 'bottom',
-      buttonStyle: { width: '16rem' },
-      remaining: MOVE_INTERVAL,
-      moveButtonInterval: null,
-      remainingUntilMoveInterval: null,
-      wrapperStyle: {
-        left: '0px',
-        top: '0px',
-      },
-      code,
-    };
+    return { code };
   },
 
-  beforeDestroy() {
-    this.stop();
-  },
-
-  methods: {
-    handleToggled(isOn) {
-      return isOn ? this.start() : this.stop();
-    },
-
-    start() {
-      this.moveButtonInterval = setInterval(this.moveButton, MOVE_INTERVAL);
-      this.remainingUntilMoveInterval = setInterval(this.updateRemaining, REMAINING_INTERVAL);
-    },
-
-    stop() {
-      this.remaining = MOVE_INTERVAL;
-      clearInterval(this.moveButtonInterval);
-      clearInterval(this.remainingUntilMoveInterval);
-    },
-
-    updateRemaining() {
-      if (this.remaining === REMAINING_INTERVAL) {
-        this.remaining = MOVE_INTERVAL;
-      } else {
-        this.remaining -= REMAINING_INTERVAL;
-      }
-    },
-
-    async moveButton() {
-      this.placement = PLACEMENTS[Math.floor(Math.random() * PLACEMENTS.length)];
-
-      let { width, height } = this.$refs.container.getBoundingClientRect();
-
-      width -= this.$refs.anchor.offsetWidth;
-      height -= this.$refs.anchor.offsetHeight;
-
-      this.wrapperStyle = {
-        left: `${Math.floor(Math.random() * width) + 1}px`,
-        top: `${Math.floor(Math.random() * height) + 1}px`,
-      };
-
-      this.buttonStyle = { width: `${Math.floor(Math.random() * 24) + 10}rem` };
-
-      await this.$nextTick();
+  computed: {
+    placements() {
+      return PLACEMENTS;
     },
   },
 };
