@@ -6,7 +6,7 @@
         <spruce-at-least :ms="5000" :show="isOn">
           <div slot-scope="{ disabled, show }">
             <fade-transition :duration="500">
-              <img v-if="show" src="http://www.fillmurray.com/g/200/300" alt="" />
+              <img v-if="show" src="https://placebeard.it/g/200/300" alt="" />
             </fade-transition>
 
             <button
