@@ -70,6 +70,7 @@ export default {
           });
         }
       } catch (error) {
+        this.error = { data: error };
         this.data = null;
         this.$emit('error', {
           data: error,

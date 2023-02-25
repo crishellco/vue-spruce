@@ -28,8 +28,8 @@
         <div v-else>
           <div class="font-semibold">Data:</div>
           <pre class="whitespace-pre flex-1 flex flex-col w-full overflow-auto bg-gray-700 p-4 rounded">
-               <code class="block text-sm font-mono text-white flex flex-1">{{ error ?  `${error.status} ${error.data}` : data }}</code>
-            </pre>
+            <code class="block text-sm font-mono text-white flex flex-1">{{ error ?  `${error.status} ${error.data}` : data }}</code>
+          </pre>
         </div>
       </div>
     </spruce-fetch>
