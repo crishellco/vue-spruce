@@ -23,13 +23,11 @@ function setupFetch(options = {}) {
     ...options,
   };
 
-  global.fetch = jest.fn().mockImplementation(() =>
-    Promise.resolve({
-      ok,
-      json: () => Promise.resolve({ ...data }),
-      status,
-    })
-  );
+  global.fetch = jest.fn().mockResolvedValue({
+    ok,
+    json: () => Promise.resolve({ ...data }),
+    status,
+  });
 }
 
 function flushPromises() {
@@ -100,10 +98,11 @@ describe('Fetch', () => {
   it('should catch an exception from fetch', async () => {
     const error = 'oops';
 
-    global.fetch = jest.fn().mockImplementation(() => Promise.reject(error));
+    global.fetch = jest.fn().mockRejectedValue(error);
 
     await wrapper.vm.fetch();
 
+    expect(wrapper.vm.error).toEqual({ data: error });
     expect(wrapper.vm.data).toBeNull();
     expect(wrapper.vm.loading).toBeFalsy();
   });
