@@ -28,7 +28,7 @@
 import { FadeTransition } from 'vue2-transitions';
 
 import { DemoSection } from '../shared';
-import code from './Cling.gist';
+import code from './AtLeast.gist';
 
 export default {
   components: { DemoSection, FadeTransition },
