@@ -112,7 +112,7 @@ Ensures a component shows for at least a given amount of time, in milliseconds, 
 ```html
 <spruce-at-least :ms="5000" :show="shouldShowImage">
   <div slot-scope="{ disabled, show }">
-    <img v-if="show" src="http://www.fillmurray.com/g/200/300" alt="" />
+    <img v-if="show" src="https://placebeard.it/g/200/300" alt="" />
 
     <button :disabled="disabled" @click="shouldShowImage = !shouldShowImage">
       {{ disabled ? 'waiting...' : show ? 'hide' : 'show' }}
