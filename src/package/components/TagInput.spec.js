@@ -48,6 +48,16 @@ describe('TagInput', () => {
     expect(wrapper.vm.$refs.tagInput.newTag).toBe('');
   });
 
+  test('pop', () => {
+    wrapper.find('input').setValue('red');
+    wrapper.find('input').trigger('keydown.backspace');
+    expect(wrapper.vm.colors.length).toBe(2);
+
+    wrapper.find('input').setValue('');
+    wrapper.find('input').trigger('keydown.backspace');
+    expect(wrapper.vm.colors.length).toBe(1);
+  });
+
   test('remove', () => {
     wrapper.find('button').trigger('click');
     expect(wrapper.vm.colors.length).toBe(1);
