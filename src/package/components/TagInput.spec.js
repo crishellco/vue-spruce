@@ -7,10 +7,17 @@ let wrapper;
 const Component = {
   components: { SpruceTagInput },
   data() {
-    return { allowDuplicates: false, colors: ['red', 'blue'], keepOnBackspace: false, disabled: false, maxTags: null };
+    return {
+      allowDuplicates: false,
+      colors: ['red', 'blue'],
+      keepOnBackspace: false,
+      disabled: false,
+      maxTags: null,
+      validator: undefined,
+    };
   },
   template: `
-  <spruce-tag-input v-model="colors" ref="tagInput" :keep-on-backspace="keepOnBackspace" :disabled="disabled" :max-tags="maxTags" :allow-duplicates="allowDuplicates">
+  <spruce-tag-input v-model="colors" ref="tagInput" :keep-on-backspace="keepOnBackspace" :disabled="disabled" :max-tags="maxTags" :allow-duplicates="allowDuplicates" :validator="validator">
     <div slot-scope="{ events, remove, state, tags }">
       <button
         v-for="(tag, index) in tags"
@@ -19,7 +26,7 @@ const Component = {
       >
         <span>{{ tag }}</span>
       </button>
-      <input v-bind="state" placeholder="Add tag..." v-on="events" />
+      <input v-bind="state" v-on="events" />
     </div>
   </spruce-tag-input>
   `,
@@ -37,6 +44,27 @@ describe('TagInput', () => {
 
       await wrapper.find('input').setValue('red');
       expect(wrapper.vm.$refs.tagInput.focusedTag).toBeFalsy();
+    });
+  });
+
+  describe('computed', () => {
+    test('invalid', async () => {
+      const vm = wrapper.vm.$refs.tagInput;
+
+      expect(vm.invalid).toBeFalsy();
+
+      await wrapper.find('input').setValue('orange');
+      await wrapper.setData({ validator: () => false });
+      expect(vm.invalid).toBeTruthy();
+
+      await wrapper.setData({ validator: () => true });
+      expect(vm.invalid).toBeFalsy();
+
+      await wrapper.find('input').setValue('red');
+      expect(vm.invalid).toBeTruthy();
+
+      await wrapper.setData({ allowDuplicates: true });
+      expect(vm.invalid).toBeFalsy();
     });
   });
 
