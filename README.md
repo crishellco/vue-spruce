@@ -504,9 +504,11 @@ export default {
 | Name              | Description                                                                                                                   | Type     | Required | Default      |
 |-------------------|-------------------------------------------------------------------------------------------------------------------------------|----------|----------|--------------|
 | `allowDuplicates` | Allows duplicate tags                                                                                                         | Boolean  | No       | `False`      |
+| `allowPaste`      | Allows pasting to automatically create tags                                                                                   | Boolean  | No       | `False`      |
 | `disabled`        | Disables all interactions                                                                                                     | Boolean  | No       | `False`      |
 | `keepOnBackspace` | Disables deleting last tab on `keyup.backspace` in the input                                                                  | Boolean  | No       | `False`      |
 | `maxTags`         | Number of allowed tags                                                                                                        | Number   | No       | `Null`       |
+| `separator`       | Separator used to process pasted tags                                                                                         | String   | No       | `\t`         |
 | `v-model`         | The tags                                                                                                                      | Array    | Yes      |              |
 | `validator`       | Function that receives the String argument `tag` and returns `true` or `false` to determine the validity of the input's value | Function | No       | `() => true` |
 

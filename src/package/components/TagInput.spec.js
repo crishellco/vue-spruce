@@ -2,6 +2,8 @@ import { mount } from '@vue/test-utils';
 
 import { SpruceTagInput } from './';
 
+const colors = ['red', 'blue'];
+
 let wrapper;
 
 const Component = {
@@ -9,7 +11,8 @@ const Component = {
   data() {
     return {
       allowDuplicates: false,
-      colors: ['red', 'blue'],
+      allowPaste: false,
+      colors,
       keepOnBackspace: false,
       disabled: false,
       maxTags: null,
@@ -17,7 +20,7 @@ const Component = {
     };
   },
   template: `
-  <spruce-tag-input v-model="colors" ref="tagInput" :keep-on-backspace="keepOnBackspace" :disabled="disabled" :max-tags="maxTags" :allow-duplicates="allowDuplicates" :validator="validator">
+  <spruce-tag-input v-model="colors" ref="tagInput" :keep-on-backspace="keepOnBackspace" :disabled="disabled" :max-tags="maxTags" :allow-duplicates="allowDuplicates" :validator="validator" :allow-paste="allowPaste">
     <div slot-scope="{ events, remove, state, tags }">
       <button
         v-for="(tag, index) in tags"
@@ -101,6 +104,30 @@ describe('TagInput', () => {
 
       wrapper.find('input').trigger('keydown.esc');
       expect(wrapper.vm.$refs.tagInput.focusedTagIndex).toBeFalsy();
+    });
+
+    test('paste', async () => {
+      const vm = wrapper.vm.$refs.tagInput;
+
+      const event = {
+        preventDefault: jest.fn(),
+        clipboardData: { getData: () => colors.join(vm.separator) },
+      };
+
+      wrapper.find('input').trigger('paste', event);
+      expect(wrapper.vm.colors.length).toBe(2);
+
+      await wrapper.setData({ allowPaste: true });
+      wrapper.find('input').trigger('paste', event);
+      expect(wrapper.vm.colors.length).toBe(2);
+
+      await wrapper.setData({ allowDuplicates: true });
+      wrapper.find('input').trigger('paste', event);
+      expect(wrapper.vm.colors.length).toBe(4);
+
+      await wrapper.setData({ allowDuplicates: true });
+      wrapper.find('input').trigger('paste', { ...event, clipboardData: { getData: () => 'ric-flair' } });
+      expect(wrapper.vm.colors.length).toBe(4);
     });
 
     test('pop', async () => {
