@@ -462,22 +462,40 @@ Create and manage localized state.
 Renderless tag input.
 
 ```html
-<spruce-tag-input v-model="colors">
-  <div slot-scope="{ events, focusedTag, remove, state, tags }">
-    <button
-      v-for="(tag, index) in tags"
-      :key="index"
-      type="button"
-      title="Remove tag"
-      :class="{ 'bg-red-500': focusedTag === tag }"
-      @click="remove(tag)"
+<template>
+  <spruce-tag-input v-model="colors" @validate="validate">
+    <div
+      slot-scope="{ events, focusedTag, remove, state, tags }"
     >
-      <span>{{ tag }}</span>
-      <span>&times;</span>
-    </button>
-    <input v-bind="state" placeholder="Add tag..." v-on="events" />
-  </div>
-</spruce-tag-input>
+      <button
+        v-for="(tag, index) in tags"
+        :key="index"
+        type="button"
+        :class="{ 'bg-red-500': focusedTag === tag }"
+        title="Remove tag"
+        @click="remove(tag)"
+      >
+        <span>{{ tag }}</span>
+        <span>&times;</span>
+      </button>
+      <input v-bind="state" placeholder="Add tag with letters only..." v-on="events" />
+    </div>
+  </spruce-tag-input>
+</template>
+
+<script>
+export default {
+  data() {
+    return { colors: ['red', 'blue'] };
+  },
+
+  methods: {
+    validate({ next, tag }) {
+      if (/^[a-zA-Z]+$/.test(tag)) next();
+    },
+  },
+};
+</script>
 ```
 
 #### Props
@@ -489,6 +507,12 @@ Renderless tag input.
 | `keepOnBackspace` | Disables deleting last tab on `keyup.backspace` in the input | Boolean | No       | `False` |
 | `maxTags`         | Number of allowed tags                                       | Number  | No       | `Null`  |
 | `v-model`         | The tags                                                     | Array   | Yes      |         |
+
+#### Events
+
+| Name       | Description                                                                       | Payload                          |
+|------------|-----------------------------------------------------------------------------------|----------------------------------|
+| `validate` | Fired before adding a new tag, if listener exists. Execute `next` to add the tag. | `{ next: Function, tag: String}` |
 
 #### Slot Scope
 

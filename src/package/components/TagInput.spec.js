@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils';
 
 import { SpruceTagInput } from './';
 
+const validate = jest.fn();
 let wrapper;
 
 const Component = {
@@ -19,10 +20,32 @@ const Component = {
       >
         <span>{{ tag }}</span>
       </button>
-      <input v-bind="state" placeholder="Add tag..." v-on="events" />
+      <input v-bind="state" v-on="events" />
     </div>
   </spruce-tag-input>
   `,
+};
+
+const ComponentWithValidation = {
+  components: { SpruceTagInput },
+  data() {
+    return { allowDuplicates: false, colors: ['red', 'blue'], keepOnBackspace: false, disabled: false, maxTags: null };
+  },
+  template: `
+  <spruce-tag-input v-model="colors" ref="tagInput" :keep-on-backspace="keepOnBackspace" :disabled="disabled" :max-tags="maxTags" :allow-duplicates="allowDuplicates"  @validate="validate">
+    <div slot-scope="{ events, remove, state, tags }">
+      <button
+        v-for="(tag, index) in tags"
+        :key="index"
+        @click="remove(tag)"
+      >
+        <span>{{ tag }}</span>
+      </button>
+      <input v-bind="state" v-on="events" />
+    </div>
+  </spruce-tag-input>
+  `,
+  methods: { validate },
 };
 
 describe('TagInput', () => {
@@ -59,6 +82,15 @@ describe('TagInput', () => {
       wrapper.find('input').setValue('yellow');
       wrapper.find('input').trigger('keydown.enter');
       expect(wrapper.vm.colors.length).toBe(4);
+
+      wrapper = mount(ComponentWithValidation);
+
+      expect(wrapper.vm.colors.length).toBe(2);
+      wrapper.find('input').setValue('orange');
+      wrapper.find('input').trigger('keydown.enter');
+      expect(wrapper.vm.colors.length).toBe(2);
+      expect(wrapper.vm.colors.length).toBe(2);
+      expect(validate).toHaveBeenCalled();
     });
 
     test('clear', () => {

@@ -47,8 +47,16 @@ export default {
         return;
       }
 
-      this.$emit('input', [...this.value, tag]);
-      this.newTag = '';
+      const payload = {
+        next: () => {
+          this.$emit('input', [...this.value, tag]);
+          this.newTag = '';
+        },
+        tag,
+      };
+      if (this.$listeners.validate) return this.$emit('validate', payload);
+
+      payload.next();
     },
 
     clear() {

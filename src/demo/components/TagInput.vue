@@ -1,6 +1,6 @@
 <template>
   <demo-section name="SpruceTagInput" :code="code">
-    <spruce-tag-input v-model="colors">
+    <spruce-tag-input v-model="colors" @validate="validate">
       <div
         slot-scope="{ events, focusedTag, remove, state, tags }"
         class="p-2 border flex items-center flex-wrap gap-2"
@@ -17,7 +17,12 @@
           <span>{{ tag }}</span>
           <span>&times;</span>
         </button>
-        <input v-bind="state" placeholder="Add tag..." class="flex-1 h-8 focus:outline-none" v-on="events" />
+        <input
+          v-bind="state"
+          placeholder="Add tag with letters only..."
+          class="flex-1 h-8 focus:outline-none"
+          v-on="events"
+        />
       </div>
     </spruce-tag-input>
   </demo-section>
@@ -32,6 +37,12 @@ export default {
 
   data() {
     return { code, colors: ['red', 'blue'] };
+  },
+
+  methods: {
+    validate({ next, tag }) {
+      if (/^[a-zA-Z]+$/.test(tag)) next();
+    },
   },
 };
 </script>
