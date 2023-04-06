@@ -40,10 +40,10 @@ describe('TagInput', () => {
   describe('watchers', () => {
     test('newTag', async () => {
       wrapper.find('input').trigger('keydown.backspace');
-      expect(wrapper.vm.$refs.tagInput.focusedTag).toBeTruthy();
+      expect(wrapper.vm.$refs.tagInput.focusedTagIndex).toBeTruthy();
 
       await wrapper.find('input').setValue('red');
-      expect(wrapper.vm.$refs.tagInput.focusedTag).toBeFalsy();
+      expect(wrapper.vm.$refs.tagInput.focusedTagIndex).toBeFalsy();
     });
   });
 
@@ -97,10 +97,10 @@ describe('TagInput', () => {
       expect(wrapper.vm.$refs.tagInput.newTag).toBe('');
 
       wrapper.find('input').trigger('keydown.backspace');
-      expect(wrapper.vm.$refs.tagInput.focusedTag).toBeTruthy();
+      expect(wrapper.vm.$refs.tagInput.focusedTagIndex).toBeTruthy();
 
       wrapper.find('input').trigger('keydown.esc');
-      expect(wrapper.vm.$refs.tagInput.focusedTag).toBeFalsy();
+      expect(wrapper.vm.$refs.tagInput.focusedTagIndex).toBeFalsy();
     });
 
     test('pop', async () => {

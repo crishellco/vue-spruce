@@ -1,8 +1,8 @@
 <template>
   <demo-section name="SpruceTagInput" :code="code">
-    <spruce-tag-input v-model="colors" :validator="validator">
+    <spruce-tag-input v-model="colors" :validator="validator" allow-duplicates>
       <div
-        slot-scope="{ events, focusedTag, invalid, remove, state, tags }"
+        slot-scope="{ events, focusedTagIndex, invalid, remove, state, tags }"
         class="p-2 border flex items-center flex-wrap gap-2"
         :class="{ 'border-red-500': invalid }"
       >
@@ -11,7 +11,7 @@
           :key="index"
           type="button"
           class="rounded bg-gray-400 hover:bg-gray-500 flex items-center h-8 px-2 space-x-2 flex-none"
-          :class="{ 'bg-red-500': focusedTag === tag }"
+          :class="{ 'bg-red-500': focusedTagIndex === index }"
           title="Remove tag"
           @click="remove(tag)"
         >

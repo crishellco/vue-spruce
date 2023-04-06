@@ -34,7 +34,7 @@ export default {
   },
 
   data() {
-    return { focusedTag: null, newTag: '' };
+    return { focusedTagIndex: null, newTag: '' };
   },
 
   computed: {
@@ -47,7 +47,7 @@ export default {
 
   watch: {
     newTag() {
-      this.focusedTag = null;
+      this.focusedTagIndex = null;
     },
   },
 
@@ -64,7 +64,7 @@ export default {
     },
 
     clear() {
-      if (this.focusedTag) return (this.focusedTag = null);
+      if (this.focusedTagIndex) return (this.focusedTagIndex = null);
 
       this.newTag = '';
     },
@@ -72,10 +72,10 @@ export default {
     pop() {
       if (this.keepOnBackspace || this.newTag.length || !this.value.length) return;
 
-      if (!this.focusedTag) return (this.focusedTag = this.value.at(-1));
+      if (this.focusedTagIndex === null) return (this.focusedTagIndex = this.value.length - 1);
 
-      this.remove(this.focusedTag);
-      this.focusedTag = null;
+      this.remove(this.value[this.focusedTagIndex]);
+      this.focusedTagIndex = null;
     },
 
     remove(tag) {
@@ -90,7 +90,7 @@ export default {
 
   render() {
     return this.$scopedSlots.default({
-      focusedTag: this.focusedTag,
+      focusedTagIndex: this.focusedTagIndex,
       invalid: this.invalid,
       tags: this.value,
       remove: this.remove,
