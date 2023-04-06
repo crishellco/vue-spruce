@@ -1,6 +1,6 @@
 <template>
   <demo-section name="SpruceTagInput" :code="code">
-    <spruce-tag-input v-model="colors" :validator="validator" allow-duplicates>
+    <spruce-tag-input v-model="colors" :validator="validator" allow-paste>
       <div
         slot-scope="{ events, focusedTagIndex, invalid, remove, state, tags }"
         class="p-2 border flex items-center flex-wrap gap-2"

@@ -7,6 +7,11 @@ export default {
       default: false,
     },
 
+    allowPaste: {
+      type: Boolean,
+      default: false,
+    },
+
     keepOnBackspace: {
       type: Boolean,
       default: false,
@@ -20,6 +25,11 @@ export default {
     maxTags: {
       default: null,
       type: Number,
+    },
+
+    separator: {
+      default: '\t',
+      type: String,
     },
 
     validator: {
@@ -69,6 +79,21 @@ export default {
       this.newTag = '';
     },
 
+    paste(event) {
+      if (!this.allowPaste) return;
+
+      const text = event.clipboardData.getData('text');
+      const tags = text.split(this.separator).filter((tag) => this.validator(tag));
+
+      if (tags.length < 2) return;
+
+      event.preventDefault();
+
+      const payload = [...this.value, ...tags];
+
+      this.$emit('input', !this.allowDuplicates ? [...new Set(payload)] : payload);
+    },
+
     pop() {
       if (this.keepOnBackspace || this.newTag.length || !this.value.length) return;
 
@@ -114,6 +139,9 @@ export default {
             e.preventDefault();
             this.clear();
           }
+        },
+        paste: (e) => {
+          this.paste(e);
         },
       },
       add: this.add,
