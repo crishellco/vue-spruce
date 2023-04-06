@@ -30,53 +30,75 @@ describe('TagInput', () => {
     wrapper = mount(Component);
   });
 
-  test('add', async () => {
-    wrapper.find('input').setValue('red');
-    wrapper.find('input').trigger('keydown.enter');
-    expect(wrapper.vm.colors.length).toBe(2);
+  describe('watchers', () => {
+    test('newTag', async () => {
+      wrapper.find('input').trigger('keydown.backspace');
+      expect(wrapper.vm.$refs.tagInput.focusedTag).toBeTruthy();
 
-    wrapper.find('input').setValue('green');
-    wrapper.find('input').trigger('keydown.enter');
-    expect(wrapper.vm.colors.length).toBe(3);
-
-    await wrapper.setData({ allowDuplicates: true });
-    wrapper.find('input').setValue('red');
-    wrapper.find('input').trigger('keydown.enter');
-    expect(wrapper.vm.colors.length).toBe(4);
-
-    await wrapper.setData({ maxTags: 4 });
-    wrapper.find('input').setValue('yellow');
-    wrapper.find('input').trigger('keydown.enter');
-    expect(wrapper.vm.colors.length).toBe(4);
+      await wrapper.find('input').setValue('red');
+      expect(wrapper.vm.$refs.tagInput.focusedTag).toBeFalsy();
+    });
   });
 
-  test('esc', () => {
-    wrapper.find('input').setValue('red');
-    expect(wrapper.vm.$refs.tagInput.newTag).toBe('red');
-    wrapper.find('input').trigger('keydown.esc');
-    expect(wrapper.vm.$refs.tagInput.newTag).toBe('');
-  });
+  describe('methods', () => {
+    test('add', async () => {
+      wrapper.find('input').setValue('red');
+      wrapper.find('input').trigger('keydown.enter');
+      expect(wrapper.vm.colors.length).toBe(2);
 
-  test('pop', async () => {
-    wrapper.find('input').setValue('red');
-    wrapper.find('input').trigger('keydown.backspace');
-    expect(wrapper.vm.colors.length).toBe(2);
+      wrapper.find('input').setValue('green');
+      wrapper.find('input').trigger('keydown.enter');
+      expect(wrapper.vm.colors.length).toBe(3);
 
-    wrapper.find('input').setValue('');
-    wrapper.find('input').trigger('keydown.backspace');
-    expect(wrapper.vm.colors.length).toBe(1);
+      await wrapper.setData({ allowDuplicates: true });
+      wrapper.find('input').setValue('red');
+      wrapper.find('input').trigger('keydown.enter');
+      expect(wrapper.vm.colors.length).toBe(4);
 
-    await wrapper.setData({ keepOnBackspace: true });
-    wrapper.find('input').trigger('keydown.backspace');
-    expect(wrapper.vm.colors.length).toBe(1);
-  });
+      await wrapper.setData({ maxTags: 4 });
+      wrapper.find('input').setValue('yellow');
+      wrapper.find('input').trigger('keydown.enter');
+      expect(wrapper.vm.colors.length).toBe(4);
+    });
 
-  test('remove', async () => {
-    wrapper.find('button').trigger('click');
-    expect(wrapper.vm.colors.length).toBe(1);
+    test('clear', () => {
+      wrapper.find('input').setValue('red');
+      expect(wrapper.vm.$refs.tagInput.newTag).toBe('red');
 
-    await wrapper.setData({ disabled: true });
-    wrapper.find('button').trigger('click');
-    expect(wrapper.vm.colors.length).toBe(1);
+      wrapper.find('input').trigger('keydown.esc');
+      expect(wrapper.vm.$refs.tagInput.newTag).toBe('');
+
+      wrapper.find('input').trigger('keydown.backspace');
+      expect(wrapper.vm.$refs.tagInput.focusedTag).toBeTruthy();
+
+      wrapper.find('input').trigger('keydown.esc');
+      expect(wrapper.vm.$refs.tagInput.focusedTag).toBeFalsy();
+    });
+
+    test('pop', async () => {
+      wrapper.find('input').setValue('red');
+      wrapper.find('input').trigger('keydown.backspace');
+      wrapper.find('input').trigger('keydown.backspace');
+      expect(wrapper.vm.colors.length).toBe(2);
+
+      wrapper.find('input').setValue('');
+      wrapper.find('input').trigger('keydown.backspace');
+      wrapper.find('input').trigger('keydown.backspace');
+      expect(wrapper.vm.colors.length).toBe(1);
+
+      await wrapper.setData({ keepOnBackspace: true });
+      wrapper.find('input').trigger('keydown.backspace');
+      wrapper.find('input').trigger('keydown.backspace');
+      expect(wrapper.vm.colors.length).toBe(1);
+    });
+
+    test('remove', async () => {
+      wrapper.find('button').trigger('click');
+      expect(wrapper.vm.colors.length).toBe(1);
+
+      await wrapper.setData({ disabled: true });
+      wrapper.find('button').trigger('click');
+      expect(wrapper.vm.colors.length).toBe(1);
+    });
   });
 });
