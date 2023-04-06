@@ -72,8 +72,7 @@ export default {
     pop() {
       if (this.keepOnBackspace || this.newTag.length || !this.value.length) return;
 
-      if (this.focusedTagIndex === null)
-        return (this.focusedTagIndex = this.value.length ? this.value.length - 1 : null);
+      if (this.focusedTagIndex === null) return (this.focusedTagIndex = this.value.length - 1);
 
       this.remove(this.value[this.focusedTagIndex]);
       this.focusedTagIndex = null;
