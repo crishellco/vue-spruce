@@ -481,9 +481,12 @@ Renderless tag input.
 
 #### Props
 
-| Name    | Description | Type  | Required | Default |
-|---------|-------------|-------|----------|---------|
-| `value` | The tags    | Array | Yes      |         |
+| Name                | Description                                                 | Type    | Required | Default |
+|---------------------|-------------------------------------------------------------|---------|----------|---------|
+| `deleteOnBackspace` | Enables deleting last tab on `keyup.backspace` in the input | Boolean | No       | `True`  |
+| `disabled`          | Disables all interactions                                   | Boolean | No       | `False` |
+| `maxTags`           | Number of allowed tags                                      | Number  | No       | `Null`  |
+| `v-model`           | The tags                                                    | Array   | Yes      |         |
 
 #### Slot Scope
 

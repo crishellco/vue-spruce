@@ -2,6 +2,21 @@
 export default {
   name: 'SpruceTagInput',
   props: {
+    deleteOnBackspace: {
+      type: Boolean,
+      default: true,
+    },
+
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+
+    maxTags: {
+      default: null,
+      type: Number,
+    },
+
     value: {
       required: true,
       type: Array,
@@ -16,7 +31,7 @@ export default {
     add() {
       const tag = this.newTag.trim();
 
-      if (tag.length === 0 || this.value.includes(tag)) {
+      if (tag.length === 0 || this.value.includes(tag) || this.value.length === this.maxTags) {
         return;
       }
 
@@ -25,7 +40,7 @@ export default {
     },
 
     pop() {
-      if (this.newTag.length || !this.value.length) return;
+      if (!this.deleteOnBackspace || this.newTag.length || !this.value.length) return;
 
       const tags = this.value;
 
@@ -34,6 +49,8 @@ export default {
     },
 
     remove(tag) {
+      if (this.disabled) return;
+
       this.$emit(
         'input',
         this.value.filter((t) => t !== tag)
@@ -45,7 +62,7 @@ export default {
     return this.$scopedSlots.default({
       tags: this.value,
       remove: this.remove,
-      state: { value: this.newTag },
+      state: { disabled: this.disabled, value: this.newTag },
       events: {
         input: (e) => {
           this.newTag = e.target.value;
