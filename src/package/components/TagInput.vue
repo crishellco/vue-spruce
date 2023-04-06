@@ -29,7 +29,13 @@ export default {
   },
 
   data() {
-    return { newTag: '' };
+    return { focusedTag: null, newTag: '' };
+  },
+
+  watch: {
+    newTag() {
+      this.focusedTag = null;
+    },
   },
 
   methods: {
@@ -45,13 +51,19 @@ export default {
       this.newTag = '';
     },
 
+    clear() {
+      if (this.focusedTag) return (this.focusedTag = null);
+
+      this.newTag = '';
+    },
+
     pop() {
       if (this.keepOnBackspace || this.newTag.length || !this.value.length) return;
 
-      const tags = this.value;
+      if (!this.focusedTag) return (this.focusedTag = this.value.at(-1));
 
-      tags.pop();
-      this.$emit('input', tags);
+      this.remove(this.focusedTag);
+      this.focusedTag = null;
     },
 
     remove(tag) {
@@ -66,6 +78,7 @@ export default {
 
   render() {
     return this.$scopedSlots.default({
+      focusedTag: this.focusedTag,
       tags: this.value,
       remove: this.remove,
       state: { disabled: this.disabled, value: this.newTag },
@@ -86,7 +99,7 @@ export default {
           // esc
           if (e.keyCode === 27) {
             e.preventDefault();
-            this.newTag = '';
+            this.clear();
           }
         },
       },
