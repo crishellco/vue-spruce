@@ -2,9 +2,9 @@
 export default {
   name: 'SpruceTagInput',
   props: {
-    deleteOnBackspace: {
+    keepOnBackspace: {
       type: Boolean,
-      default: true,
+      default: false,
     },
 
     disabled: {
@@ -40,7 +40,7 @@ export default {
     },
 
     pop() {
-      if (!this.deleteOnBackspace || this.newTag.length || !this.value.length) return;
+      if (this.keepOnBackspace || this.newTag.length || !this.value.length) return;
 
       const tags = this.value;
 

@@ -7,10 +7,10 @@ let wrapper;
 const Component = {
   components: { SpruceTagInput },
   data() {
-    return { colors: ['red', 'blue'], deleteOnBackspace: true, disabled: false, maxTags: null };
+    return { colors: ['red', 'blue'], keepOnBackspace: false, disabled: false, maxTags: null };
   },
   template: `
-  <spruce-tag-input v-model="colors" ref="tagInput" :delete-on-backspace="deleteOnBackspace" :disabled="disabled" :max-tags="maxTags">
+  <spruce-tag-input v-model="colors" ref="tagInput" :keep-on-backspace="keepOnBackspace" :disabled="disabled" :max-tags="maxTags">
     <div slot-scope="{ events, remove, state, tags }">
       <button
         v-for="tag in tags"
@@ -62,7 +62,7 @@ describe('TagInput', () => {
     wrapper.find('input').trigger('keydown.backspace');
     expect(wrapper.vm.colors.length).toBe(1);
 
-    await wrapper.setData({ deleteOnBackspace: false });
+    await wrapper.setData({ keepOnBackspace: true });
     wrapper.find('input').trigger('keydown.backspace');
     expect(wrapper.vm.colors.length).toBe(1);
   });
