@@ -7,15 +7,14 @@ let wrapper;
 const Component = {
   components: { SpruceTagInput },
   data() {
-    return { colors: ['red', 'blue'], keepOnBackspace: false, disabled: false, maxTags: null };
+    return { allowDuplicates: false, colors: ['red', 'blue'], keepOnBackspace: false, disabled: false, maxTags: null };
   },
   template: `
-  <spruce-tag-input v-model="colors" ref="tagInput" :keep-on-backspace="keepOnBackspace" :disabled="disabled" :max-tags="maxTags">
+  <spruce-tag-input v-model="colors" ref="tagInput" :keep-on-backspace="keepOnBackspace" :disabled="disabled" :max-tags="maxTags" :allow-duplicates="allowDuplicates">
     <div slot-scope="{ events, remove, state, tags }">
       <button
-        v-for="tag in tags"
-        :key="tag"
-        :ref="'tag_' + tag"
+        v-for="(tag, index) in tags"
+        :key="index"
         @click="remove(tag)"
       >
         <span>{{ tag }}</span>
@@ -40,10 +39,15 @@ describe('TagInput', () => {
     wrapper.find('input').trigger('keydown.enter');
     expect(wrapper.vm.colors.length).toBe(3);
 
-    await wrapper.setData({ maxTags: 3 });
+    await wrapper.setData({ allowDuplicates: true });
+    wrapper.find('input').setValue('red');
+    wrapper.find('input').trigger('keydown.enter');
+    expect(wrapper.vm.colors.length).toBe(4);
+
+    await wrapper.setData({ maxTags: 4 });
     wrapper.find('input').setValue('yellow');
     wrapper.find('input').trigger('keydown.enter');
-    expect(wrapper.vm.colors.length).toBe(3);
+    expect(wrapper.vm.colors.length).toBe(4);
   });
 
   test('esc', () => {

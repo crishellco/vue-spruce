@@ -2,6 +2,11 @@
 export default {
   name: 'SpruceTagInput',
   props: {
+    allowDuplicates: {
+      type: Boolean,
+      default: false,
+    },
+
     keepOnBackspace: {
       type: Boolean,
       default: false,
@@ -30,8 +35,9 @@ export default {
   methods: {
     add() {
       const tag = this.newTag.trim();
+      const valueIsAllowed = this.allowDuplicates || !this.value.includes(tag);
 
-      if (tag.length === 0 || this.value.includes(tag) || this.value.length === this.maxTags) {
+      if (tag.length === 0 || !valueIsAllowed || this.value.length === this.maxTags) {
         return;
       }
 

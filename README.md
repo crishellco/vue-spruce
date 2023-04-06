@@ -465,8 +465,8 @@ Renderless tag input.
 <spruce-tag-input v-model="colors">
   <div slot-scope="{ events, remove, state, tags }">
     <button
-      v-for="tag in tags"
-      :key="tag"
+      v-for="(tag, index) in tags"
+      :key="index"
       type="button"
       title="Remove tag"
       @click="remove(tag)"
@@ -483,6 +483,7 @@ Renderless tag input.
 
 | Name              | Description                                                  | Type    | Required | Default |
 |-------------------|--------------------------------------------------------------|---------|----------|---------|
+| `allowDuplicates` | Allows duplicate tags                                        | Boolean | No       | `False` |
 | `disabled`        | Disables all interactions                                    | Boolean | No       | `False` |
 | `keepOnBackspace` | Disables deleting last tab on `keyup.backspace` in the input | Boolean | No       | `False` |
 | `maxTags`         | Number of allowed tags                                       | Number  | No       | `Null`  |
