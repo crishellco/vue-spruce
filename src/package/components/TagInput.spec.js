@@ -7,15 +7,14 @@ let wrapper;
 const Component = {
   components: { SpruceTagInput },
   data() {
-    return { colors: ['red', 'blue'] };
+    return { allowDuplicates: false, colors: ['red', 'blue'], keepOnBackspace: false, disabled: false, maxTags: null };
   },
   template: `
-  <spruce-tag-input v-model="colors" ref="tagInput">
+  <spruce-tag-input v-model="colors" ref="tagInput" :keep-on-backspace="keepOnBackspace" :disabled="disabled" :max-tags="maxTags" :allow-duplicates="allowDuplicates">
     <div slot-scope="{ events, remove, state, tags }">
       <button
-        v-for="tag in tags"
-        :key="tag"
-        :ref="'tag_' + tag"
+        v-for="(tag, index) in tags"
+        :key="index"
         @click="remove(tag)"
       >
         <span>{{ tag }}</span>
@@ -31,7 +30,7 @@ describe('TagInput', () => {
     wrapper = mount(Component);
   });
 
-  test('add', () => {
+  test('add', async () => {
     wrapper.find('input').setValue('red');
     wrapper.find('input').trigger('keydown.enter');
     expect(wrapper.vm.colors.length).toBe(2);
@@ -39,6 +38,16 @@ describe('TagInput', () => {
     wrapper.find('input').setValue('green');
     wrapper.find('input').trigger('keydown.enter');
     expect(wrapper.vm.colors.length).toBe(3);
+
+    await wrapper.setData({ allowDuplicates: true });
+    wrapper.find('input').setValue('red');
+    wrapper.find('input').trigger('keydown.enter');
+    expect(wrapper.vm.colors.length).toBe(4);
+
+    await wrapper.setData({ maxTags: 4 });
+    wrapper.find('input').setValue('yellow');
+    wrapper.find('input').trigger('keydown.enter');
+    expect(wrapper.vm.colors.length).toBe(4);
   });
 
   test('esc', () => {
@@ -48,7 +57,7 @@ describe('TagInput', () => {
     expect(wrapper.vm.$refs.tagInput.newTag).toBe('');
   });
 
-  test('pop', () => {
+  test('pop', async () => {
     wrapper.find('input').setValue('red');
     wrapper.find('input').trigger('keydown.backspace');
     expect(wrapper.vm.colors.length).toBe(2);
@@ -56,9 +65,17 @@ describe('TagInput', () => {
     wrapper.find('input').setValue('');
     wrapper.find('input').trigger('keydown.backspace');
     expect(wrapper.vm.colors.length).toBe(1);
+
+    await wrapper.setData({ keepOnBackspace: true });
+    wrapper.find('input').trigger('keydown.backspace');
+    expect(wrapper.vm.colors.length).toBe(1);
   });
 
-  test('remove', () => {
+  test('remove', async () => {
+    wrapper.find('button').trigger('click');
+    expect(wrapper.vm.colors.length).toBe(1);
+
+    await wrapper.setData({ disabled: true });
     wrapper.find('button').trigger('click');
     expect(wrapper.vm.colors.length).toBe(1);
   });
