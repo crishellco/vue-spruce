@@ -13,13 +13,6 @@ export default {
   },
 
   methods: {
-    remove(tag) {
-      this.$emit(
-        'input',
-        this.value.filter((t) => t !== tag)
-      );
-    },
-
     add() {
       const tag = this.newTag.trim();
 
@@ -29,6 +22,22 @@ export default {
 
       this.$emit('input', [...this.value, tag]);
       this.newTag = '';
+    },
+
+    pop() {
+      if (this.newTag.length || !this.value.length) return;
+
+      const tags = this.value;
+
+      tags.pop();
+      this.$emit('input', tags);
+    },
+
+    remove(tag) {
+      this.$emit(
+        'input',
+        this.value.filter((t) => t !== tag)
+      );
     },
   },
 
@@ -42,6 +51,10 @@ export default {
           this.newTag = e.target.value;
         },
         keydown: (e) => {
+          // backspace
+          if (e.keyCode === 8) {
+            this.pop();
+          }
           // enter
           if (e.keyCode === 13) {
             e.preventDefault();

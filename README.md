@@ -487,12 +487,12 @@ Renderless tag input.
 
 #### Slot Scope
 
-| Slot      | Name       | Description                       | Type     |
-|-----------|------------|-----------------------------------|----------|
-| `default` | `events`   | Events to listen for on the input | Object   |
-| `default` | `remove()` | Removes a tag                     | Function |
-| `default` | `state`    | State to bind to the input input  | Object   |
-| `default` | `tags`     | Array of tags                     | Array    |
+| Slot      | Name       | Description                                                                                                                                                                                | Type     |
+|-----------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| `default` | `events`   | Events to listen for on the input. `input` for binding value, `keydown.backspace` for delete last tag, `keydown.enter` for adding new unique tag, and `keydown.escape` for clearing input. | Object   |
+| `default` | `remove()` | Removes a tag                                                                                                                                                                              | Function |
+| `default` | `state`    | State to bind to the input. `value` of the input.                                                                                                                                          | Object   |
+| `default` | `tags`     | Array of tags                                                                                                                                                                              | Array    |
 
 ### SpruceToggle
 
