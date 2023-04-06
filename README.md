@@ -465,14 +465,14 @@ Renderless tag input.
 <template>
   <spruce-tag-input v-model="colors" :validator="validator">
     <div
-      slot-scope="{ events, focusedTag, invalid, remove, state, tags }"
+      slot-scope="{ events, focusedTagIndex, invalid, remove, state, tags }"
       :class="{ 'border-red-500': invalid }"
     >
       <button
         v-for="(tag, index) in tags"
         :key="index"
         type="button"
-        :class="{ 'bg-red-500': focusedTag === tag }"
+        :class="{ 'bg-red-500': focusedTagIndex === index }"
         title="Remove tag"
         @click="remove(tag)"
       >
@@ -512,13 +512,13 @@ export default {
 
 #### Slot Scope
 
-| Slot      | Name         | Description                                                                                                                                                                                | Type     |
-|-----------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| `default` | `events`     | Events to listen for on the input. `input` for binding value, `keydown.backspace` for delete last tag, `keydown.enter` for adding new unique tag, and `keydown.escape` for clearing input. | Object   |
-| `default` | `focusedTag` | Currently focused tag (to be removed on next `keydown.backspace`). Used for styling.                                                                                                       | String   |
-| `default` | `remove()`   | Removes a tag                                                                                                                                                                              | Function |
-| `default` | `state`      | State to bind to the input. `value` of the input.                                                                                                                                          | Object   |
-| `default` | `tags`       | Array of tags                                                                                                                                                                              | Array    |
+| Slot      | Name              | Description                                                                                                                                                                                | Type     |
+|-----------|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| `default` | `events`          | Events to listen for on the input. `input` for binding value, `keydown.backspace` for delete last tag, `keydown.enter` for adding new unique tag, and `keydown.escape` for clearing input. | Object   |
+| `default` | `focusedTagIndex` | Currently focused tag index (to be removed on next `keydown.backspace`). Used for styling.                                                                                                 | String   |
+| `default` | `remove()`        | Removes a tag                                                                                                                                                                              | Function |
+| `default` | `state`           | State to bind to the input. `value` of the input.                                                                                                                                          | Object   |
+| `default` | `tags`            | Array of tags                                                                                                                                                                              | Array    |
 
 ### SpruceToggle
 
