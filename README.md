@@ -19,6 +19,7 @@ Check out the [demo](https://vue-spruce.netlify.app/)
   - [SpruceSearch](#sprucesearch)
   - [SpruceSort](#sprucesort)
   - [SpruceState](#sprucestate)
+  - [SpruceTagInput](#sprucetaginput)
   - [SpruceToggle](#sprucetoggle)
   - [SpruceWatch](#sprucewatch)
 - [Examples](#examples)
@@ -455,6 +456,43 @@ Create and manage localized state.
 |-----------|-----------------|--------------------------------------------|----------|
 | `default` | `[key]`         | Each key in the `state` prop               | Any      |
 | `default` | `set(newValue)` | Merges `newValue` with the current `state` | Function |
+
+### SpruceTagInput
+
+Renderless tag input.
+
+```html
+<spruce-tag-input v-model="colors">
+  <div slot-scope="{ events, remove, state, tags }">
+    <button
+      v-for="tag in tags"
+      :key="tag"
+      type="button"
+      title="Remove tag"
+      @click="remove(tag)"
+    >
+      <span>{{ tag }}</span>
+      <span>&times;</span>
+    </button>
+    <input v-bind="state" placeholder="Add tag..." v-on="events" />
+  </div>
+</spruce-tag-input>
+```
+
+#### Props
+
+| Name    | Description | Type  | Required | Default |
+|---------|-------------|-------|----------|---------|
+| `value` | The tags    | Array | Yes      |         |
+
+#### Slot Scope
+
+| Slot      | Name       | Description                       | Type     |
+|-----------|------------|-----------------------------------|----------|
+| `default` | `events`   | Events to listen for on the input | Object   |
+| `default` | `remove()` | Removes a tag                     | Function |
+| `default` | `state`    | State to bind to the input input  | Object   |
+| `default` | `tags`     | Array of tags                     | Array    |
 
 ### SpruceToggle
 

@@ -7,5 +7,6 @@ export { default as SprucePaginate } from './Paginate.vue';
 export { default as SpruceSearch } from './Search.vue';
 export { default as SpruceSort } from './Sort.vue';
 export { default as SpruceState } from './State.vue';
+export { default as SpruceTagInput } from './TagInput.vue';
 export { default as SpruceToggle } from './Toggle.vue';
 export { default as SpruceWatch } from './Watch.vue';
