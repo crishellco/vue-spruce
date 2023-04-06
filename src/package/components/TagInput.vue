@@ -22,6 +22,11 @@ export default {
       type: Number,
     },
 
+    validator: {
+      default: () => true,
+      type: Function,
+    },
+
     value: {
       required: true,
       type: Array,
@@ -30,6 +35,14 @@ export default {
 
   data() {
     return { focusedTag: null, newTag: '' };
+  },
+
+  computed: {
+    invalid() {
+      if (!this.newTag.length) return false;
+
+      return !this.validator(this.newTag) || (!this.allowDuplicates && this.value.includes(this.newTag));
+    },
   },
 
   watch: {
@@ -41,22 +54,13 @@ export default {
   methods: {
     add() {
       const tag = this.newTag.trim();
-      const valueIsAllowed = this.allowDuplicates || !this.value.includes(tag);
 
-      if (tag.length === 0 || !valueIsAllowed || this.value.length === this.maxTags) {
+      if (this.invalid || tag.length === 0 || this.value.length === this.maxTags) {
         return;
       }
 
-      const payload = {
-        next: () => {
-          this.$emit('input', [...this.value, tag]);
-          this.newTag = '';
-        },
-        tag,
-      };
-      if (this.$listeners.validate) return this.$emit('validate', payload);
-
-      payload.next();
+      this.$emit('input', [...this.value, tag]);
+      this.newTag = '';
     },
 
     clear() {
@@ -87,6 +91,7 @@ export default {
   render() {
     return this.$scopedSlots.default({
       focusedTag: this.focusedTag,
+      invalid: this.invalid,
       tags: this.value,
       remove: this.remove,
       state: { disabled: this.disabled, value: this.newTag },

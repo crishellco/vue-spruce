@@ -1,9 +1,10 @@
 <template>
   <demo-section name="SpruceTagInput" :code="code">
-    <spruce-tag-input v-model="colors" @validate="validate">
+    <spruce-tag-input v-model="colors" :validator="validator">
       <div
-        slot-scope="{ events, focusedTag, remove, state, tags }"
+        slot-scope="{ events, focusedTag, invalid, remove, state, tags }"
         class="p-2 border flex items-center flex-wrap gap-2"
+        :class="{ 'border-red-500': invalid }"
       >
         <button
           v-for="(tag, index) in tags"
@@ -40,8 +41,8 @@ export default {
   },
 
   methods: {
-    validate({ next, tag }) {
-      if (/^[a-zA-Z]+$/.test(tag)) next();
+    validator(tag) {
+      return /^[a-zA-Z]+$/.test(tag);
     },
   },
 };

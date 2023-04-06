@@ -463,9 +463,10 @@ Renderless tag input.
 
 ```html
 <template>
-  <spruce-tag-input v-model="colors" @validate="validate">
+  <spruce-tag-input v-model="colors" :validator="validator">
     <div
-      slot-scope="{ events, focusedTag, remove, state, tags }"
+      slot-scope="{ events, focusedTag, invalid, remove, state, tags }"
+      :class="{ 'border-red-500': invalid }"
     >
       <button
         v-for="(tag, index) in tags"
@@ -490,8 +491,8 @@ export default {
   },
 
   methods: {
-    validate({ next, tag }) {
-      if (/^[a-zA-Z]+$/.test(tag)) next();
+    validator(tag) {
+      return /^[a-zA-Z]+$/.test(tag);
     },
   },
 };
@@ -500,19 +501,14 @@ export default {
 
 #### Props
 
-| Name              | Description                                                  | Type    | Required | Default |
-|-------------------|--------------------------------------------------------------|---------|----------|---------|
-| `allowDuplicates` | Allows duplicate tags                                        | Boolean | No       | `False` |
-| `disabled`        | Disables all interactions                                    | Boolean | No       | `False` |
-| `keepOnBackspace` | Disables deleting last tab on `keyup.backspace` in the input | Boolean | No       | `False` |
-| `maxTags`         | Number of allowed tags                                       | Number  | No       | `Null`  |
-| `v-model`         | The tags                                                     | Array   | Yes      |         |
-
-#### Events
-
-| Name       | Description                                                                       | Payload                          |
-|------------|-----------------------------------------------------------------------------------|----------------------------------|
-| `validate` | Fired before adding a new tag, if listener exists. Execute `next` to add the tag. | `{ next: Function, tag: String}` |
+| Name              | Description                                                                                                                   | Type     | Required | Default      |
+|-------------------|-------------------------------------------------------------------------------------------------------------------------------|----------|----------|--------------|
+| `allowDuplicates` | Allows duplicate tags                                                                                                         | Boolean  | No       | `False`      |
+| `disabled`        | Disables all interactions                                                                                                     | Boolean  | No       | `False`      |
+| `keepOnBackspace` | Disables deleting last tab on `keyup.backspace` in the input                                                                  | Boolean  | No       | `False`      |
+| `maxTags`         | Number of allowed tags                                                                                                        | Number   | No       | `Null`       |
+| `v-model`         | The tags                                                                                                                      | Array    | Yes      |              |
+| `validator`       | Function that receives the String argument `tag` and returns `true` or `false` to determine the validity of the input's value | Function | No       | `() => true` |
 
 #### Slot Scope
 
