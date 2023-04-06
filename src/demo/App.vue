@@ -9,6 +9,7 @@
     <search />
     <sort />
     <state />
+    <tag-input />
     <toggle />
     <watch />
   </div>
@@ -24,6 +25,7 @@ import Paginate from './components/Paginate.vue';
 import Search from './components/Search.vue';
 import Sort from './components/Sort.vue';
 import State from './components/State.vue';
+import TagInput from './components/TagInput.vue';
 import Toggle from './components/Toggle.vue';
 import Watch from './components/Watch.vue';
 
@@ -38,6 +40,7 @@ export default {
     Search,
     Sort,
     State,
+    TagInput,
     Toggle,
     Watch,
   },
