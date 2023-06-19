@@ -55,7 +55,7 @@
     "core-js": "3.31.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "8.43.0",
-    "eslint-plugin-jest": "27.2.1",
+    "eslint-plugin-jest": "27.2.2",
     "eslint-plugin-jest-formatting": "3.1.0",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-vue": "9.15.0",
