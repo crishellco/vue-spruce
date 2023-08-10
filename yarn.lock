@@ -1116,6 +1116,22 @@
     resolve-global "1.0.0"
     yargs "^17.0.0"
 
+"@commitlint/cli@17.7.1":
+  version "17.7.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-17.7.1.tgz#f3ab35bd38d82fcd4ab03ec5a1e9db26d57fe1b0"
+  integrity sha512-BCm/AT06SNCQtvFv921iNhudOHuY16LswT0R3OeolVGLk8oP+Rk9TfQfgjH7QPMjhvp76bNqGFEcpKojxUNW1g==
+  dependencies:
+    "@commitlint/format" "^17.4.4"
+    "@commitlint/lint" "^17.7.0"
+    "@commitlint/load" "^17.7.1"
+    "@commitlint/read" "^17.5.1"
+    "@commitlint/types" "^17.4.4"
+    execa "^5.0.0"
+    lodash.isfunction "^3.0.9"
+    resolve-from "5.0.0"
+    resolve-global "1.0.0"
+    yargs "^17.0.0"
+
 "@commitlint/config-conventional@17.7.0":
   version "17.7.0"
   resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-17.7.0.tgz#1bbf2bce7851db63c1a8aa8d924277ad4938247e"
@@ -1221,6 +1237,26 @@
     lodash.merge "^4.6.2"
     lodash.uniq "^4.5.0"
     resolve-from "^5.0.0"
+
+"@commitlint/load@^17.7.1":
+  version "17.7.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/load/-/load-17.7.1.tgz#0723b11723a20043a304a74960602dead89b5cdd"
+  integrity sha512-S/QSOjE1ztdogYj61p6n3UbkUvweR17FQ0zDbNtoTLc+Hz7vvfS7ehoTMQ27hPSjVBpp7SzEcOQu081RLjKHJQ==
+  dependencies:
+    "@commitlint/config-validator" "^17.6.7"
+    "@commitlint/execute-rule" "^17.4.0"
+    "@commitlint/resolve-extends" "^17.6.7"
+    "@commitlint/types" "^17.4.4"
+    "@types/node" "20.4.7"
+    chalk "^4.1.0"
+    cosmiconfig "^8.0.0"
+    cosmiconfig-typescript-loader "^4.0.0"
+    lodash.isplainobject "^4.0.6"
+    lodash.merge "^4.6.2"
+    lodash.uniq "^4.5.0"
+    resolve-from "^5.0.0"
+    ts-node "^10.8.1"
+    typescript "^4.6.4 || ^5.0.0"
 
 "@commitlint/message@^17.4.2":
   version "17.4.2"
@@ -2410,6 +2446,11 @@
   version "18.7.23"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.23.tgz#75c580983846181ebe5f4abc40fe9dfb2d65665f"
   integrity sha512-DWNcCHolDq0ZKGizjx2DZjR/PqsYwAcYUJmfMWqtVU2MBMG5Mo+xFZrhGId5r/O5HOuMPyQEcM6KUBp5lBZZBg==
+
+"@types/node@20.4.7":
+  version "20.4.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.4.7.tgz#74d323a93f1391a63477b27b9aec56669c98b2ab"
+  integrity sha512-bUBrPjEry2QUTsnuEjzjbS7voGWCc30W0qzgMf90GPeDGFRakvrz47ju+oqDAKCXLUCe39u57/ORMl/O/04/9g==
 
 "@types/node@^14.0.0":
   version "14.18.31"
@@ -11419,6 +11460,11 @@ typescript@^4.6.4:
   version "4.8.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.4.tgz#c464abca159669597be5f96b8943500b238e60e6"
   integrity sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==
+
+"typescript@^4.6.4 || ^5.0.0":
+  version "5.1.6"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.1.6.tgz#02f8ac202b6dad2c0dd5e0913745b47a37998274"
+  integrity sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==
 
 uglify-js@^3.1.4:
   version "3.17.2"
