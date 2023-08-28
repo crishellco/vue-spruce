@@ -13,6 +13,7 @@ export const sortKeyFn = (listItem, sortKey) => {
 
 export default {
   name: 'SpruceSort',
+
   props: {
     list: {
       type: Array,
@@ -28,6 +29,8 @@ export default {
       type: String,
     },
   },
+
+  emits: ['change'],
 
   computed: {
     // @vuese
@@ -45,7 +48,7 @@ export default {
   },
 
   render() {
-    return this.$scopedSlots.default({ results: this.results });
+    return this.$slots.default({ results: this.results });
   },
 };
 </script>

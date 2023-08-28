@@ -41,10 +41,9 @@ describe('Fetch', () => {
     wrapper = shallowMount(SpruceFetch, {
       propsData: {
         url: 'api.google.com',
-        method: 'get',
         immediate: false,
       },
-      scopedSlots: { default: '<p></p>' },
+      slots: { default: '<p></p>' },
     });
   });
 
@@ -77,11 +76,8 @@ describe('Fetch', () => {
 
   it('should fetch immediately', () => {
     shallowMount(SpruceFetch, {
-      propsData: {
-        url: 'api.google.com',
-        method: 'get',
-      },
-      scopedSlots: { default: '<p></p>' },
+      propsData: { url: 'api.google.com' },
+      slots: { default: '<p></p>' },
     });
 
     expect(fetch).toHaveBeenCalled();

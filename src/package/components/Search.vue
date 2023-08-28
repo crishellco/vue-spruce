@@ -43,7 +43,7 @@ export default {
   },
 
   render() {
-    return this.$scopedSlots.default({ results: this.results });
+    return this.$slots.default({ results: this.results });
   },
 };
 </script>

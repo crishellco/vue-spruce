@@ -1,7 +1,7 @@
 <template>
   <demo-section name="SpruceFetch" :code="code">
-    <spruce-fetch v-for="url in urls" :key="url" :url="url">
-      <div slot-scope="{ loading, data, error, fetch }" class="py-4 border-t">
+    <spruce-fetch v-for="url in urls" :key="url" v-slot="{ loading, data, error, fetch }" :url="url">
+      <div class="py-4 border-t">
         <div class="mb-4 flex justify-between">
           <div
             class="rounded-l py-2 px-4 uppercase font-mono leading-none flex items-center w-16 text-sm justify-center"

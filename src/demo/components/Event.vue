@@ -1,22 +1,22 @@
 <template>
-  <demo-section name="SpruceEvent" :code="code" class="flex">
+  <demo-section name="SpruceEvent" :code="code">
     <div class="flex items-center">
       <div>
-        <spruce-state :value="{ count: 0 }">
-          <template slot-scope="{ count, set }">
-            <spruce-event event="mouseover" @mouseover="set({ count: count + 1 })">
+        <spruce-state v-slot="{ count, set }" :value="{ count: 0 }">
+          <div>
+            <spruce-event event-name="mouseover" @updated="set({ count: count + 1 })">
               <button class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64">
                 hover over me ({{ count }})
               </button>
             </spruce-event>
-          </template>
+          </div>
         </spruce-state>
       </div>
 
       <div class="ml-4">
-        <spruce-state :value="{ count: 0 }">
-          <div slot-scope="{ count, set }">
-            <spruce-event event="click" outside @click="set({ count: count + 1 })">
+        <spruce-state v-slot="{ count, set }" :value="{ count: 0 }">
+          <div>
+            <spruce-event event-name="click" outside @updated="set({ count: count + 1 })">
               <button
                 class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64"
                 @click.stop
@@ -29,9 +29,9 @@
       </div>
 
       <div class="ml-4">
-        <spruce-state :value="{ width: 0 }">
-          <div slot-scope="{ width, set }">
-            <spruce-event event="resize" immediate @resize="set({ width: $event.target.window.innerWidth })" />
+        <spruce-state v-slot="{ width, set }" :value="{ width: 0 }">
+          <div>
+            <spruce-event event-name="resize" immediate @updated="set({ width: $event.target.window.innerWidth })" />
             <button class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64">
               resize the window ({{ width }}px)
             </button>

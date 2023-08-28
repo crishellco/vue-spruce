@@ -12,7 +12,7 @@ describe('Paginate', () => {
         size: 12,
         list: people,
       },
-      scopedSlots: { default: '<p></p>' },
+      slots: { default: '<p></p>' },
     });
   });
 

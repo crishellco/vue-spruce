@@ -1,6 +1,6 @@
 <template>
-  <spruce-toggle :value="expanded" @input="$emit('toggled', $event)">
-    <section slot-scope="{ isOn, toggle }" class="flex">
+  <spruce-toggle v-slot="{ isOn, toggle }" :value="expanded" @input="$emit('toggled', $event)">
+    <section class="flex">
       <div class="flex-1 p-4 w-1/2 border-b border-gray-400 flex flex-col">
         <div class="flex items-center justify-between flex-none">
           <h3 class="text-2xl font-bold">{{ name }}</h3>
@@ -43,5 +43,7 @@ export default {
       type: String,
     },
   },
+
+  emits: ['toggled'],
 };
 </script>

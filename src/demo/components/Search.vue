@@ -1,7 +1,7 @@
 <template>
   <demo-section name="SpruceSearch" :code="code">
-    <spruce-state :value="{ term: '' }">
-      <div slot-scope="{ term, set }">
+    <spruce-state v-slot="{ term, set }" :value="{ term: '' }">
+      <div>
         <input
           :value="term"
           type="text"
@@ -9,8 +9,8 @@
           placeholder="search"
           @input="set({ term: $event.target.value })"
         />
-        <spruce-search :list="states" :term="term">
-          <div slot-scope="{ results }" class="w-full overflow-auto text-xs" style="height: 31rem">
+        <spruce-search v-slot="{ results }" :list="states" :term="term">
+          <div class="w-full overflow-auto text-xs" style="height: 31rem">
             <table class="w-full">
               <thead>
                 <tr class="text-bold text-left">

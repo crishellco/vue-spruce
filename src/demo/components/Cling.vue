@@ -1,5 +1,5 @@
 <template>
-  <demo-section name="SpruceCling" :code="code" class="flex flex-1">
+  <demo-section name="SpruceCling" :code="code">
     <h4 class="text-lg font-semibold mb-4">Hover over each button to see the placement of its clinger</h4>
     <div class="flex flex-col flex-1 justify-center">
       <div class="flex justify-center flex-wrap relative p-2">

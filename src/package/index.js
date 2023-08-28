@@ -13,7 +13,7 @@ const kebabCase = (str) =>
     .replace(/[\s_]+/g, '-')
     .toLowerCase();
 
-export default function install(Vue, options = {}) {
+export function VueSpruce(app, options = {}) {
   const { componentPrefix } = {
     ...defaultOptions,
     ...options,
@@ -22,6 +22,6 @@ export default function install(Vue, options = {}) {
   for (const name in components) {
     const component = components[name];
 
-    Vue.component(`${componentPrefix}-${fileNameToComponentName(name)}`, component);
+    app.component(`${componentPrefix}-${fileNameToComponentName(name)}`, component);
   }
 }

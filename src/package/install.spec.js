@@ -1,23 +1,18 @@
-import Vue from 'vue';
+import { mount } from '@vue/test-utils';
+import { VueSpruce } from './';
 
-import VueSpruce from './';
-
-let localVue;
+let wrapper;
 
 describe('install', () => {
-  beforeEach(() => {
-    localVue = { ...Vue };
-  });
-
   it('should install with default options', () => {
-    localVue.use(VueSpruce);
+    wrapper = mount({ template: '<div />' }, { global: { plugins: [VueSpruce] } });
 
-    expect(localVue.options.components).toHaveProperty('spruce-fetch');
+    expect(wrapper.__app._instance.root.appContext.components).toHaveProperty('spruce-fetch');
   });
 
   it('should install with custom options', () => {
-    localVue.use(VueSpruce, { componentPrefix: 's' });
+    wrapper = mount({ template: '<div />' }, { global: { plugins: [[VueSpruce, { componentPrefix: 's' }]] } });
 
-    expect(localVue.options.components).toHaveProperty('s-fetch');
+    expect(wrapper.__app._instance.root.appContext.components).toHaveProperty('s-fetch');
   });
 });

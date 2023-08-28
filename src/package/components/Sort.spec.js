@@ -13,7 +13,7 @@ describe('Sort', () => {
         direction: 'asc',
         list: people,
       },
-      scopedSlots: { default: '<p></p>' },
+      slots: { default: '<p></p>' },
     });
   });
 

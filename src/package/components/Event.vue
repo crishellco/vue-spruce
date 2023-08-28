@@ -1,33 +1,40 @@
 <script>
+export const UPDATED = 'updated';
+
 export default {
   name: 'SpruceEvent',
+
   props: {
-    event: {
+    eventName: {
       type: String,
       required: true,
     },
+
     immediate: {
       default: false,
       type: Boolean,
     },
+
     outside: {
       default: false,
       type: Boolean,
     },
   },
 
+  emits: [UPDATED],
+
   mounted() {
     this.handleEvent = this.handleEvent.bind(this);
-    window.addEventListener(this.event, this.handleEvent);
+    window.addEventListener(this.eventName, this.handleEvent);
 
     if (this.immediate) {
-      window.dispatchEvent(new Event(this.event));
+      window.dispatchEvent(new Event(this.eventName));
     }
   },
 
   /* istanbul ignore next */
   beforeDestroy() {
-    window.removeEventListener(this.event, this.handleEvent);
+    window.removeEventListener(this.eventName, this.handleEvent);
   },
 
   methods: {
@@ -36,21 +43,21 @@ export default {
 
       /* istanbul ignore next */
       if (!slot || e.target === window) {
-        return this.$emit(this.event, e);
+        return this.$emit(UPDATED, e);
       }
 
       /* istanbul ignore next */
       if (this.outside) {
-        return !slot?.elm?.contains(e.target) && this.$emit(this.event, e);
+        return !slot?.elm?.contains(e.target) && this.$emit(UPDATED, e);
       }
 
       /* istanbul ignore next */
-      slot?.elm?.contains(e.target) && this.$emit(this.event, e);
+      slot?.elm?.contains(e.target) && this.$emit(UPDATED, e);
     },
   },
 
   render() {
-    return this.$slots.default ?? null;
+    return this.$slots.default ? this.$slots.default() : null;
   },
 };
 </script>

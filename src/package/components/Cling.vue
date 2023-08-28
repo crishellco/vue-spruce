@@ -1,6 +1,7 @@
 <script>
 import { createPopper } from '@popperjs/core/lib/popper-lite';
 import flip from '@popperjs/core/lib/modifiers/flip';
+import { h } from 'vue';
 
 export default {
   name: 'SpruceCling',
@@ -58,13 +59,13 @@ export default {
     },
   },
 
-  render(h) {
+  render() {
     const props = { update: this.update };
     /* istanbul ignore next */
-    const anchor = this.$scopedSlots.anchor(props)[0];
+    const anchor = this.$slots.anchor(props)[0];
     const anchorData = anchor.data || {};
     const anchorDataAttrs = anchorData.attrs || {};
-    const clinger = this.$scopedSlots.clinger(props)[0];
+    const clinger = this.$slots.clinger(props)[0];
     const clingerData = clinger.data || {};
     const clingerDataAttrs = clingerData.attrs || {};
 

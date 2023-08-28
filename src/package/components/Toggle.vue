@@ -1,12 +1,15 @@
 <script>
 export default {
   name: 'SpruceToggle',
+
   props: {
     value: {
       default: false,
       type: Boolean,
     },
   },
+
+  emits: ['input'],
 
   data() {
     return { localValue: this.value };
@@ -37,7 +40,7 @@ export default {
   },
 
   render() {
-    return this.$scopedSlots.default({
+    return this.$slots.default({
       isOn: this.localValue,
       on: this.on,
       off: this.off,

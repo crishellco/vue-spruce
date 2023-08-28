@@ -7,7 +7,7 @@ describe('Cling', () => {
   it('should render with attrs and placement', async () => {
     const wrapper = await shallowMount(SpruceCling, {
       propsData: { placement: 'top' },
-      scopedSlots: {
+      slots: {
         anchor: '<p data-name="anchor"></p>',
         clinger: '<p data-name="clinger"></p>',
       },
@@ -20,7 +20,7 @@ describe('Cling', () => {
 
   it('should render without attrs or placement', async () => {
     const wrapper = await shallowMount(SpruceCling, {
-      scopedSlots: {
+      slots: {
         anchor: '<p></p>',
         clinger: '<p></p>',
       },

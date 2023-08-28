@@ -10,7 +10,7 @@ describe('AtLeast', () => {
   beforeEach(() => {
     wrapper = shallowMount(SpruceAtLeast, {
       propsData: { ms: 5000, show: true },
-      scopedSlots: { default: '<p></p>' },
+      slots: { default: '<p></p>' },
     });
   });
 
@@ -22,6 +22,7 @@ describe('AtLeast', () => {
 
     jest.runAllTimers();
 
+    await wrapper.vm.$nextTick();
     await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.localShow).toBeFalsy();

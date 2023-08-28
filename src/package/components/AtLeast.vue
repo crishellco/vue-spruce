@@ -14,7 +14,11 @@ export default {
   },
 
   data() {
-    return { localShow: this.show, promise: null, disabled: false };
+    return {
+      localShow: this.show,
+      promise: null,
+      disabled: false,
+    };
   },
 
   watch: {
@@ -49,7 +53,7 @@ export default {
   },
 
   render() {
-    return this.$scopedSlots.default({ disabled: this.disabled, show: this.localShow });
+    return this.$slots.default({ disabled: this.disabled, show: this.localShow });
   },
 };
 </script>

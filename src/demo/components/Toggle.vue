@@ -1,7 +1,7 @@
 <template>
   <demo-section name="SpruceToggle" :code="code">
-    <spruce-toggle>
-      <div slot-scope="{ isOn, toggle }">
+    <spruce-toggle v-slot="{ isOn, toggle }">
+      <div>
         <pre class="whitespace-pre flex-1 flex flex-col w-full overflow-auto bg-gray-700 p-4 rounded mb-4">
           <code class="block text-sm font-mono text-white flex flex-1">{{JSON.stringify({isOn}, null, 2)}}</code>
         </pre>
@@ -14,8 +14,8 @@
               >{{ isOn ? '▲' : '▼' }}</span
             >
           </div>
-          <spruce-fetch url="https://baconipsum.com/api/?type=all-meat&paras=1" immediate>
-            <div v-if="isOn" slot-scope="{ data }" class="border rounded-b p-4">{{ data[0] }}</div>
+          <spruce-fetch v-slot="{ data }" url="https://baconipsum.com/api/?type=all-meat&paras=1" immediate>
+            <div v-if="isOn" class="border rounded-b p-4">{{ data[0] }}</div>
           </spruce-fetch>
         </div>
       </div>

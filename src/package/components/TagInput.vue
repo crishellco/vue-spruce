@@ -1,6 +1,7 @@
 <script>
 export default {
   name: 'SpruceTagInput',
+
   props: {
     allowDuplicates: {
       type: Boolean,
@@ -27,6 +28,10 @@ export default {
       type: Number,
     },
 
+    modelValue: {
+      required: true,
+      type: Array,
+    },
     separator: {
       default: '\t',
       type: String,
@@ -36,12 +41,9 @@ export default {
       default: () => true,
       type: Function,
     },
-
-    value: {
-      required: true,
-      type: Array,
-    },
   },
+
+  emits: ['update:modelValue'],
 
   data() {
     return { focusedTagIndex: null, newTag: '' };
@@ -51,7 +53,7 @@ export default {
     invalid() {
       if (!this.newTag.length) return false;
 
-      return !this.validator(this.newTag) || (!this.allowDuplicates && this.value.includes(this.newTag));
+      return !this.validator(this.newTag) || (!this.allowDuplicates && this.modelValue.includes(this.newTag));
     },
   },
 
@@ -65,11 +67,11 @@ export default {
     add() {
       const tag = this.newTag.trim();
 
-      if (this.invalid || tag.length === 0 || this.value.length === this.maxTags) {
+      if (this.invalid || tag.length === 0 || this.modelValue.length === this.maxTags) {
         return;
       }
 
-      this.$emit('input', [...this.value, tag]);
+      this.$emit('update:modelValue', [...this.modelValue, tag]);
       this.newTag = '';
     },
 
@@ -89,17 +91,17 @@ export default {
 
       event.preventDefault();
 
-      const payload = [...this.value, ...tags];
+      const payload = [...this.modelValue, ...tags];
 
-      this.$emit('input', !this.allowDuplicates ? [...new Set(payload)] : payload);
+      this.$emit('update:modelValue', !this.allowDuplicates ? [...new Set(payload)] : payload);
     },
 
     pop() {
-      if (this.keepOnBackspace || this.newTag.length || !this.value.length) return;
+      if (this.keepOnBackspace || this.newTag.length || !this.modelValue.length) return;
 
-      if (this.focusedTagIndex === null) return (this.focusedTagIndex = this.value.length - 1);
+      if (this.focusedTagIndex === null) return (this.focusedTagIndex = this.modelValue.length - 1);
 
-      this.remove(this.value[this.focusedTagIndex]);
+      this.remove(this.modelValue[this.focusedTagIndex]);
       this.focusedTagIndex = null;
     },
 
@@ -107,17 +109,17 @@ export default {
       if (this.disabled) return;
 
       this.$emit(
-        'input',
-        this.value.filter((t) => t !== tag)
+        'update:modelValue',
+        this.modelValue.filter((t) => t !== tag)
       );
     },
   },
 
   render() {
-    return this.$scopedSlots.default({
+    return this.$slots.default({
       focusedTagIndex: this.focusedTagIndex,
       invalid: this.invalid,
-      tags: this.value,
+      tags: this.modelValue,
       remove: this.remove,
       state: { disabled: this.disabled, value: this.newTag },
       events: {

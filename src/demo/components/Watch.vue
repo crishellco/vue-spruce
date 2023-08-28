@@ -1,8 +1,8 @@
 <template>
-  <demo-section name="SpuceWatch" :code="code" class="flex">
-    <spruce-function :fn="() => Math.random().toString(16).substr(2, 8)">
-      <spruce-state slot-scope="{ fn }" :value="{ random: fn(), count: 0, events: [] }">
-        <div slot-scope="{ count, random, events, set }">
+  <demo-section name="SpuceWatch" :code="code">
+    <spruce-function v-slot="{ fn }" :fn="() => Math.random().toString(16).substr(2, 8)">
+      <spruce-state v-slot="{ count, random, events, set }" :value="{ random: fn(), count: 0, events: [] }">
+        <div>
           <div class="flex items-center mb-4">
             <button
               class="border-2 border-transparent bg-gray-400 rounded py-2 px-4 hover:bg-gray-500 w-64"
@@ -17,7 +17,7 @@
               randomize ({{ random }})
             </button>
           </div>
-          <spruce-watch :watch="{ count, random }" @changed="set({ events: events.concat([$event]) })">
+          <spruce-watch :watch="{ count, random }" @changed="set({ events: [...events, $event] })">
             <table class="w-full text-xs">
               <thead>
                 <tr class="text-bold text-left">

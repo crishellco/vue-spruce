@@ -13,7 +13,7 @@ describe('State', () => {
           number: 0,
         },
       },
-      scopedSlots: { default: '<p></p>' },
+      slots: { default: '<p></p>' },
     });
   });
 

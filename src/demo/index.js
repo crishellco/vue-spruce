@@ -1,10 +1,16 @@
-import Vue from 'vue';
-
 import App from './App.vue';
-import VueSpruce from '../package';
+import { VueSpruce } from '../package';
 
-Vue.config.productionTip = false;
+import { createApp, h } from 'vue';
 
-Vue.use(VueSpruce);
+const app = createApp({
+  name: 'DemoMain',
 
-new Vue({ render: (h) => h(App) }).$mount('#app');
+  render() {
+    return h(App);
+  },
+});
+
+app.use(VueSpruce);
+
+app.mount('#app');

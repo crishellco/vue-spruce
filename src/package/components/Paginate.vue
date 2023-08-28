@@ -117,7 +117,7 @@ export default {
   },
 
   render() {
-    return this.$scopedSlots.default({
+    return this.$slots.default({
       isFirst: this.isFirst,
       isLast: this.isLast,
       first: this.first,

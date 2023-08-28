@@ -1,5 +1,5 @@
 module.exports = {
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.module
       .rule('raw')
       .test(/\.gist$/)
@@ -13,9 +13,7 @@ module.exports = {
     optimization: {},
   },
 
-  css: {
-    extract: false,
-  },
+  css: { extract: false },
 
   lintOnSave: process.env.NODE_ENV !== 'production',
 

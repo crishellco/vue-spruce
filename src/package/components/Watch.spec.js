@@ -12,7 +12,7 @@ describe('Watch', () => {
   beforeEach(() => {
     wrapper = shallowMount(SpruceWatch, {
       propsData: { watch },
-      scopedSlots: { default: '<p></p>' },
+      slots: { default: '<p></p>' },
     });
   });
 
@@ -24,8 +24,6 @@ describe('Watch', () => {
       },
     });
 
-    expect(wrapper.emitted('changed:count').length).toBe(1);
-    expect(wrapper.emitted('changed:name')).toBeFalsy();
     expect(wrapper.emitted('changed').length).toBe(1);
 
     await wrapper.setProps({
@@ -35,8 +33,6 @@ describe('Watch', () => {
       },
     });
 
-    expect(wrapper.emitted('changed:count').length).toBe(1);
-    expect(wrapper.emitted('changed:name').length).toBe(1);
     expect(wrapper.emitted('changed').length).toBe(2);
   });
 });

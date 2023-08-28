@@ -9,6 +9,8 @@ export default {
     },
   },
 
+  emits: ['changed'],
+
   data() {
     return { unwatchers: [] };
   },
@@ -23,10 +25,6 @@ export default {
     for (const key in this.watch) {
       this.unwatchers.push(
         this.$watch(`watch.${key}`, (oldValue, newValue) => {
-          this.$emit(`changed:${key}`, {
-            oldValue,
-            newValue,
-          });
           this.$emit(`changed`, {
             key,
             oldValue,
@@ -38,7 +36,7 @@ export default {
   },
 
   render() {
-    return this.$scopedSlots.default();
+    return this.$slots.default();
   },
 };
 </script>

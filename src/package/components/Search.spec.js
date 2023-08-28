@@ -12,7 +12,7 @@ describe('Search', () => {
         list: people,
         term: '',
       },
-      scopedSlots: { default: '<p></p>' },
+      slots: { default: '<p></p>' },
     });
   });
 

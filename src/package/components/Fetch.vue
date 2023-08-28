@@ -1,6 +1,7 @@
 <script>
 export default {
   name: 'SpruceFetch',
+
   props: {
     url: {
       type: String,
@@ -12,6 +13,8 @@ export default {
       type: Boolean,
     },
   },
+
+  emits: ['error', 'success'],
 
   data() {
     return {
@@ -84,7 +87,7 @@ export default {
   },
 
   render() {
-    return this.$scopedSlots.default({
+    return this.$slots.default({
       calls: this.calls,
       data: this.data,
       error: this.error,

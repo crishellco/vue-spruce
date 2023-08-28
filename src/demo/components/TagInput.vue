@@ -1,11 +1,12 @@
 <template>
   <demo-section name="SpruceTagInput" :code="code">
-    <spruce-tag-input v-model="colors" :validator="validator" allow-paste>
-      <div
-        slot-scope="{ events, focusedTagIndex, invalid, remove, state, tags }"
-        class="p-2 border flex items-center flex-wrap gap-2"
-        :class="{ 'border-red-500': invalid }"
-      >
+    <spruce-tag-input
+      v-slot="{ events, focusedTagIndex, invalid, remove, state, tags }"
+      v-model="colors"
+      :validator="validator"
+      allow-paste
+    >
+      <div class="p-2 border flex items-center flex-wrap gap-2" :class="{ 'border-red-500': invalid }">
         <button
           v-for="(tag, index) in tags"
           :key="index"

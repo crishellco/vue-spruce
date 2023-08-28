@@ -1,12 +1,15 @@
 <script>
 export default {
   name: 'SpruceState',
+
   props: {
     value: {
       type: Object,
       required: true,
     },
   },
+
+  emits: ['input'],
 
   data() {
     return { localValue: null };
@@ -23,15 +26,15 @@ export default {
   },
 
   beforeMount() {
-    this.$set(this, 'localValue', this.value);
+    this.localValue = this.value;
   },
 
   methods: {
     set(newVal) {
-      this.$set(this, 'localValue', {
+      this.localValue = {
         ...this.localValue,
         ...newVal,
-      });
+      };
     },
 
     update(newVal) {
@@ -44,7 +47,7 @@ export default {
   },
 
   render() {
-    return this.$scopedSlots.default({
+    return this.$slots.default({
       ...this.localValue,
       set: this.set,
     });

@@ -20,8 +20,8 @@ const Component = {
     };
   },
   template: `
-  <spruce-tag-input v-model="colors" ref="tagInput" :keep-on-backspace="keepOnBackspace" :disabled="disabled" :max-tags="maxTags" :allow-duplicates="allowDuplicates" :validator="validator" :allow-paste="allowPaste">
-    <div slot-scope="{ events, remove, state, tags }">
+  <spruce-tag-input v-model="colors" ref="tagInput" :keep-on-backspace="keepOnBackspace" :disabled="disabled" :max-tags="maxTags" :allow-duplicates="allowDuplicates" :validator="validator" :allow-paste="allowPaste" v-slot="{ events, remove, state, tags }">
+    <div>
       <button
         v-for="(tag, index) in tags"
         :key="index"

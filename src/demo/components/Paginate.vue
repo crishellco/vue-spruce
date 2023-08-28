@@ -1,24 +1,11 @@
 <template>
   <demo-section name="SprucePaginate" :code="code">
-    <spruce-paginate :size="25" :list="simplePeople">
-      <div
-        slot-scope="{
-          page,
-          next,
-          prev,
-          pageNum,
-          totalPages,
-          isFirst,
-          isLast,
-          rangeStart,
-          rangeEnd,
-          first,
-          last,
-          links,
-          go,
-        }"
-        class="w-full overflow-auto text-xs"
-      >
+    <spruce-paginate
+      v-slot="{ page, next, prev, pageNum, totalPages, isFirst, isLast, rangeStart, rangeEnd, first, last, links, go }"
+      :size="25"
+      :list="simplePeople"
+    >
+      <div class="w-full overflow-auto text-xs">
         <table class="w-full">
           <thead>
             <tr class="text-bold text-left">

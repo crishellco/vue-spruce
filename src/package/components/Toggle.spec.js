@@ -6,7 +6,7 @@ let wrapper;
 
 describe('Toggle', () => {
   beforeEach(() => {
-    wrapper = shallowMount(SpruceToggle, { scopedSlots: { default: '<p></p>' } });
+    wrapper = shallowMount(SpruceToggle, { slots: { default: '<p></p>' } });
   });
 
   it('should track state', async () => {

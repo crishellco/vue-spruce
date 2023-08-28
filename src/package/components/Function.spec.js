@@ -12,8 +12,8 @@ describe('Function', () => {
     wrapper = mount({
       components: { SpruceFunction },
       template: `
-<spruce-function :fn="theFn">
-  <button slot-scope="{ fn }" @click="fn">btn</button>
+<spruce-function :fn="theFn" v-slot="{ fn }">
+  <button @click="fn">btn</button>
 </spruce-function>
       `,
       methods: { theFn: fn },
