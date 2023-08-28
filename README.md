@@ -52,7 +52,7 @@ const app = createApp({});
 app.use(VueSpruce);
 
 // or with options
-Vue.use(VueSpruce, { componentPrefix: 's' });
+app.use(VueSpruce, { componentPrefix: 's' });
 ```
 
 ### Nuxt Module
