@@ -43,10 +43,14 @@ npm i -D @crishellco/vue-spruce
 Installs all components globally.
 
 ```javascript
-import Vue from 'vue';
-import VueSpruce from '@crishellco/vue-spruce';
+import { createApp } from 'vue';
+import { VueSpruce } from '@crishellco/vue-spruce';
 
-Vue.use(VueSpruce);
+const app = createApp({});
+
+// default options
+app.use(VueSpruce);
+
 // or with options
 Vue.use(VueSpruce, { componentPrefix: 's' });
 ```
@@ -111,8 +115,8 @@ export default {
 Ensures a component shows for at least a given amount of time, in milliseconds, before hiding.
 
 ```html
-<spruce-at-least :ms="5000" :show="shouldShowImage">
-  <div slot-scope="{ disabled, show }">
+<spruce-at-least :ms="5000" :show="shouldShowImage" v-slot="{ disabled, show }">
+  <div>
     <img v-if="show" src="https://placebeard.it/g/200/300" alt="" />
 
     <button :disabled="disabled" @click="shouldShowImage = !shouldShowImage">
@@ -187,7 +191,7 @@ Clings the `clinger` slot's contents to the `anchor` slot's contents using `popp
 Track any `window` event occurance inside or outside of `SpruceEvent`'s default slot.
 
 ```html
-<spruce-event event="mouseover" @mouseover="someMethod">
+<spruce-event event="mouseover" @update="someMethod">
   <button>Hover over me!</button>
 </spruce-event>
 ```
@@ -196,15 +200,15 @@ Track any `window` event occurance inside or outside of `SpruceEvent`'s default 
 
 | Name        | Description                                                   | Type    | Required | Default |
 |-------------|---------------------------------------------------------------|---------|----------|---------|
-| `event`     | The event to listen to                                        | String  | Yes      |         |
+| `eventName` | The event to listen to                                        | String  | Yes      |         |
 | `immediate` | First event immediately (in `mounted`)                        | Boolean | No       | `false` |
 | `outside`   | Listen for the even only outside of the default slot elements | Boolean | No       | `false` |
 
 #### Events
 
-| Name                       | Description                   | Payload |
-|----------------------------|-------------------------------|---------|
-| _Same as the `event` prop_ | Fired when the event happens. | --      |
+| Name     | Description                   | Payload |
+|----------|-------------------------------|---------|
+| `update` | Fired when the event happens. | --      |
 
 #### Slots
 
@@ -217,8 +221,8 @@ Track any `window` event occurance inside or outside of `SpruceEvent`'s default 
 Make asynchronous API fetch calls.
 
 ```html
-<spruce-fetch url="https://dog-api.kinduff.com/api/facts" >
-  <div slot-scope="{ loading, data, error, fetch }">
+<spruce-fetch url="https://dog-api.kinduff.com/api/facts" v-slot="{ loading, data, error, fetch }">
+  <div>
     <loading-indicator v-if="loading" />
     <div v-else-if="errors">Errors! {{ error.status }}</div>
     <div v-else>Data: {{ data }}</div>
@@ -263,8 +267,8 @@ Create reusable functions on the fly (great for lists!).
 
 ```html
 <div v-for="num in 10">
-  <spruce-function :fn="() => alert(num)">
-    <button slot-scope="{ fn }" @click="fn">Click me!</button>
+  <spruce-function :fn="() => alert(num)" v-slot="{ fn }">
+    <button @click="fn">Click me!</button>
   </spruce-function>
 </div>
 ```
@@ -292,8 +296,8 @@ Create reusable functions on the fly (great for lists!).
 Paginate an array and navigate through it's chunks.
 
 ```html
-<spruce-paginate :list="states" :size="15">
-  <div slot-scope="{ page, next, prev, pageNum, totalPages, isFirst, isLast, rangeStart, rangeEnd }">
+<spruce-paginate :list="states" :size="15" v-slot="{ page, next, prev, pageNum, totalPages, isFirst, isLast, rangeStart, rangeEnd }">
+  <div>
     <button :disabled="isFirst" @click="prev">
       prev
     </button>
@@ -346,8 +350,8 @@ Paginate an array and navigate through it's chunks.
 Search an array of strings or objects by keys using [fuse.js](https://fusejs.io/).
 
 ```html
-<spruce-search :list="states" :term="term" :keys="['name', 'email']">
-  <div slot-scope="{ results }">
+<spruce-search :list="states" :term="term" :keys="['name', 'email']" v-slot="{ results }">
+  <div>
     <div v-for="(item, index) in results" :key="index">
       {{ item }}
     </div>
@@ -383,8 +387,8 @@ Sort an array of strings or objects in either direction by specific keys.
 _Note: string sorting is case insensitive._
 
 ```html
-<spruce-sort :list="people" :by="by" :direction="direction">
-  <div slot-scope="{ results }">
+<spruce-sort :list="people" :by="by" :direction="direction" v-slot="{ results }">
+  <div>
     <div v-for="(item, index) in results" :key="index">
       {{ item }}
     </div>
@@ -423,8 +427,8 @@ _Note: string sorting is case insensitive._
 Create and manage localized state.
 
 ```html
-<spruce-state :value="{ count: 0 }">
-  <div slot-scope="{ count, set }">
+<spruce-state :value="{ count: 0 }" v-slot="{ count, set }">
+  <div>
     <button @click="set({count: count + 1})">
       Increment ({{ count }})
     </button>
@@ -463,9 +467,8 @@ Renderless tag input.
 
 ```html
 <template>
-  <spruce-tag-input v-model="colors" :validator="validator">
+  <spruce-tag-input v-model="colors" :validator="validator" v-slot="{ events, focusedTagIndex, invalid, remove, state, tags }">
     <div
-      slot-scope="{ events, focusedTagIndex, invalid, remove, state, tags }"
       :class="{ 'border-red-500': invalid }"
     >
       <button
@@ -527,8 +530,8 @@ export default {
 Toggle between on (`true`) and off (`false`).
 
 ```html
-<spruce-toggle :value="true">
-  <div slot-scope="{ isOn, on, off, toggle }">
+<spruce-toggle :value="true" v-slot="{ isOn, on, off, toggle }">
+  <div>
     <div>
       <span>Accordion header</span>
       <span @click="toggle">{{ isOn ? '▲' : '▼' }}</span>
@@ -576,7 +579,7 @@ Toggle between on (`true`) and off (`false`).
 Watches variables for changes and emits events when changes occur.
 
 ```html
-<spruce-watch :watch="{count}" @changed="handleAnyChange" @changed:count="handleCountChange">
+<spruce-watch :watch="{count}" @changed="handleAnyChange">
   <button @click="count++">
     count++ ({{ count }})
   </button>
@@ -591,10 +594,9 @@ Watches variables for changes and emits events when changes occur.
 
 #### Events
 
-| Name            | Description                                    | Payload                                  |
-|-----------------|------------------------------------------------|------------------------------------------|
-| `changed`       | Fired when any value in `watch` changes        | `{key: count, oldValue: 0, newValue: 1}` |
-| `changed:[key]` | Fired when a specific value in `watch` changes | `{oldValue: 0, newValue: 1}`             |
+| Name      | Description                             | Payload                                             |
+|-----------|-----------------------------------------|-----------------------------------------------------|
+| `changed` | Fired when any value in `watch` changes | `eventName, {key: count, oldValue: 0, newValue: 1}` |
 
 #### Slots
 
