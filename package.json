@@ -4,12 +4,12 @@
   "author": "Chris Mitchell (@crishellco)",
   "description": "A collection of useful Vue 2 renderless components",
   "types": "index.d.ts",
-  "main": "./dist/vue-hubble.umd.js",
-  "module": "./dist/vue-hubble.es.js",
+  "main": "./dist/vue-spruce.umd.js",
+  "module": "./dist/vue-spruce.es.js",
   "exports": {
     ".": {
-      "import": "./dist/vue-hubble.es.js",
-      "require": "./dist/vue-hubble.umd.js"
+      "import": "./dist/vue-spruce.es.js",
+      "require": "./dist/vue-spruce.umd.js"
     }
   },
   "files": [
