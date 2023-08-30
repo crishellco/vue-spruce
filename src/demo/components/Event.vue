@@ -43,11 +43,12 @@
 </template>
 
 <script>
+import { SpruceEvent, SpruceState } from '../../package';
 import { DemoSection } from '../shared';
 import code from './Event.gist';
 
 export default {
-  components: { DemoSection },
+  components: { DemoSection, SpruceEvent, SpruceState },
 
   data() {
     return { code };

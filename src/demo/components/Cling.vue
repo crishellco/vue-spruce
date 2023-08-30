@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { SpruceCling } from '../../package';
 import { DemoSection } from '../shared';
 import code from './Cling.gist';
 
@@ -43,7 +44,7 @@ const PLACEMENTS = [
 ];
 
 export default {
-  components: { DemoSection },
+  components: { DemoSection, SpruceCling },
 
   data() {
     return { code };

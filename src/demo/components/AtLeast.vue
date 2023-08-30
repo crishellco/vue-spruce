@@ -19,11 +19,12 @@
 </template>
 
 <script>
+import { SpruceAtLeast, SpruceToggle } from '../../package';
 import { DemoSection } from '../shared';
 import code from './AtLeast.gist';
 
 export default {
-  components: { DemoSection },
+  components: { DemoSection, SpruceAtLeast, SpruceToggle },
 
   data() {
     return { code };

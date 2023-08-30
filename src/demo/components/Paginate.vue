@@ -79,17 +79,18 @@
           </div>
         </div>
       </div>
-    </spruce-paginate></demo-section
-  >
+    </spruce-paginate>
+  </demo-section>
 </template>
 
 <script>
+import { SprucePaginate } from '../../package';
 import { states, simplePeople } from '../fixtures';
 import { DemoSection } from '../shared';
 import code from './Paginate.gist';
 
 export default {
-  components: { DemoSection },
+  components: { DemoSection, SprucePaginate },
 
   data() {
     return {

@@ -31,11 +31,12 @@
 </template>
 
 <script>
+import { SpruceTagInput } from '../../package';
 import { DemoSection } from '../shared';
 import code from './TagInput.gist';
 
 export default {
-  components: { DemoSection },
+  components: { DemoSection, SpruceTagInput },
 
   data() {
     return { code, colors: ['red', 'blue'] };

@@ -14,7 +14,6 @@
   },
   "files": [
     "dist",
-    "nuxt",
     "index.d.ts"
   ],
   "scripts": {
@@ -28,6 +27,7 @@
     "lint:js": "vue-cli-service lint src scripts",
     "lint:js:fix": "yarn lint:js --fix",
     "generate": "node scripts/gist-generator.js",
+    "generate:md": "remark . --output",
     "release": "semantic-release"
   },
   "repository": {
@@ -53,6 +53,7 @@
     "@babel/eslint-parser": "7.22.11",
     "@commitlint/cli": "17.7.1",
     "@form8ion/commitlint-config": "1.0.55",
+    "@form8ion/remark-lint-preset": "^6.0.0",
     "@popperjs/core": "2.11.8",
     "@vitejs/plugin-vue": "^4.3.3",
     "@vue/cli-plugin-babel": "5.0.8",
@@ -74,6 +75,8 @@
     "npm-run-all": "4.1.5",
     "prettier": "2.8.8",
     "raw-loader": "4.0.2",
+    "remark-cli": "^11.0.0",
+    "remark-toc": "^8.0.1",
     "semantic-release": "21.1.1",
     "vite": "^4.4.9",
     "vue": "^3.0.0",

@@ -8,25 +8,73 @@ A collection of useful Vue 2 renderless components.
 
 Check out the [demo](https://vue-spruce.netlify.app/)
 
-- [Install](#install)
-- [The Components](#the-components)
-  - [SpruceAtLeast](#spruceatleast)
-  - [SpruceCling](#sprucecling)
-  - [SpruceEvent](#spruceevent)
-  - [SpruceFetch](#sprucefetch)
-  - [SpruceFunction](#sprucefunction)
-  - [SprucePaginate](#sprucepaginate)
-  - [SpruceSearch](#sprucesearch)
-  - [SpruceSort](#sprucesort)
-  - [SpruceState](#sprucestate)
-  - [SpruceTagInput](#sprucetaginput)
-  - [SpruceToggle](#sprucetoggle)
-  - [SpruceWatch](#sprucewatch)
-- [Examples](#examples)
-- [Development](#development)
-- [How to Contribute](#how-to-contribute)
-  - [Pull Requests](#pull-requests)
-- [License](#license)
+## Table of Contents
+
+* [Install](#install)
+  * [Package](#package)
+  * [Named Imports](#named-imports)
+* [The Components](#the-components)
+  * [SpruceAtLeast](#spruceatleast)
+    * [Props](#props)
+    * [Slots](#slots)
+    * [Slot Scope](#slot-scope)
+  * [SpruceCling](#sprucecling)
+    * [Props](#props-1)
+    * [Slots](#slots-1)
+    * [Slot Scope](#slot-scope-1)
+  * [SpruceEvent](#spruceevent)
+    * [Props](#props-2)
+    * [Events](#events)
+    * [Slots](#slots-2)
+  * [SpruceFetch](#sprucefetch)
+    * [Props](#props-3)
+    * [Events](#events-1)
+    * [Slots](#slots-3)
+    * [Slot Scope](#slot-scope-2)
+  * [SpruceFunction](#sprucefunction)
+    * [Props](#props-4)
+    * [Slots](#slots-4)
+    * [Slot Scope](#slot-scope-3)
+  * [SprucePaginate](#sprucepaginate)
+    * [Props](#props-5)
+    * [Slots](#slots-5)
+    * [Slot Scope](#slot-scope-4)
+  * [SpruceSearch](#sprucesearch)
+    * [Props](#props-6)
+    * [Slots](#slots-6)
+    * [Slot Scope](#slot-scope-5)
+  * [SpruceSort](#sprucesort)
+    * [Props](#props-7)
+    * [Events](#events-2)
+    * [Slots](#slots-7)
+    * [Slot Scope](#slot-scope-6)
+  * [SpruceState](#sprucestate)
+    * [Props](#props-8)
+    * [Events](#events-3)
+    * [Slots](#slots-8)
+    * [Slot Scope](#slot-scope-7)
+  * [SpruceTagInput](#sprucetaginput)
+    * [Props](#props-9)
+    * [Slot Scope](#slot-scope-8)
+  * [SpruceToggle](#sprucetoggle)
+    * [Props](#props-10)
+    * [Events](#events-4)
+    * [Slots](#slots-9)
+    * [Slot Scope](#slot-scope-9)
+  * [SpruceWatch](#sprucewatch)
+    * [Props](#props-11)
+    * [Events](#events-5)
+    * [Slots](#slots-10)
+* [Examples](#examples)
+* [Development](#development)
+  * [Lint](#lint)
+  * [Test](#test)
+  * [Build Dist](#build-dist)
+  * [Run Demo](#run-demo)
+  * [Build Demo](#build-demo)
+* [How to Contribute](#how-to-contribute)
+  * [Pull Requests](#pull-requests)
+* [License](#license)
 
 ## Install
 
@@ -37,40 +85,6 @@ yarn add -D @crishellco/vue-spruce
 # or
 npm i -D @crishellco/vue-spruce
 ```
-
-### Vue Plugin
-
-Installs all components globally.
-
-```javascript
-import { createApp } from 'vue';
-import { VueSpruce } from '@crishellco/vue-spruce';
-
-const app = createApp({});
-
-// default options
-app.use(VueSpruce);
-
-// or with options
-app.use(VueSpruce, { componentPrefix: 's' });
-```
-
-### Nuxt Module
-
-Installs all components globally.
-
-```javascript
-// nuxt.config.js
-{
-  modules: [['@crishellco/vue-spruce/nuxt', { componentPrefix: 's' }]];
-}
-```
-
-#### Options
-
-| Name              | Description                                         | Default  |
-|-------------------|-----------------------------------------------------|----------|
-| `componentPrefix` | The prefix used when installing components globally | `spruce` |
 
 ### Named Imports
 
@@ -382,7 +396,7 @@ Search an array of strings or objects by keys using [fuse.js](https://fusejs.io/
 
 ### SpruceSort
 
-Sort an array of strings or objects in either direction by specific keys. 
+Sort an array of strings or objects in either direction by specific keys.
 
 _Note: string sorting is case insensitive._
 
@@ -418,9 +432,9 @@ _Note: string sorting is case insensitive._
 
 #### Slot Scope
 
-| Slot      | Name      | Description       | Type                  |
-|-----------|-----------|-------------------|-----------------------|
-| `default` | `results` | The searched list | Array<String, Object> |
+| Slot      | Name      | Description       | Type                   |
+|-----------|-----------|-------------------|------------------------|
+| `default` | `results` | The searched list | Array\<String, Object> |
 
 ### SpruceState
 
@@ -645,8 +659,8 @@ yarn build:demo
 ### Pull Requests
 
 1. Fork the repository
-2. Create a new branch for each feature or improvement
-3. Send a pull request from each feature branch to the **develop** branch
+1. Create a new branch for each feature or improvement
+1. Send a pull request from each feature branch to the __develop__ branch
 
 ## License
 

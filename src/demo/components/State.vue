@@ -38,11 +38,12 @@
 </template>
 
 <script>
+import { SpruceFunction, SpruceState } from '../../package';
 import { DemoSection } from '../shared';
 import code from './State.gist';
 
 export default {
-  components: { DemoSection },
+  components: { DemoSection, SpruceFunction, SpruceState },
 
   data() {
     return { code };

@@ -37,11 +37,12 @@
 </template>
 
 <script>
+import { SpruceFetch } from '../../package';
 import { DemoSection } from '../shared';
 import code from './Fetch.gist';
 
 export default {
-  components: { DemoSection },
+  components: { DemoSection, SpruceFetch },
 
   data() {
     return {

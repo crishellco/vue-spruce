@@ -1,5 +1,5 @@
 <template>
-  <demo-section name="SpuceWatch" :code="code">
+  <demo-section name="SpruceWatch" :code="code">
     <spruce-function v-slot="{ fn }" :fn="() => Math.random().toString(16).substr(2, 8)">
       <spruce-state v-slot="{ count, random, events, set }" :value="{ random: fn(), count: 0, events: [] }">
         <div>
@@ -40,11 +40,12 @@
 </template>
 
 <script>
+import { SpruceFunction, SpruceState, SpruceWatch } from '../../package';
 import { DemoSection } from '../shared';
 import code from './Watch.gist';
 
 export default {
-  components: { DemoSection },
+  components: { DemoSection, SpruceFunction, SpruceState, SpruceWatch },
 
   data() {
     return { code };
