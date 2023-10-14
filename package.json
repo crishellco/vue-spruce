@@ -42,7 +42,7 @@
     "vue": "2.7.14"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.7.2",
+    "@commitlint/cli": "17.8.0",
     "@form8ion/commitlint-config": "1.0.56",
     "@popperjs/core": "2.11.8",
     "@vue/cli-plugin-babel": "5.0.8",
