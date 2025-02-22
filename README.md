@@ -1,6 +1,6 @@
 # Vue Spruce
 
-![Build](https://github.com/crishellco/vue-spruce/workflows/Build/badge.svg)
+![Build](https://github.com/crishellco/vue-spruce/actions/workflows/node-ci.yml/badge.svg)
 [![codecov](https://codecov.io/gh/crishellco/vue-spruce/branch/master/graph/badge.svg?token=M7N86U5GF7)](https://codecov.io/gh/crishellco/vue-spruce)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3d9c02be0f58b708e2ae/maintainability)](https://codeclimate.com/github/crishellco/vue-spruce/maintainability)
 
